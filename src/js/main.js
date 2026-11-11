@@ -1,36 +1,94 @@
-// Entry point: loads state, renders the page and handles input through delegated listeners.
-import { mount } from "./html.js";
-import { discName, LEVELS, PATH } from "./model.js";
+// Entry point: loads state, wires the actions to it and renders the page with lit-html.
+import { render } from "lit-html";
+import { discName, isDisc, LEVELS } from "./model.js";
 import { loadState, saveState } from "./store.js";
 import { initTheme } from "./theme.js";
 import * as view from "./views.js";
 
-const $ = (id) => document.getElementById(id);
-const state = loadState((k) => Boolean(PATH[k]));
+/** @param {string} id */
+const $ = (id) => /** @type {HTMLElement} */ (document.getElementById(id));
+const state = loadState(isDisc);
 
-function render() {
-  // Re-rendering replaces the controls, so put focus back on the one the user acted on.
-  const active = document.activeElement?.id;
-  mount($("disc"), view.disciplines(state));
-  mount($("quiz"), view.quiz(state));
-  $("verdict").textContent = view.verdictText(state);
-  mount($("ladder"), view.ladder(state));
-  mount($("panel"), view.panel(state));
-  mount($("summary"), view.summary(state));
-  mount($("unk"), view.unknowns(state));
-  if (active) {
-    const el = $(active);
-    if (el && el !== document.activeElement) el.focus({ preventScroll: true });
-  }
+/** @type {view.Actions} */
+const act = {
+  pickDisc: (disc) =>
+    update(
+      () => {
+        state.disc = disc;
+        state.view = null;
+      },
+      () => `${discName(state.disc)}. ${view.verdictText(state)}`,
+    ),
+  answer: (level, answer) =>
+    update(
+      () => {
+        state.quiz[state.disc] = { ...state.quiz[state.disc], [level]: answer };
+        state.view = null;
+      },
+      () => view.verdictText(state),
+    ),
+  rate: (id, rating) =>
+    update(() => {
+      state.rate[id] = rating;
+    }),
+  showLevel: (level) =>
+    update(
+      () => {
+        state.view = level;
+      },
+      () => `Showing level ${level}, ${LEVELS[level].name}.`,
+      { animate: true },
+    ),
+  showCore: (on) =>
+    update(
+      () => {
+        state.core = on;
+      },
+      on ? "Shared core topics shown." : "Shared core topics hidden.",
+    ),
+};
+
+function draw() {
+  render(view.disciplines(state, act), $("disc"));
+  render(view.quiz(state, act), $("quiz"));
+  render(view.verdictText(state), $("verdict"));
+  render(view.ladder(state, act), $("ladder"));
+  render(view.panel(state, act), $("panel"));
+  render(view.summary(state), $("summary"));
+  render(view.unknowns(state), $("unk"));
 }
 
-function update(change, message) {
+/**
+ * Animates a redraw where the browser supports view transitions and the viewer allows motion.
+ * Elsewhere it just redraws. Clicks do not reach the page while a transition runs, so use this
+ * only where the viewer stops to read, not between quick answers.
+ * @param {() => void} redraw
+ */
+function transition(redraw) {
+  if (!document.startViewTransition || matchMedia("(prefers-reduced-motion: reduce)").matches)
+    return redraw();
+  // A transition started before this one finishes skips it and rejects `ready`. The redraw
+  // still runs, so there is nothing to handle.
+  document.startViewTransition(redraw).ready.catch(() => {});
+}
+
+/**
+ * @param {() => void} change
+ * @param {string | (() => string)} [message]
+ * @param {{ animate?: boolean }} [options] Animate the redraw with a view transition.
+ */
+function update(change, message, { animate = false } = {}) {
   change();
   saveState(state);
-  render();
+  if (animate) transition(draw);
+  else draw();
   if (message) announce(typeof message === "function" ? message() : message);
 }
 
+/**
+ * Clears the live region first, so a message the same as the last one is read again.
+ * @param {string} message
+ */
 function announce(message) {
   const status = $("status");
   status.textContent = "";
@@ -39,58 +97,9 @@ function announce(message) {
   }, 50);
 }
 
-document.addEventListener("change", (e) => {
-  const t = e.target;
-  switch (t.dataset?.kind) {
-    case "disc":
-      return update(
-        () => {
-          state.disc = t.value;
-          state.view = null;
-        },
-        () => `${discName(state.disc)}. ${view.verdictText(state)}`,
-      );
-    case "quiz":
-      return update(
-        () => {
-          state.quiz[state.disc] ??= {};
-          state.quiz[state.disc][t.dataset.i] = t.value;
-          state.view = null;
-        },
-        () => view.verdictText(state),
-      );
-    case "rate":
-      return update(() => {
-        state.rate[t.dataset.id] = t.value;
-      });
-  }
-  if (t.id === "coretoggle") {
-    update(
-      () => {
-        state.core = t.checked;
-      },
-      t.checked ? "Shared core topics shown." : "Shared core topics hidden.",
-    );
-  }
-});
-
-document.addEventListener("click", (e) => {
-  const button = e.target.closest("button");
-  if (!button) return;
-  if (button.dataset.l != null) {
-    update(
-      () => {
-        state.view = Number(button.dataset.l);
-      },
-      () => `Showing level ${state.view}, ${LEVELS[state.view].name}.`,
-    );
-  } else if (button.id === "reset") {
-    reset(button);
-  }
-});
-
 // Clearing takes two presses. The first arms the button and colors it as a warning.
-function reset(button) {
+$("reset").addEventListener("click", (e) => {
+  const button = /** @type {HTMLButtonElement} */ (e.currentTarget);
   const mode = $("reset-mode");
   if (button.dataset.armed) {
     update(() => {
@@ -111,7 +120,7 @@ function reset(button) {
     $("resetmsg").textContent = "This removes all your answers.";
     announce("Press again to clear all your answers.");
   }
-}
+});
 
-initTheme($("theme"));
-render();
+initTheme(/** @type {HTMLSelectElement} */ ($("theme")));
+draw();

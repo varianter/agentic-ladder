@@ -11,14 +11,15 @@ Variant's roadmap for getting good at agentic AI, per product development discip
 | `src/model.json` | The model: levels, disciplines, paths, topic rows and gaps. The single source for the page. |
 | `src/index.html` | The page: full HTML document, static text and the disagreements table. |
 | `src/app.css` | Imports Varde into a cascade layer and adds the little layout Varde has no utility for. |
-| `src/js/` | Native ES modules, no bundler. `main.js` (entry and events), `views.js` (markup per section), `model.js` (imports `../model.json` as a JSON module), `store.js` (localStorage), `theme.js`, `html.js` (escaping tagged template). |
+| `src/js/` | Native ES modules, no bundler. `main.js` (entry, actions and rendering), `views.js` (lit-html templates per section), `model.js` (fetches `../model.json`, model types), `store.js` (localStorage, state type), `theme.js`. |
 | `scripts/check-model.mjs` | Checks the shape of `src/model.json`. |
+| `tsconfig.json` | Type checks `src/js/` from JSDoc comments with `tsc`. Nothing is emitted. |
 | `.github/workflows/pages.yml` | Runs `pnpm check` on every push and pull request, and publishes `src/` to GitHub Pages from `main`. |
 | `scripts/a11y.mjs` | Serves `src/` with sirv, then runs an axe-core WCAG 2.1 AA check at 1200px light and 390px dark, plus sideways-scroll, script error and Varde-loaded checks. |
 | `biome.json` | Biome lint and format config. Markdown is not formatted. |
 | `docs/roadmap.md` | Snapshot of the long-form roadmap doc. The editable doc lives in Claude Docs. |
 
-Package manager is pnpm (version pinned in `packageManager`, run through corepack). Commands: `pnpm dev` (serve `src/` with sirv on port 4173, reload to see edits), `pnpm check:model`, `pnpm a11y`, `pnpm lint` (Biome), `pnpm format` (Biome fixes and formatting), `pnpm check` (Biome, model check and a11y). Run `pnpm format` then `pnpm check` after every change to `src/` or `scripts/`.
+Package manager is pnpm (version pinned in `packageManager`, run through corepack). Commands: `pnpm dev` (serve `src/` with sirv on port 4173, reload to see edits), `pnpm check:model`, `pnpm check:types` (tsc), `pnpm a11y`, `pnpm lint` (Biome), `pnpm format` (Biome fixes and formatting), `pnpm check` (Biome, types, model check and a11y). Run `pnpm format` then `pnpm check` after every change to `src/` or `scripts/`.
 
 ## The model
 
@@ -48,7 +49,9 @@ Package manager is pnpm (version pinned in `packageManager`, run through corepac
 - Color only through `<color-mode palette="...">` and Varde's surface, ink and border classes. A `<color-mode>` needs `d-block` or `d-inline-block` to paint a background. State changes swap the palette (blue for the accent and current level, green for passed or "I do this", yellow for gaps and "Never heard of it", coral for the armed clear button). No hex values, no Varde variables in page CSS.
 - Light mode is the default for everyone (`data-color-scheme="light"` on `<html>`). The theme picker lets a viewer choose Dark or System, saved in their browser. Both themes must still pass the checks.
 - Page CSS lives in `@layer app`, above `@layer varde`. Add a rule there only when no Varde class does the job.
-- Markup is built with the `html` tagged template, which escapes every value. Use `safe()` only for markup you built yourself.
+- Markup is built with lit-html, loaded from jsDelivr through the import map in `index.html` and pinned to a version (now 3.3.3). The `lit-html` dev dependency is only there for types, so keep both versions the same. lit-html escapes every value and updates the page in place, so focus stays put. Bind events with `@change`/`@click` and input state with `.checked`. Render lists of inputs whose identity can change, like topics, with `repeat()` keyed by id.
+- Type everything with JSDoc. `pnpm check` runs `tsc` in strict mode over `src/js/`.
+- Browser features must be Baseline Widely available. Newer features are fine only as progressive enhancement, where the page works the same without them. View transitions are one: they run only on ladder clicks, since clicks during a transition are lost.
 - Must pass WCAG 2.1 AA. Use native controls (radio groups, checkboxes, buttons), keep focus where the user acted after a re-render, keep touch targets at least 44px on phones, and keep text contrast at least 4.5:1 in both themes.
 - No horizontal scroll at 390px wide.
 - Varde's `.stack-v` is `flex-flow: column wrap`, which leaves large empty gaps in Chrome. `app.css` sets it to `nowrap`; keep that. Use media queries, not container queries, for narrow layouts. `pnpm a11y` fails if a `stack-v` has empty space below its last child.

@@ -3,8 +3,19 @@
 const KEY = "agentic-ladder-v1";
 const THEME_KEY = "agentic-ladder-theme";
 
+/**
+ * @typedef {object} State
+ * @property {import("./model.js").Disc} disc The chosen discipline.
+ * @property {number | null} view The level the viewer clicked, or null to follow the tests.
+ * @property {Partial<Record<string, Record<string, "yes" | "no">>>} quiz Test answers per discipline, by level.
+ * @property {Record<string, "do" | "know" | "new">} rate Ratings by topic id.
+ * @property {boolean} core Whether to show the shared core topics.
+ */
+
+/** @returns {State} */
 const defaults = () => ({ disc: "all", view: null, quiz: {}, rate: {}, core: true });
 
+/** @param {(k: string) => k is import("./model.js").Disc} isDisc */
 export function loadState(isDisc) {
   const state = defaults();
   try {
@@ -15,6 +26,7 @@ export function loadState(isDisc) {
   return state;
 }
 
+/** @param {State} state */
 export function saveState(state) {
   try {
     localStorage.setItem(KEY, JSON.stringify(state));
@@ -30,6 +42,7 @@ export function loadTheme() {
   }
 }
 
+/** @param {string} theme */
 export function saveTheme(theme) {
   try {
     if (theme === "light") localStorage.removeItem(THEME_KEY);

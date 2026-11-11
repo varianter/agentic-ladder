@@ -23,6 +23,16 @@
       if (s === "light" || s === "dark") document.documentElement.dataset.colorScheme = s;
     } catch {}
     </script>
+    <script type="importmap">
+    {
+      "imports": {
+        "lit-html": "https://cdn.jsdelivr.net/npm/lit-html@3.3.3/lit-html.js",
+        "lit-html/": "https://cdn.jsdelivr.net/npm/lit-html@3.3.3/"
+      }
+    }
+    </script>
+    <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/lit-html@3.3.3/lit-html.js">
+    <link rel="preload" as="fetch" href="model.json" crossorigin>
     <script type="module" src="js/main.js"></script>
   </head>
   <body>

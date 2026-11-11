@@ -12,11 +12,11 @@ Needs Node 22 or newer and pnpm through corepack (`corepack enable`).
 ```sh
 pnpm install
 pnpm dev      # serve src/ at http://127.0.0.1:4173/, reload to see edits
-pnpm check    # Biome lint and format check, model check, accessibility check
+pnpm check    # Biome lint and format check, type check, model check, accessibility check
 pnpm format   # apply Biome fixes and formatting
 ```
 
-The page is plain HTML, CSS and native ES modules styled with [Varde](https://varde.variant.dev/docs/), loaded from Varde's CDN. There is no bundler and no build step: `src/` is the site. The accessibility check needs Chrome or Chromium (set `CHROME_PATH` if it is not found) and network access for the CDN.
+The page is plain HTML, CSS and native ES modules styled with [Varde](https://varde.variant.dev/docs/), loaded from Varde's CDN. Markup is rendered with [lit-html](https://lit.dev/docs/libraries/standalone-templates/), loaded from jsDelivr through an import map. There is no bundler and no build step: `src/` is the site. The accessibility check needs Chrome or Chromium (set `CHROME_PATH` if it is not found) and network access for the CDN.
 
 ## Changing the model
 
