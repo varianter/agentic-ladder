@@ -1,4 +1,4 @@
-// Runs axe-core (WCAG 2.1 A and AA, plus best practice) on the built page in headless Chrome,
+// Runs axe-core (WCAG 2.1 A and AA, plus best practice) on the page in headless Chrome,
 // at desktop width in light mode and phone width in dark mode, after answering a few questions.
 // Also fails if the page scrolls sideways.
 //
@@ -6,19 +6,10 @@
 // access, since the page loads Varde from its CDN.
 
 import { existsSync } from "node:fs";
-import { createRequire } from "node:module";
-import { dirname, join } from "node:path";
+import { createServer } from "node:http";
 import { fileURLToPath } from "node:url";
 import puppeteer from "puppeteer-core";
-import { serve } from "./serve.mjs";
-
-const require = createRequire(import.meta.url);
-const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const built = join(root, "dist/index.html");
-if (!existsSync(built)) {
-  console.error("Run `pnpm build` first.");
-  process.exit(1);
-}
+import sirv from "sirv";
 
 const candidates = [
   process.env.CHROME_PATH,
@@ -33,7 +24,10 @@ if (!executablePath) {
   process.exit(1);
 }
 
-const { server, url } = await serve();
+// Serve src/, the site as deployed, on a free port.
+const server = createServer(sirv(fileURLToPath(new URL("../src", import.meta.url)), { dev: true }));
+await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+const url = `http://127.0.0.1:${server.address().port}/`;
 const browser = await puppeteer.launch({ executablePath, args: ["--no-sandbox"] });
 let failed = false;
 
@@ -59,7 +53,7 @@ for (const [width, scheme] of [
   await page.click("#q2-no");
   await page.click("#r-dev-2-0-new");
 
-  await page.addScriptTag({ path: require.resolve("axe-core") });
+  await page.addScriptTag({ path: fileURLToPath(import.meta.resolve("axe-core")) });
   const result = await page.evaluate(() =>
     axe.run(document, { runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"] }),
   );

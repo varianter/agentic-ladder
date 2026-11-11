@@ -19,7 +19,7 @@ description: Add a new agentic mapping interview to the model, the ladder page a
 
 4. **Update the counts.** Change interview totals, dates and coverage numbers in `src/index.html` (eyebrow and "What this model rests on") and in `GAPS` notes that cite counts.
 
-5. **Build and check.** Run `pnpm check`. Fix any model check or accessibility failure.
+5. **Check.** Run `pnpm check`. Fix any model check or accessibility failure.
 
 6. **Update the roadmap doc** in Claude Docs (link in CLAUDE.md) with the same changes, then refresh `docs/roadmap.md` from an export.
 

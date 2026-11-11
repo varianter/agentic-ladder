@@ -1,4 +1,4 @@
-// The model, imported as a JSON module. The build copies data/model.json next to the page.
+// The model, imported as a JSON module straight from src/model.json. No build step.
 import model from "../model.json" with { type: "json" };
 
 export const { LEVELS, DISC, PATH, ROWS, GAPS } = model;

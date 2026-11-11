@@ -11,16 +11,16 @@ Needs Node 22 or newer and pnpm through corepack (`corepack enable`).
 
 ```sh
 pnpm install
-pnpm dev      # build and serve the page at http://127.0.0.1:4173/
-pnpm check    # Biome lint and format check, builds dist/, runs the accessibility check
+pnpm dev      # serve src/ at http://127.0.0.1:4173/, reload to see edits
+pnpm check    # Biome lint and format check, model check, accessibility check
 pnpm format   # apply Biome fixes and formatting
 ```
 
-The page is plain HTML, CSS and native ES modules styled with [Varde](https://varde.variant.dev/docs/), loaded from Varde's CDN. There is no bundler. The accessibility check needs Chrome or Chromium (set `CHROME_PATH` if it is not found) and network access for the CDN.
+The page is plain HTML, CSS and native ES modules styled with [Varde](https://varde.variant.dev/docs/), loaded from Varde's CDN. There is no bundler and no build step: `src/` is the site. The accessibility check needs Chrome or Chromium (set `CHROME_PATH` if it is not found) and network access for the CDN.
 
 ## Changing the model
 
-All content lives in `data/model.json`. Edit it, run `pnpm check`, and deploy the contents of `dist/` to any static host. See `CLAUDE.md` for the structure and rules.
+All content lives in `src/model.json`. Edit it and run `pnpm check`. Pushing to `main` publishes `src/` to GitHub Pages; any other static host can serve `src/` as is. See `CLAUDE.md` for the structure and rules.
 
 ## Adding an interview
 

@@ -1,15 +1,15 @@
-// Checks data/model.json and builds dist/: the static site from src/ plus the model.
-import { cpSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+// Checks src/model.json, the model the page imports as is. There is no build: src/ is the site.
+import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => readFileSync(join(root, p), "utf8");
 
-const model = JSON.parse(read("data/model.json"));
+const model = JSON.parse(read("src/model.json"));
 const required = ["LEVELS", "DISC", "PATH", "ROWS", "GAPS"];
 for (const key of required) {
-  if (!model[key]) throw new Error(`data/model.json is missing ${key}`);
+  if (!model[key]) throw new Error(`src/model.json is missing ${key}`);
 }
 
 // Every discipline needs steps, tests and gaps for all four levels, and rows for levels 1 to 3.
@@ -39,15 +39,8 @@ if (problems.length) {
   process.exit(1);
 }
 
-// No bundling: the page ships as native ES modules. Copy src/ as is and put the model next to it,
-// where src/js/model.js imports it as a JSON module.
-const dist = join(root, "dist");
-rmSync(dist, { recursive: true, force: true });
-cpSync(join(root, "src"), dist, { recursive: true });
-writeFileSync(join(dist, "model.json"), JSON.stringify(model));
-
 const rows = Object.values(model.ROWS).reduce(
   (a, o) => a + Object.values(o).reduce((b, x) => b + x.length, 0),
   0,
 );
-console.log(`Built dist/ (${rows} topics). Run \`pnpm dev\` to view it.`);
+console.log(`Model OK (${rows} topics).`);

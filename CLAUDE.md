@@ -7,17 +7,18 @@ Variant's roadmap for getting good at agentic AI, per product development discip
 | Path | What it is |
 | --- | --- |
 | `data/interviews/` | Raw interview exports, one file per export or new interview. Never edit these, only add. |
-| `data/model.json` | The model: levels, disciplines, paths, topic rows and gaps. The single source for the page. |
+| `src/` | The site, deployed exactly as it is. No build step. |
+| `src/model.json` | The model: levels, disciplines, paths, topic rows and gaps. The single source for the page. |
 | `src/index.html` | The page: full HTML document, static text and the disagreements table. |
 | `src/app.css` | Imports Varde into a cascade layer and adds the little layout Varde has no utility for. |
-| `src/js/` | Native ES modules, no bundler. `main.js` (entry and events), `views.js` (markup per section), `model.js` (imports `model.json` as a JSON module), `store.js` (localStorage), `theme.js`, `html.js` (escaping tagged template). |
-| `scripts/build.mjs` | Checks the model, then copies `src/` and the model to `dist/`. |
-| `scripts/serve.mjs` | Static server for `dist/`. Modules need `http://`, not `file://`. |
-| `scripts/a11y.mjs` | axe-core WCAG 2.1 AA check at 1200px light and 390px dark, plus sideways-scroll, script error and Varde-loaded checks. |
+| `src/js/` | Native ES modules, no bundler. `main.js` (entry and events), `views.js` (markup per section), `model.js` (imports `../model.json` as a JSON module), `store.js` (localStorage), `theme.js`, `html.js` (escaping tagged template). |
+| `scripts/check-model.mjs` | Checks the shape of `src/model.json`. |
+| `.github/workflows/pages.yml` | Runs `pnpm check` on every push and pull request, and publishes `src/` to GitHub Pages from `main`. |
+| `scripts/a11y.mjs` | Serves `src/` with sirv, then runs an axe-core WCAG 2.1 AA check at 1200px light and 390px dark, plus sideways-scroll, script error and Varde-loaded checks. |
 | `biome.json` | Biome lint and format config. Markdown is not formatted. |
 | `docs/roadmap.md` | Snapshot of the long-form roadmap doc. The editable doc lives in Claude Docs. |
 
-Package manager is pnpm (version pinned in `packageManager`, run through corepack). Commands: `pnpm dev` (build and serve on port 4173), `pnpm build`, `pnpm a11y`, `pnpm lint` (Biome), `pnpm format` (Biome fixes and formatting), `pnpm check` (Biome, build and a11y). Run `pnpm format` then `pnpm check` after every change to `src/`, `scripts/` or `data/model.json`.
+Package manager is pnpm (version pinned in `packageManager`, run through corepack). Commands: `pnpm dev` (serve `src/` with sirv on port 4173, reload to see edits), `pnpm check:model`, `pnpm a11y`, `pnpm lint` (Biome), `pnpm format` (Biome fixes and formatting), `pnpm check` (Biome, model check and a11y). Run `pnpm format` then `pnpm check` after every change to `src/` or `scripts/`.
 
 ## The model
 
@@ -56,6 +57,6 @@ Package manager is pnpm (version pinned in `packageManager`, run through corepac
 ## Published
 
 - Roadmap doc (Claude Docs): https://claude.ai/artifact/GaFzf6b98sFvGV8rHK7NMm
-- The ladder page is a static site: deploy the contents of `dist/` to any static host. The old artifact version is at https://claude.ai/artifact/SCahu9fP3wSCSdBtwF76L4 and is no longer updated.
+- The ladder page is a static site with no build step. GitHub Pages publishes `src/` on every push to `main` (Pages source must be set to "GitHub Actions"). Any other static host can serve `src/` as is. The old artifact version is at https://claude.ai/artifact/SCahu9fP3wSCSdBtwF76L4 and is no longer updated.
 
 To add a new interview, use the `add-interview` skill.
