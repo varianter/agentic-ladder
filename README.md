@@ -7,16 +7,19 @@ A roadmap for Variant consultants who want to get good at working with AI agents
 
 ## Getting started
 
+Needs Node 22 or newer and pnpm through corepack (`corepack enable`).
+
 ```sh
-npm install
-npm run check   # builds dist/agentic-ladder.html and runs the accessibility check
+pnpm install
+pnpm check    # Biome lint and format check, builds dist/agentic-ladder.html, runs the accessibility check
+pnpm format   # apply Biome fixes and formatting
 ```
 
 The accessibility check needs Chrome or Chromium. Set `CHROME_PATH` if it is not found.
 
 ## Changing the model
 
-All content lives in `data/model.json`. Edit it, run `npm run check`, and publish `dist/agentic-ladder.html`. See `CLAUDE.md` for the structure and rules.
+All content lives in `data/model.json`. Edit it, run `pnpm check`, and publish `dist/agentic-ladder.html`. See `CLAUDE.md` for the structure and rules.
 
 ## Adding an interview
 

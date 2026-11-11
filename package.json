@@ -4,12 +4,19 @@
   "private": true,
   "description": "Variant's agentic AI roadmap: interview data, the four-level model and the interactive ladder page.",
   "type": "module",
+  "packageManager": "pnpm@12.18.0+sha512.9d7882d5dc82147ecfc4e062aa34834e0ad0296710a1837a1115ae012127d36b7109e321ac1598a1dd0a65597681b1e99917e12ed0d749eae91187943363beb3",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "node scripts/build.mjs",
     "a11y": "node scripts/a11y.mjs",
-    "check": "npm run build && npm run a11y"
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "check": "biome ci . && pnpm build && pnpm a11y"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.6.6",
     "axe-core": "4.10.2",
     "puppeteer-core": "23.10.4"
   }

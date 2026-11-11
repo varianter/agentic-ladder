@@ -950,9 +950,7 @@
         "n": "Interviewees said: jump in, find a course to follow, or start with small tasks and challenge what the AI says. You are the expert."
       },
       "1": {
-        "m": [
-          "Few answers to why it matters and how people found out"
-        ],
+        "m": ["Few answers to why it matters and how people found out"],
         "r": [
           "A grilling walkthrough for design and business work",
           "An overview of models, harnesses, effort and price, kept current",
@@ -969,9 +967,7 @@
         "n": "Named: Matt Pocock's skills (developers only)."
       },
       "3": {
-        "m": [
-          "Few people outside development described this level"
-        ],
+        "m": ["Few people outside development described this level"],
         "r": [
           "Shared practice on parallel agents and cognitive load",
           "A short security and MCP risk checklist",
@@ -982,19 +978,13 @@
     },
     "dev": {
       "0": {
-        "m": [
-          "No beginners interviewed"
-        ],
-        "r": [
-          "A first-hour guide: install, explain, one small change"
-        ],
+        "m": ["No beginners interviewed"],
+        "r": ["A first-hour guide: install, explain, one small change"],
         "n": ""
       },
       "1": {
         "m": [],
-        "r": [
-          "A plain explanation of spec-driven work, with one example and when not to use it"
-        ],
+        "r": ["A plain explanation of spec-driven work, with one example and when not to use it"],
         "n": "Named: aihero.dev, Laurie Voss's talk on product engineers, Karpathy."
       },
       "2": {
@@ -1006,30 +996,20 @@
         "n": "Named: grill-with-docs, Ponytail, and tmux, claude-rc and remote sessions for multi-session work."
       },
       "3": {
-        "m": [
-          "On-call and triage comes from one unfinished map"
-        ],
-        "r": [
-          "Shared practice from people running parallel agents today"
-        ],
+        "m": ["On-call and triage comes from one unfinished map"],
+        "r": ["Shared practice from people running parallel agents today"],
         "n": "Nothing named."
       }
     },
     "des": {
       "0": {
-        "m": [
-          "Design rests on 3 people in total"
-        ],
-        "r": [
-          "A start guide for designers"
-        ],
+        "m": ["Design rests on 3 people in total"],
+        "r": ["A start guide for designers"],
         "n": ""
       },
       "1": {
         "m": [],
-        "r": [
-          "A hands-on Git session: clone, branch, pull request"
-        ],
+        "r": ["A hands-on Git session: clone, branch, pull request"],
         "n": "Nothing named."
       },
       "2": {
@@ -1041,12 +1021,8 @@
         "n": "Nothing named."
       },
       "3": {
-        "m": [
-          "Only 2 people described this level"
-        ],
-        "r": [
-          "Pairing with a developer on reading PRs, then a short guide"
-        ],
+        "m": ["Only 2 people described this level"],
+        "r": ["Pairing with a developer on reading PRs, then a short guide"],
         "n": "Nothing named."
       }
     },
@@ -1055,17 +1031,12 @@
         "m": [
           "The 4 interviews here had no discipline recorded. Sales, advisory and leadership may need separate paths."
         ],
-        "r": [
-          "A start guide for non-technical roles"
-        ],
+        "r": ["A start guide for non-technical roles"],
         "n": ""
       },
       "1": {
         "m": [],
-        "r": [
-          "A curated course list",
-          "How to connect Office 365 and what to leave out"
-        ],
+        "r": ["A curated course list", "How to connect Office 365 and what to leave out"],
         "n": "Named: DataCamp courses, AI and ethics, AI for business leaders."
       },
       "2": {
@@ -1080,26 +1051,18 @@
         "m": [
           "People here named skills they have not tried yet. Need people who run automated work."
         ],
-        "r": [
-          "Examples of skills for business work"
-        ],
+        "r": ["Examples of skills for business work"],
         "n": "Nothing named."
       }
     },
     "org": {
       "0": {
-        "m": [
-          "No leader or client-side view interviewed"
-        ],
-        "r": [
-          "A published list of allowed tools and data rules"
-        ],
+        "m": ["No leader or client-side view interviewed"],
+        "r": ["A published list of allowed tools and data rules"],
         "n": ""
       },
       "1": {
-        "m": [
-          "Only 6 of 13 said anything about the organization"
-        ],
+        "m": ["Only 6 of 13 said anything about the organization"],
         "r": [
           "Templates for team AI rules, definition of done and decision records",
           "A sharing channel and a regular sharing slot"
@@ -1107,21 +1070,13 @@
         "n": "One person asked for an AI-specific developer channel."
       },
       "2": {
-        "m": [
-          "4 people on the organization, 8 on the team"
-        ],
-        "r": [
-          "Guidance on local models for privacy-sensitive clients"
-        ],
+        "m": ["4 people on the organization, 8 on the team"],
+        "r": ["Guidance on local models for privacy-sensitive clients"],
         "n": "Nothing named."
       },
       "3": {
-        "m": [
-          "1 person on team level 3, 2 on organization level 3."
-        ],
-        "r": [
-          "Stories from teams that changed their process because of agents"
-        ],
+        "m": ["1 person on team level 3, 2 on organization level 3."],
+        "r": ["Stories from teams that changed their process because of agents"],
         "n": "Nothing named."
       }
     }

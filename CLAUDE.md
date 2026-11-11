@@ -11,9 +11,10 @@ Variant's roadmap for getting good at agentic AI, per product development discip
 | `src/` | Page source: `head.html` (title, fonts), `styles.css`, `body.html`, `app.js`. |
 | `scripts/build.mjs` | Checks the model and builds `dist/agentic-ladder.html`, one self-contained file. |
 | `scripts/a11y.mjs` | axe-core WCAG 2.1 AA check at 1200px light and 390px dark, plus a sideways-scroll check. |
+| `biome.json` | Biome lint and format config. Markdown is not formatted. |
 | `docs/roadmap.md` | Snapshot of the long-form roadmap doc. The editable doc lives in Claude Docs. |
 
-Commands: `npm run build`, `npm run a11y`, `npm run check` (both). Run `npm run check` after every change to `src/` or `data/model.json`.
+Package manager is pnpm (version pinned in `packageManager`, run through corepack). Commands: `pnpm build`, `pnpm a11y`, `pnpm lint` (Biome), `pnpm format` (Biome fixes and formatting), `pnpm check` (Biome, build and a11y). Run `pnpm format` then `pnpm check` after every change to `src/`, `scripts/` or `data/model.json`.
 
 ## The model
 

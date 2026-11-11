@@ -3,17 +3,18 @@
 // Also fails if the page scrolls sideways.
 //
 // Needs Chrome or Chromium. Set CHROME_PATH if it is not at a standard location.
-import puppeteer from "puppeteer-core";
+
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
-import { fileURLToPath, pathToFileURL } from "node:url";
 import { dirname, join } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import puppeteer from "puppeteer-core";
 
 const require = createRequire(import.meta.url);
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const built = join(root, "dist/agentic-ladder.html");
 if (!existsSync(built)) {
-  console.error("Run `npm run build` first.");
+  console.error("Run `pnpm build` first.");
   process.exit(1);
 }
 
@@ -37,13 +38,16 @@ writeFileSync(
   wrapped,
   '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>' +
     readFileSync(built, "utf8") +
-    "</body></html>"
+    "</body></html>",
 );
 
 const browser = await puppeteer.launch({ executablePath, args: ["--no-sandbox"] });
 let failed = false;
 
-for (const [width, scheme] of [[1200, "light"], [390, "dark"]]) {
+for (const [width, scheme] of [
+  [1200, "light"],
+  [390, "dark"],
+]) {
   const page = await browser.newPage();
   await page.setViewport({ width, height: 900 });
   await page.emulateMediaFeatures([{ name: "prefers-color-scheme", value: scheme }]);
@@ -58,7 +62,7 @@ for (const [width, scheme] of [[1200, "light"], [390, "dark"]]) {
 
   await page.addScriptTag({ path: require.resolve("axe-core") });
   const result = await page.evaluate(() =>
-    axe.run(document, { runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"] })
+    axe.run(document, { runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"] }),
   );
   const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
 
