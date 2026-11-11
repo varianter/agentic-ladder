@@ -8,8 +8,8 @@ Variant's roadmap for getting good at agentic AI, per product development discip
 | --- | --- |
 | `data/interviews/` | Raw interview exports, one file per export or new interview. Never edit these, only add. |
 | `src/` | The site, deployed exactly as it is. No build step. |
-| `src/model.json` | The model: levels, disciplines, paths, topic rows and gaps. The single source for the page. |
-| `src/index.html` | The page: full HTML document, static text and the disagreements table. |
+| `src/model.json` | The model: levels, scopes, disciplines, steps, tests and topics. The single source for the page. |
+| `src/index.html` | The page: full HTML document and static text. |
 | `src/app.css` | Imports Varde into a cascade layer and adds the little layout Varde has no utility for. |
 | `src/js/` | Native ES modules, no bundler. `main.js` (entry, actions and rendering), `views.js` (lit-html templates per section), `model.js` (fetches `../model.json`, model types), `store.js` (localStorage, state type), `theme.js`. |
 | `scripts/check-model.mjs` | Checks the shape of `src/model.json`. |
@@ -23,17 +23,19 @@ Package manager is pnpm (version pinned in `packageManager`, run through corepac
 
 ## The model
 
-- Four levels: 0 Start, 1 Use, 2 Shape, 3 Scale. Use, Shape and Scale match the interview sheet's getting started, getting good and next level. Start and the pass tests are our synthesis, since nobody interviewed is a beginner.
-- Disciplines in `DISC`: `all` (everyone), `dev`, `des`, `biz`, `org` (team and organization).
-- `PATH[disc].steps[level]` is exactly 3 steps. `PATH[disc].tests[level]` is one "you are there when" test.
-- `ROWS[disc][level]` exists for levels 1 to 3. Each row is `[topic, what goes wrong without it, ask yourself, sources]`. Sources are interview numbers as a string, with `S` for the self-submitted map: `"4, 6, 13"`.
-- `GAPS[disc][level]` is `{ m: [needs more material], r: [needs learning resources], n: "sources interviewees named" }`.
-- Topic ids in the page are `${disc}-${level}-${index}` and ratings are saved under them in each viewer's browser. Append new rows at the end of a level so existing ratings keep pointing at the right topic. Do not reorder or delete rows unless asked.
+- Three levels: 1 Beginner (no experience), 2 Experienced, 3 Leading (self-sufficient and leading). They match the interview sheet's getting started, getting good and next level, but a topic may sit on another level by our judgment. Experts review the placement.
+- Three scopes per level, in `SCOPES`: `self` (yourself), `team` (initiative for an AI-empowered team that keeps quality), `org` (what you advise the client). Organization means the client, not Variant.
+- Disciplines in `DISC`: `general` (shared topics only), `dev`, `des`, `sales` (sales and management), `adv` (advisory).
+- `PATH[disc].self[i]` is the level's step for yourself and `PATH[disc].tests[i]` its "you are there when" test. `STEPS.team[i]` and `STEPS.org[i]` are shared by all disciplines.
+- `TOPICS` is a flat list. Each topic is `{ id, level, scope, disc, core, what, detail?, why, ask, how, src }`. `disc` is a list of discipline keys, or `["all"]`. `core` topics show first, the rest fold under "more at this level". `how` is a list of `{ text, url? }`. An empty list shows "Missing: no resource yet".
+- `src` is the interview numbers as a string, with `S` for the self-submitted map: `"4, 6, 13"`. It is kept for review and never shown on the page. The page shows no interview numbers or counts.
+- Ratings are saved under the topic `id` in each viewer's browser. Never change or reuse an id. Order in the list does not matter.
+- Disagreements between interviews are settled in the model: each topic gives one answer. Ask the user before settling a new one.
 
 ## Interview data
 
 - Interviews are numbered by when the sheet was made. 1 to 12 are in `2026-11-10-no-group-insights.md`, the self-submitted map (S) is in `2026-11-10-variant-insights.md`, and 13 onward get their own file.
-- Interviews 8, 9, 10 and 12 have no discipline recorded. We placed them in the business and advisory track based on content. 5 has none either and reads as a developer or tech lead.
+- Interviews 8, 9, 10 and 12 have no discipline recorded. 8 and 12 are in sales and management, 9 and 10 in advisory. 5 has none either and is placed as a developer. 2 (developer, UX, UI) feeds only the developer track. Research analysis is shared between designer and advisory.
 - Most answers are in Norwegian. The model and page are in English.
 - Never invent sources, numbers or quotes. A row cites only interviews that said it.
 
@@ -46,7 +48,7 @@ Package manager is pnpm (version pinned in `packageManager`, run through corepac
 
 - Design system is Varde: https://varde.variant.dev/docs/. Link it from the CDN pinned to a version (now 2.0.1, imported at the top of `src/app.css`). Never copy Varde's CSS or font into the repo.
 - Use Varde 2.x names: `v-` components (`v-button`, `v-radio`, `v-checkbox`, `v-select`, `v-table`, `v-typeset`), `stack-v`/`stack-h`, `ink-*`, `surface-*`, `bc-*`, `fw-*`, `ta-*`. Older names like `stack`, `fg-muted` or `t-bold` are gone.
-- Color only through `<color-mode palette="...">` and Varde's surface, ink and border classes. A `<color-mode>` needs `d-block` or `d-inline-block` to paint a background. State changes swap the palette (blue for the accent and current level, green for passed or "I do this", yellow for gaps and "Never heard of it", coral for the armed clear button). No hex values, no Varde variables in page CSS.
+- Color only through `<color-mode palette="...">` and Varde's surface, ink and border classes. A `<color-mode>` needs `d-block` or `d-inline-block` to paint a background. State changes swap the palette (blue for the accent, current level and "Know of it", green for passed or "I do this", yellow for missing resources and "Never heard of it", coral for the armed clear button). No hex values, no Varde variables in page CSS.
 - Light mode is the default for everyone (`data-color-scheme="light"` on `<html>`). The theme picker lets a viewer choose Dark or System, saved in their browser. Both themes must still pass the checks.
 - Page CSS lives in `@layer app`, above `@layer varde`. Add a rule there only when no Varde class does the job.
 - Markup is built with lit-html, loaded from jsDelivr through the import map in `index.html` and pinned to a version (now 3.3.3). The `lit-html` dev dependency is only there for types, so keep both versions the same. lit-html escapes every value and updates the page in place, so focus stays put. Bind events with `@change`/`@click` and input state with `.checked`. Render lists of inputs whose identity can change, like topics, with `repeat()` keyed by id.

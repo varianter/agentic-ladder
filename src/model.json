@@ -1,1084 +1,1421 @@
 {
   "LEVELS": [
     {
-      "k": 0,
-      "name": "Start",
-      "lvl": "Level 0 · beginner",
-      "idea": "Try one real task with one assistant."
-    },
-    {
       "k": 1,
-      "name": "Use",
-      "lvl": "Level 1 · first weeks",
-      "idea": "Work with an agent daily and check it."
+      "name": "Beginner",
+      "lvl": "Level 1 · no experience",
+      "idea": "Use AI on small, real tasks and check what it gives you."
     },
     {
       "k": 2,
-      "name": "Shape",
+      "name": "Experienced",
       "lvl": "Level 2 · daily use",
-      "idea": "Give it your context, standards and limits."
+      "idea": "Give it your context, standards and limits, and choose how to work per task."
     },
     {
       "k": 3,
-      "name": "Scale",
-      "lvl": "Level 3 · expert",
-      "idea": "Run agents in parallel and share your setup."
+      "name": "Leading",
+      "lvl": "Level 3 · self-sufficient and leading",
+      "idea": "Change how you work and what you take on, and lift the people around you."
     }
   ],
-  "DISC": [
+  "SCOPES": [
+    { "k": "self", "name": "Yourself", "lede": "How you work on your own." },
     {
-      "k": "all",
-      "name": "Everyone"
-    },
-    {
-      "k": "dev",
-      "name": "Developer"
-    },
-    {
-      "k": "des",
-      "name": "Designer"
-    },
-    {
-      "k": "biz",
-      "name": "Business & advisory"
+      "k": "team",
+      "name": "Your team",
+      "lede": "What you take initiative on, so the team uses AI well and keeps quality."
     },
     {
       "k": "org",
-      "name": "Team & organization"
+      "name": "The client",
+      "lede": "What you advise and push for in the client's organization."
     }
   ],
+  "DISC": [
+    { "k": "general", "name": "General" },
+    { "k": "dev", "name": "Developer" },
+    { "k": "des", "name": "Designer" },
+    { "k": "sales", "name": "Sales & management" },
+    { "k": "adv", "name": "Advisory" }
+  ],
+  "STEPS": {
+    "team": [
+      "Agree which tools and rules the team uses, and that no agent writes to production.",
+      "Put shared skills, decision records and review rules where every person and agent reads them.",
+      "Rework the team's process for agents, and agree who owns what."
+    ],
+    "org": [
+      "Find out which tools and data the client allows, and help them write it down if nobody has.",
+      "Help the client connect agents to their documentation and knowledge base, read-only.",
+      "Help the client build one agreed way of working with agents, and name who owns it."
+    ]
+  },
   "PATH": {
-    "all": {
-      "steps": [
-        [
-          "Get access to one assistant and find out which data your client allows in it.",
-          "Give it one real task from today's work.",
-          "Ask it to explain something you do not understand."
-        ],
-        [
-          "Use it daily and let it ask you questions before it starts.",
-          "Read and correct its plan before it acts.",
-          "Check what comes out, and start a new session when answers get worse."
-        ],
-        [
-          "Connect it to the sources you work in.",
-          "Turn what you repeat into skills.",
-          "Limit what it can reach, and review at every handoff."
-        ],
-        [
-          "Run agents in parallel or on a schedule.",
-          "Choose what is worth doing, not what is possible.",
-          "Share your setup with the team."
-        ]
+    "general": {
+      "self": [
+        "Use an assistant on one small, real task every day, and check the result.",
+        "Turn one routine you repeat every week into a skill.",
+        "Decide what is worth doing this week, and run agents on the rest."
       ],
       "tests": [
-        "You have used it on real work five days in a row",
-        "You reach for it first, and you can explain everything you deliver",
+        "You have used AI on real work five days in a row, and you can explain everything you delivered",
         "A colleague would get the same quality with your setup",
         "Work gets done while you do something else, and others use what you built"
       ]
     },
     "dev": {
-      "steps": [
-        [
-          "Install a coding agent in a repository you know.",
-          "Ask it to explain a part of the code.",
-          "Let it make one small change and read every line."
-        ],
-        [
-          "Work in plan mode.",
-          "Write issues the agent can solve from the text alone.",
-          "Push only what you can defend in review."
-        ],
-        [
-          "Put conventions and good examples into the codebase.",
-          "Spend time on domain and architecture tests instead of prompts.",
-          "Give the agent the backlog, repository and logs, inside a sandbox."
-        ],
-        [
-          "Run parallel sessions where one agent checks another.",
-          "Test the architecture itself.",
-          "Settle who owns code that no human wrote."
-        ]
+      "self": [
+        "Install a coding agent in a repository you know, and let it make one small change you read line by line.",
+        "Put conventions, decision records and tests in the repository, so a fresh session follows them.",
+        "Run several sessions with one checking another, and test the architecture itself."
       ],
       "tests": [
-        "You have merged one small agent-written change that you fully understand",
-        "An agent has made a change across several files that you reviewed and stand behind",
+        "You have merged an agent-written change that you fully understand",
         "A fresh agent session follows your conventions without being told",
         "You steer several agents and still know why the code looks the way it does"
       ]
     },
     "des": {
-      "steps": [
-        [
-          "Take a real design question to the assistant.",
-          "Transcribe one interview and ask for patterns.",
-          "Compare the answer with your own notes."
-        ],
-        [
-          "Give the agent your Figma structure, not a screenshot.",
-          "Learn enough Git to open a pull request.",
-          "Use AI in each research step, and check each handoff."
-        ],
-        [
-          "Work on the handover from design to code.",
-          "Explore variants before you choose.",
-          "Tie what you make to the product strategy."
-        ],
-        [
-          "Start the day from pull requests and read design out of code with the agent's help.",
-          "Say no to nice-to-haves.",
-          "Share your research setup and write down the practice."
-        ]
+      "self": [
+        "Transcribe one interview, ask for patterns, and check them against your own notes.",
+        "Deliver one design change as a pull request.",
+        "Start your day from pull requests, and share your research setup with the team."
       ],
       "tests": [
-        "You have checked one AI summary against your raw material",
-        "You have delivered one design change as a pull request",
-        "You tested several variants and can say why you chose one",
-        "You can review a change that arrives as code, and a colleague can use your setup"
+        "You have checked an AI summary against your raw material",
+        "You have delivered a design change as a pull request",
+        "You can review a design change that arrives as code, and a colleague uses your setup"
       ]
     },
-    "biz": {
-      "steps": [
-        [
-          "Describe a real problem and let the assistant ask you questions.",
-          "Transcribe one meeting.",
-          "Let it draft something you would write anyway, then edit it."
-        ],
-        [
-          "Work in a Project per client or case.",
-          "Connect your files, email and spreadsheets.",
-          "Check every number against the source."
-        ],
-        [
-          "Analyze interviews and meetings by asking about meaning, not only words.",
-          "Keep one knowledge base of meetings and sources.",
-          "Reuse the same structured input for reports, templates and business cases."
-        ],
-        [
-          "Schedule tasks that prepare work before you need it.",
-          "Turn routines into skills and processes others can run.",
-          "Build in checks that catch errors before the client sees them."
-        ]
+    "sales": {
+      "self": [
+        "Describe a real problem to the assistant, and let it ask you questions before it answers.",
+        "Keep meetings and sources in one knowledge base the assistant can read.",
+        "Automate the low-value tasks, so you get more time with clients and consultants."
       ],
       "tests": [
-        "One AI-assisted draft has gone out in your name after your own edits",
         "You describe problems to it instead of only asking for facts",
-        "A new deliverable starts from your material, not a blank page",
+        "A new deliverable starts from your knowledge base, not a blank page",
         "Something useful is prepared for you every week without you asking"
       ]
     },
-    "org": {
-      "steps": [
-        [
-          "Team: say out loud that everyone is expected to try, and nobody is behind.",
-          "Organization: give access to tools.",
-          "Organization: publish which tools and data are allowed."
-        ],
-        [
-          "Team: agree on roles, definition of done and shared rules for AI use.",
-          "Team: no agent writes to production.",
-          "Organization: offer a planned way to learn, and a place to share."
-        ],
-        [
-          "Team: share project skills, write decisions down, test the codebase conventions.",
-          "Organization: set aside time for quality culture.",
-          "Organization: build a shared knowledge base, and local models where privacy needs them."
-        ],
-        [
-          "Team: rework the process for smaller teams.",
-          "Team: agree how people and agents share ownership.",
-          "Organization: build a software factory, one agreed way of building with agents, and name who owns it."
-        ]
+    "adv": {
+      "self": [
+        "Set up a project for one client or case, and transcribe one meeting into it.",
+        "Ask your interview material how people reasoned, not only what they said.",
+        "Build checks into your process that catch errors before the client does."
       ],
       "tests": [
-        "Everyone on the team has access and knows the data rules",
-        "The team has one written set of rules that every agent and person follows",
-        "Quality no longer depends on who did the task",
-        "The team works differently than it did a year ago, on purpose"
+        "An AI-assisted draft has gone out in your name after your own checks",
+        "You can ask your material how people reasoned, and check the answer",
+        "Your process catches a wrong figure before the client does"
       ]
     }
   },
-  "ROWS": {
-    "all": {
-      "1": [
-        [
-          "Use one main assistant daily, and try a second to compare",
-          "You judge all AI by one tool's weak spots",
-          "Can you name a task where another model or app does better than your default?",
-          "4, 6, 7, 12"
-        ],
-        [
-          "Model versus harness: model families, strengths, price and effort",
-          "Wrong expectations and wasted tokens",
-          "Can you explain the difference between the model and the app around it?",
-          "5, 6, 7"
-        ],
-        [
-          "Prompt at the right level: open questions, let the agent propose",
-          "Over-specified prompts give you exactly the wrong thing",
-          "When did you last ask for options instead of dictating the solution?",
-          "2, 4, 7"
-        ],
-        [
-          "Grilling: let the agent interview you before it starts",
-          "You and the agent never agree on what is being built",
-          "Has an agent asked you ten questions before producing anything?",
-          "2, 4, 5, 10, 13"
-        ],
-        [
-          "Plan first, keep research separate from execution",
-          "The agent makes the important choices and you lose competence",
-          "Do you read and correct a plan before the agent acts?",
-          "3, 6, 7"
-        ],
-        [
-          "Context management and when to start a new session",
-          "Answers degrade in long sessions and tokens burn",
-          "Do you know when a session has gone stale?",
-          "7, 10, 13"
-        ],
-        [
-          "Connect your sources, and decide what not to connect",
-          "Copy-paste work, or private conversations exposed",
-          "Can you list what your assistant can read right now?",
-          "6, 9, 10, 12"
-        ],
-        [
-          "Keep sensitive data out, or mask it on the way in",
-          "Privacy breaches at the client",
-          "Do you know which data your client allows in which tool?",
-          "6, 7, 10"
-        ],
-        [
-          "Transcribe meetings and interviews",
-          "Hours of note work, and details lost",
-          "Is your last important meeting searchable?",
-          "9, 10, 11, 12"
-        ],
-        [
-          "Git basics, also for non-developers",
-          "You cannot take part when work lives in repositories",
-          "Can you open a pull request and read someone else's?",
-          "1, 8"
-        ],
-        [
-          "You own what you deliver",
-          "Work that looks fine but is not in place",
-          "Could you explain every part of your last delivery without the agent?",
-          "3, 7, 11"
-        ]
+  "TOPICS": [
+    {
+      "id": "start-small",
+      "level": 1,
+      "scope": "self",
+      "disc": ["all"],
+      "core": true,
+      "what": "Start small, and challenge the answers",
+      "detail": "Use it on small, real tasks from today's work. Disagree with it when you know better. Nobody is behind.",
+      "why": "You learn what it is good at without risking real work. Your expertise is what catches its mistakes.",
+      "ask": "When did you last disagree with the agent and turn out to be right?",
+      "how": [
+        { "text": "DataCamp, if you like a course to follow", "url": "https://www.datacamp.com" }
       ],
-      "2": [
-        [
-          "Skills: install, write your own, personal versus shared",
-          "Repeated instructions and uneven quality",
-          "Have you written a skill for something you do every week?",
-          "4, 5, 6, 10, 13"
-        ],
-        [
-          "MCP servers, plugins and connectors for the right context",
-          "The agent guesses about things it could look up",
-          "Which system would save you most time if the agent could read it?",
-          "6, 8, S"
-        ],
-        [
-          "Use your craft to steer the agent",
-          "Generic output, and no way to tell good from bad",
-          "Where did your expertise change the result last week?",
-          "3, 9, 10"
-        ],
-        [
-          "Critical review at every handoff",
-          "Errors pass on to the client or the next person",
-          "Do you have a fixed way of checking agent output?",
-          "3, 6, 11"
-        ],
-        [
-          "Permissions and sandboxing",
-          "An agent with your full access makes your worst mistake at machine speed",
-          "What is the most damaging thing your agent could do today?",
-          "4, 11"
-        ],
-        [
-          "Scheduled tasks and agents that prepare work ahead",
-          "You stay the trigger for every routine task",
-          "Does anything run for you while you are in a meeting?",
-          "10, 12"
-        ],
-        [
-          "Use AI to learn, not only to fetch information",
-          "You get faster but not better",
-          "Have you asked the agent to teach you something this month?",
-          "5, 8, 9"
-        ],
-        [
-          "Structured input reused for many outputs",
-          "Every report and presentation starts from zero",
-          "Could you produce a second format from the same material in minutes?",
-          "8, 9, 12"
-        ]
-      ],
-      "3": [
-        [
-          "Several agents at once: subagents, parallel sessions, orchestration",
-          "You wait on one agent, or run many and lose quality",
-          "Have you run two sessions on the same task and compared them?",
-          "2, 5, 7, S"
-        ],
-        [
-          "Manage cognitive load and text fatigue",
-          "You stop reading what the agents write",
-          "How much agent output did you skim this week?",
-          "2, 4"
-        ],
-        [
-          "Choose what you should do, not what you can do",
-          "A pile of nice-to-have work nobody asked for",
-          "What did you decide not to build this week?",
-          "1, 10"
-        ],
-        [
-          "Build processes and systems, not single outputs",
-          "Gains stay with one task and one person",
-          "Which of your routines could a colleague run tomorrow?",
-          "10, 11"
-        ],
-        [
-          "Local models and your own setup where privacy needs it",
-          "Some clients and data stay off limits",
-          "Do you know what a local model can and cannot do for you?",
-          "6, 7, 11"
-        ],
-        [
-          "Risks and safety mechanisms behind connected tools",
-          "Security comes second to hype",
-          "Do you know what an MCP server you installed can do?",
-          "4, 5"
-        ]
-      ]
+      "src": "4, 7, 10, 12, 13"
     },
-    "dev": {
-      "1": [
-        [
-          "A coding agent with plan mode and an inline IDE assistant",
-          "You stay in chat and copy-paste",
-          "Has an agent made a change across several files for you?",
-          "2, 5, 6, 7, S"
-        ],
-        [
-          "Write good issues and specs, with a skill to help",
-          "A vague goal gives vague code",
-          "Could an agent solve your last issue from the text alone?",
-          "4"
-        ],
-        [
-          "Use the agent to explain code and odd behavior",
-          "You miss the cheapest way to learn a codebase",
-          "Do you ask why before you ask for a fix?",
-          "2"
-        ],
-        [
-          "Solid software engineering fundamentals",
-          "You cannot judge what the agent hands you",
-          "Which part of the agent's last change would you have done differently?",
-          "2, S"
-        ],
-        [
-          "Try different harnesses and models",
-          "You settle on the first setup that worked",
-          "Have you given the same task to two tools?",
-          "4, 6, 7"
-        ],
-        [
-          "Keep responsibility for everything you push",
-          "Code nobody understands reaches main",
-          "Would you defend every line in review?",
-          "3, 7"
-        ],
-        [
-          "Split work into small tasks. This matters more than ever",
-          "Large changes nobody can review. A pull request should be a gift",
-          "Would you enjoy reviewing your last pull request?",
-          "13"
-        ],
-        [
-          "Handover and compacting between sessions, and an AGENTS.md in the repo",
-          "Each session starts cold or drags stale context along",
-          "What does a new session know about your repo before you type?",
-          "13"
-        ]
+    {
+      "id": "models-and-apps",
+      "level": 1,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Models and the app around them",
+      "detail": "The model is not the app. Model families differ in strengths, input types and price.",
+      "why": "You judge all AI by one tool's weak spots, and expect the wrong things.",
+      "ask": "Can you name a task where another model or app does better than your default?",
+      "how": [
+        { "text": "LMArena, to compare models", "url": "https://lmarena.ai" },
+        { "text": "Andrej Karpathy's videos", "url": "https://www.youtube.com/@AndrejKarpathy" },
+        { "text": "Your vendor's model documentation" }
       ],
-      "2": [
-        [
-          "A healthy codebase with conventions and good examples",
-          "Agents copy the patterns they find, bad ones too",
-          "Would a new session find one clear way to do things?",
-          "2, 4"
-        ],
-        [
-          "Less time on prompts, more on domain and architecture tests",
-          "Nothing stops the agent from drifting",
-          "Do your tests verify the domain, or only utilities?",
-          "2, 4"
-        ],
-        [
-          "Build your own mental model before the change",
-          "Review gets harder than writing would have been",
-          "Can you sketch the change before the agent makes it?",
-          "3"
-        ],
-        [
-          "grill-with-docs and decision records, time on the domain",
-          "Decisions vanish and each session starts from zero",
-          "Where are your last three design decisions written down?",
-          "5, 13"
-        ],
-        [
-          "Application and system architecture",
-          "The agent does not know which direction to go",
-          "Who decided the structure of your last feature?",
-          "4"
-        ],
-        [
-          "Connect Jira, the repo and observability (for example a Grafana MCP)",
-          "Manual lookups the agent could do in seconds",
-          "Can your agent read your logs and backlog?",
-          "6, 13"
-        ],
-        [
-          "Mix manual review with AI review skills",
-          "Review becomes a bottleneck or a rubber stamp",
-          "How much of your week is review now?",
-          "3, 6"
-        ],
-        [
-          "Sandboxing (for example Docker), no write access to production",
-          "One wrong command reaches real data",
-          "Where does your agent run, and what can it reach?",
-          "4"
-        ],
-        [
-          "Pick the model per job: strong to orchestrate, cheap to implement",
-          "Slow and expensive runs, or weak plans",
-          "Do you know which model wrote your last change?",
-          "5, 7"
-        ],
-        [
-          "Reverse engineering, prototyping, AI-assisted infrastructure as code",
-          "You only use agents for feature work",
-          "Have you used an agent on infrastructure or legacy code?",
-          "S"
-        ],
-        [
-          "Run several sessions with a clear overview, for example tmux or remote sessions",
-          "It is easy to lose control",
-          "Can you say what each of your running sessions is doing right now?",
-          "13"
-        ],
-        [
-          "Know when a skill helps and when it does not. Re-evaluate and rewrite your skills",
-          "Skills pile up and fill the context",
-          "Which skill did you last delete or rewrite?",
-          "13"
-        ],
-        [
-          "Routing skills: a small skill that points to others, loaded only when needed",
-          "Context fills up and quality drops",
-          "Do your skills load only when the task needs them?",
-          "13"
-        ]
-      ],
-      "3": [
-        [
-          "Parallel sessions with a second agent that checks the first",
-          "Speed without a counterweight",
-          "Does anything other than you check the agent's work?",
-          "2"
-        ],
-        [
-          "Tests for the application architecture itself",
-          "Structure erodes one merge at a time",
-          "Would a test fail if an agent broke your layering?",
-          "2, 4"
-        ],
-        [
-          "Ownership of a codebase agents mostly write",
-          "Nobody feels responsible for the whole",
-          "Who on your team knows why the code looks the way it does?",
-          "6"
-        ],
-        [
-          "Agentic on-call and triage across agents",
-          "Operations stays manual while development speeds up",
-          "Could an agent do the first ten minutes of your last incident?",
-          "S"
-        ],
-        [
-          "Your own harness setup and local models",
-          "You depend on defaults you do not understand",
-          "Do you know what your harness adds to each prompt?",
-          "6, 7"
-        ],
-        [
-          "How MCP works inside, and the risks",
-          "You install servers you cannot assess",
-          "Have you read the code of an MCP server you use?",
-          "5"
-        ]
-      ]
+      "src": "4, 5, 6, 7, 12"
     },
-    "des": {
-      "1": [
-        [
-          "Bring your Figma structure into Claude Design",
-          "A sketched screen gives the agent very little",
-          "Does the agent get your components, or only a picture?",
-          "1"
-        ],
-        [
-          "Git and GitHub",
-          "You cannot deliver design as code",
-          "Have you delivered a design change as a pull request?",
-          "1"
-        ],
-        [
-          "AI in every research step",
-          "You run the old process at the old speed",
-          "Which research step has not changed yet?",
-          "11"
-        ],
-        [
-          "A data structure that makes research findable",
-          "The agent cannot answer from material it cannot find",
-          "Could the agent find every interview on one theme?",
-          "11"
-        ],
-        [
-          "Critical analysis at each handoff",
-          "Confident summaries with errors reach the client",
-          "Do you check synthesis against the raw material?",
-          "11"
-        ]
-      ],
-      "2": [
-        [
-          "Design to code: the interpretation in the handover",
-          "The built result drifts from the design",
-          "Do you know where your design gets reinterpreted?",
-          "1"
-        ],
-        [
-          "Explore instead of imagine: other clicks, scale, other domains",
-          "UX flows thought through for one case only",
-          "How many variants did you test before choosing?",
-          "1"
-        ],
-        [
-          "Know what is worth making, tied to product strategy",
-          "Cheap production leads to low-value work",
-          "Can you tie your last prototype to a product goal?",
-          "1"
-        ],
-        [
-          "How an agent loop works, when designing agent products",
-          "You design for a system you do not understand",
-          "Can you describe the loop behind your product?",
-          "1"
-        ],
-        [
-          "Cowork and agents on your machine, with permissions understood",
-          "You give access you cannot oversee",
-          "Do you know what your agent may change?",
-          "11"
-        ],
-        [
-          "Connect Claude to Figma and workshop tools",
-          "Manual moves between tools",
-          "Has an agent built a workshop board for you?",
-          "10"
-        ],
-        [
-          "Only deliver what you understand",
-          "You cannot answer for your own delivery",
-          "Could you rebuild the reasoning behind your last deliverable?",
-          "11"
-        ]
-      ],
-      "3": [
-        [
-          "A workday that starts from pull requests",
-          "You become the bottleneck when others send code",
-          "Can you review a design change that arrives as code?",
-          "1"
-        ],
-        [
-          "Read design out of code with the agent's help",
-          "Changes land that no designer has seen",
-          "How do you look at a pull request you cannot read?",
-          "1"
-        ],
-        [
-          "Prioritize against the stream of nice-to-haves",
-          "Everything gets built because it is cheap",
-          "What did you say no to this sprint?",
-          "1"
-        ],
-        [
-          "Shared projects and structures with team and org",
-          "AI skill stays with one person",
-          "Can a colleague use your research setup?",
-          "11"
-        ],
-        [
-          "Describe the new practices for the field",
-          "Everyone invents their own method",
-          "Has your team written down how you research with AI?",
-          "11"
-        ]
-      ]
+    {
+      "id": "token-management",
+      "level": 1,
+      "scope": "self",
+      "disc": ["all"],
+      "core": true,
+      "what": "Token management: cost, quality and climate",
+      "detail": "Tokens, effort, context size and model choice decide what a task costs and how good it gets. The strongest model at full effort is not the default.",
+      "why": "Throwing frontier models at everything can be lose-lose: worse results, a large bill for the client, poor return and more energy used.",
+      "ask": "Do you know roughly what your last task cost, and whether a smaller model would have done?",
+      "how": [{ "text": "Your vendor's pricing documentation" }],
+      "src": "1, 5, 6, 7, 13"
     },
-    "biz": {
-      "1": [
-        [
-          "Claude Projects and Cowork as a sparring partner",
-          "You treat it as a search engine",
-          "Do you describe problems to it, or only ask for facts?",
-          "9, 10, 12"
-        ],
-        [
-          "A transcription tool for meetings and interviews",
-          "Analysis starts from memory and scattered notes",
-          "Are your client meetings transcribed, with consent?",
-          "9, 10, 12"
-        ],
-        [
-          "Connect email, Excel, files and statistics",
-          "The agent only knows what you paste in",
-          "Which daily system is still not connected?",
-          "9, 12"
-        ],
-        [
-          "Build trust by checking output against the source",
-          "Too much trust, or none. Excel is easy to lose control of",
-          "How do you verify a number the agent gives you?",
-          "9"
-        ],
-        [
-          "Prompting and tone of voice",
-          "Text that does not sound like you",
-          "Would a client recognize your voice in the draft?",
-          "9"
-        ],
-        [
-          "Basics of Git, MCP and skills",
-          "You cannot follow where the tooling is going",
-          "Can you explain what a skill is to a colleague?",
-          "8"
-        ]
-      ],
-      "2": [
-        [
-          "Interview analysis in a Project: ask about meaning and reasoning",
-          "Analysis stays at 4 to 5 hours per interview hour (one person now gets about 1 to 1)",
-          "Can you ask your material how people reasoned?",
-          "9"
-        ],
-        [
-          "A second brain: meetings and sources in one knowledge base",
-          "Information cannot be combined for decisions",
-          "Where would the agent find what you learned last quarter?",
-          "8"
-        ],
-        [
-          "Structured input, many outputs: reports, templates, business cases",
-          "Each deliverable is handmade",
-          "Has the agent filled your standard template from raw data?",
-          "9, 12"
-        ],
-        [
-          "Scheduled tasks and agents that prepare ahead",
-          "You prepare every meeting by hand",
-          "What gets prepared for you automatically each week?",
-          "10, 12"
-        ],
-        [
-          "Voice recordings as input",
-          "You lose thoughts away from the keyboard",
-          "Do you talk your notes in?",
-          "12"
-        ],
-        [
-          "Individual skills versus shared organization skills",
-          "Good routines stay private",
-          "Which of your prompts should be a shared skill?",
-          "10"
-        ],
-        [
-          "AI and ethics, AI for business leaders",
-          "You advise on something you have not studied",
-          "Have you taken a structured course?",
-          "10"
-        ],
-        [
-          "Use experience to create, not to skip experience",
-          "Polished output with nothing behind it",
-          "What in your last deliverable could only you have added?",
-          "9, 10"
-        ]
-      ],
-      "3": [
-        [
-          "Skills",
-          "Known but untried, so the value stays unclear",
-          "Have you tried one skill on a real task?",
-          "9, 12"
-        ],
-        [
-          "Protect quality and correctness in the whole system",
-          "Errors multiply when automation scales",
-          "What catches a wrong figure before the client does?",
-          "9"
-        ],
-        [
-          "AI in forecasting work",
-          "Forecasts stay manual",
-          "Which part of your forecast could an agent prepare?",
-          "9"
-        ],
-        [
-          "Processes and systems, for example onboarding",
-          "Each person automates alone",
-          "Which process would you redesign first?",
-          "10"
-        ],
-        [
-          "AI built into systems, for example Claude in Flowcase",
-          "AI stays a side window",
-          "Which system do you wish had this built in?",
-          "12"
-        ],
-        [
-          "New ways of working as teams get smaller",
-          "A change the organization could see coming",
-          "How would your team work with half the people?",
-          "8"
-        ]
-      ]
+    {
+      "id": "prompt-level",
+      "level": 1,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Prompt at the right level",
+      "detail": "Be concrete about the goal, the limits and the size of the task. Be open about the solution, and let the agent propose. Do not polish the wording.",
+      "why": "Dictating the solution gives you the wrong thing. A vague goal gives you vague work.",
+      "ask": "When did you last ask for options instead of dictating the answer?",
+      "how": [],
+      "src": "2, 4, 6, 7"
     },
-    "org": {
-      "1": [
-        [
-          "Team: roles, boundaries and definition of done",
-          "Nobody knows when a part is finished",
-          "Who owns a change a designer delivers as code?",
-          "1"
-        ],
-        [
-          "Team: shared rules for AI use in code",
-          "Everyone uses agents their own way",
-          "Is there one file that tells every agent how the team works?",
-          "4, 5, 7, 13"
-        ],
-        [
-          "Team: shared, project-specific skills",
-          "Quality depends on who did the task",
-          "Does everyone run the same skills for planning and review?",
-          "4, 5, 6, 13"
-        ],
-        [
-          "Team: no agent has write access to production",
-          "One mistake becomes an incident",
-          "Can any agent on the team reach production today?",
-          "4"
-        ],
-        [
-          "Team: share what works",
-          "Everyone rediscovers the same things",
-          "When did the team last share an AI finding?",
-          "8"
-        ],
-        [
-          "Org: a list of allowed plugins and tools",
-          "People avoid tools or install anything",
-          "Can a consultant find out what is allowed in a minute?",
-          "6"
-        ],
-        [
-          "Org: rules for which data can go where",
-          "Confidentiality rests on individual guesses",
-          "Does everyone know the rule for their current client?",
-          "6, 7"
-        ],
-        [
-          "Org: systematic learning and a sharing culture",
-          "Learning is mostly random",
-          "Is there a planned path, or do people find things by chance?",
-          "8, 10, 11"
-        ],
-        [
-          "Org: integrate the systems people need",
-          "AI stays outside the systems where work happens",
-          "Which internal system is still closed to agents?",
-          "12"
-        ],
-        [
-          "Team: readable decision records in the repo, numbered and dated, plus post mortems and runbooks",
-          "The agent cannot act on knowledge that lives in people's heads",
-          "Could an agent follow your runbook for the last incident?",
-          "13"
-        ],
-        [
-          "Org: documentation and knowledge base connected for development work too",
-          "Agents cannot ask for base data and domain information",
-          "Can your coding agent look up domain facts without you pasting them in?",
-          "13"
-        ]
+    {
+      "id": "grilling",
+      "level": 1,
+      "scope": "self",
+      "disc": ["all"],
+      "core": true,
+      "what": "Grilling: let the agent interview you first",
+      "detail": "Before it makes anything, the agent asks you questions until you agree on what to make.",
+      "why": "You and the agent agree on the goal before work starts, and it finds gaps you would miss.",
+      "ask": "Has an agent asked you ten questions before producing anything?",
+      "how": [
+        {
+          "text": "Matt Pocock's skills, including grill-me",
+          "url": "https://github.com/mattpocock/skills"
+        },
+        { "text": "AI Hero", "url": "https://www.aihero.dev" }
       ],
-      "2": [
-        [
-          "Team: pair programming through prompting",
-          "Decisions made by one person and one agent",
-          "Have two of you prompted together on a hard problem?",
-          "1"
-        ],
-        [
-          "Team: test the codebase, not only the application",
-          "Agents break unprotected conventions",
-          "Which team convention is enforced by a test?",
-          "2"
-        ],
-        [
-          "Team: shared mental models and processes",
-          "Agents have no shared understanding unless you give it",
-          "Could each of you draw the same architecture?",
-          "2"
-        ],
-        [
-          "Team: decision records and follow-up on skill use",
-          "Juniors dump tasks in the agent and push",
-          "Do you know how each person works with agents?",
-          "5"
-        ],
-        [
-          "Team: sandboxing set up for everyone",
-          "Each agent can reach all its owner can",
-          "Is sandboxing set up once, or left to each person?",
-          "4"
-        ],
-        [
-          "Team: team-specific skills (for example EF Core, secrets)",
-          "Agents get your stack wrong the same way every time",
-          "Which recurring agent mistake could a skill remove?",
-          "6"
-        ],
-        [
-          "Team: written practices and a culture for quality",
-          "Practices live in individuals",
-          "Is your way of working written down?",
-          "5, 11"
-        ],
-        [
-          "Org: time set aside for quality culture",
-          "Culture loses to delivery every week",
-          "Is this time in anyone's plan?",
-          "5"
-        ],
-        [
-          "Org: shared knowledge bases",
-          "Knowledge cannot support decisions",
-          "Could an agent answer a question about a past project?",
-          "8"
-        ],
-        [
-          "Org: local models where privacy requires it",
-          "Some clients cannot be served with AI",
-          "Do we have an answer for a client that forbids cloud models?",
-          "8, 11"
-        ],
-        [
-          "Team: guardrails in the repo. Agents read-only by default, secrets through SOPS in skills",
-          "One mistake leaks a secret or changes real data",
-          "What stops an agent from writing where it should only read?",
-          "13"
-        ],
-        [
-          "Team: a shared review bot, shared rules for reviewing, and application logs through MCP",
-          "Review quality depends on who reviews",
-          "Does every pull request get the same first review?",
-          "13"
-        ]
+      "src": "2, 4, 5, 10, 13"
+    },
+    {
+      "id": "plan-first",
+      "level": 1,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Plan first, and keep research apart from doing",
+      "why": "You make the important choices yourself, and keep your own competence.",
+      "ask": "Do you read and correct a plan before the agent acts?",
+      "how": [],
+      "src": "3, 6, 7"
+    },
+    {
+      "id": "context-sessions",
+      "level": 1,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Context, and when to start a new session",
+      "detail": "Know what the agent sees, when a session has gone stale, and how to hand over to a fresh one.",
+      "why": "Answers get worse in long sessions, and tokens burn.",
+      "ask": "Do you know when a session has gone stale?",
+      "how": [],
+      "src": "7, 10, 13"
+    },
+    {
+      "id": "think-with-it",
+      "level": 1,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Use it to explain and to think with",
+      "detail": "Describe the problem and ask why, not only for facts or fixes.",
+      "why": "It is not a better search engine. It helps you reason.",
+      "ask": "Do you describe problems to it, or only ask for answers?",
+      "how": [],
+      "src": "2, 9, 12"
+    },
+    {
+      "id": "data-rules",
+      "level": 1,
+      "scope": "self",
+      "disc": ["all"],
+      "core": true,
+      "what": "Keep sensitive data out",
+      "detail": "Know which data the client allows in which tool. Mask sensitive data on the way in.",
+      "why": "A privacy breach at the client.",
+      "ask": "Do you know the data rule for your current client?",
+      "how": [],
+      "src": "6, 7, 10"
+    },
+    {
+      "id": "connect-sources",
+      "level": 1,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Connect the sources you work in, and decide what not to connect",
+      "why": "Without them you copy and paste. Connect too much and private conversations leak.",
+      "ask": "Can you list what your assistant can read right now?",
+      "how": [],
+      "src": "6, 8, 9, 10, 12, S"
+    },
+    {
+      "id": "ready-skills",
+      "level": 1,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Use ready-made skills",
+      "detail": "A skill is a packaged instruction the agent loads for a kind of task. Start with skills others wrote.",
+      "why": "You get good routines without writing them yourself.",
+      "ask": "Have you installed a skill and used it on real work?",
+      "how": [{ "text": "Matt Pocock's skills", "url": "https://github.com/mattpocock/skills" }],
+      "src": "4, 5, 8, 13"
+    },
+    {
+      "id": "own-delivery",
+      "level": 1,
+      "scope": "self",
+      "disc": ["all"],
+      "core": true,
+      "what": "You own what you deliver",
+      "why": "Work can look fine without being in place.",
+      "ask": "Could you explain every part of your last delivery without the agent?",
+      "how": [],
+      "src": "3, 7, 11"
+    },
+    {
+      "id": "coding-agent",
+      "level": 1,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": true,
+      "what": "A coding agent with plan mode, and an inline assistant in the IDE",
+      "why": "In a chat window you copy and paste, and the agent never sees the codebase.",
+      "ask": "Has an agent made a change across several files for you?",
+      "how": [],
+      "src": "2, 5, 6, 7, S"
+    },
+    {
+      "id": "clear-goal",
+      "level": 1,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": true,
+      "what": "Give the agent a clear goal, by one of two routes",
+      "detail": "Write an issue or spec the agent can solve from the text alone. Or build your own mental model and leave TODOs in the code for the agent.",
+      "why": "The agent writes the code, so our job is to set better goals.",
+      "ask": "Could an agent solve your last issue from the text alone?",
+      "how": [
+        {
+          "text": "Matt Pocock's skills for writing issues",
+          "url": "https://github.com/mattpocock/skills"
+        }
       ],
-      "3": [
-        [
-          "Team: new ways of working as teams get smaller",
-          "A process built for more people",
-          "What would you stop doing with three people?",
-          "8"
-        ],
-        [
-          "Team: ownership shared by humans and agents",
-          "Shared code ownership gets lost",
-          "Who owns code that no human wrote?",
-          "6"
-        ],
-        [
-          "Org: someone asks what we should do differently",
-          "Tasks get optimized, purpose gets missed",
-          "Who is responsible for that question?",
-          "5"
-        ],
-        [
-          "Org: a software factory, one agreed way of building with agents, integrated with existing workflows",
-          "AI use stays a personal habit. New ways of working need large, systematic change",
-          "Can you describe our way of building with agents in one sentence?",
-          "13"
-        ]
-      ]
+      "src": "3, 4"
+    },
+    {
+      "id": "explain-code",
+      "level": 1,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "Use the agent to explain code and odd behavior",
+      "why": "You miss the cheapest way to learn a codebase.",
+      "ask": "Do you ask why before you ask for a fix?",
+      "how": [],
+      "src": "2"
+    },
+    {
+      "id": "fundamentals",
+      "level": 1,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "Solid software engineering fundamentals",
+      "why": "You cannot judge what the agent hands you.",
+      "ask": "Which part of the agent's last change would you have done differently?",
+      "how": [],
+      "src": "2, S"
+    },
+    {
+      "id": "small-tasks",
+      "level": 1,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "Split work into small tasks",
+      "detail": "This matters more than ever. A pull request should be a gift.",
+      "why": "Large changes nobody can review.",
+      "ask": "Would you enjoy reviewing your last pull request?",
+      "how": [],
+      "src": "13"
+    },
+    {
+      "id": "agents-md",
+      "level": 1,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "An AGENTS.md in the repository, and handover between sessions",
+      "why": "Each session starts cold, or drags stale context along.",
+      "ask": "What does a new session know about your repository before you type?",
+      "how": [],
+      "src": "13"
+    },
+    {
+      "id": "try-harnesses",
+      "level": 1,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "Try different coding agents and models",
+      "why": "You settle on the first setup that worked.",
+      "ask": "Have you given the same task to two tools?",
+      "how": [],
+      "src": "4, 6, 7"
+    },
+    {
+      "id": "figma-structure",
+      "level": 1,
+      "scope": "self",
+      "disc": ["des"],
+      "core": true,
+      "what": "Give the design agent your Figma structure, not a screenshot",
+      "why": "A sketched screen gives the agent very little.",
+      "ask": "Does the agent get your components, or only a picture?",
+      "how": [],
+      "src": "1"
+    },
+    {
+      "id": "git-designers",
+      "level": 1,
+      "scope": "self",
+      "disc": ["des"],
+      "core": false,
+      "what": "Git and GitHub: clone, branch, pull request",
+      "why": "You cannot deliver design as code, or follow work that lives in repositories.",
+      "ask": "Can you open a pull request and read someone else's?",
+      "how": [],
+      "src": "1"
+    },
+    {
+      "id": "research-steps",
+      "level": 1,
+      "scope": "self",
+      "disc": ["des"],
+      "core": false,
+      "what": "AI in every research step",
+      "detail": "Research questions, interviews, transcripts, summaries, common patterns and ideas.",
+      "why": "You run the old process at the old speed.",
+      "ask": "Which research step has not changed yet?",
+      "how": [],
+      "src": "11"
+    },
+    {
+      "id": "transcribe",
+      "level": 1,
+      "scope": "self",
+      "disc": ["des", "sales", "adv"],
+      "core": true,
+      "what": "Transcribe meetings and interviews",
+      "detail": "For example the transcription in Word, Trale or Jamie. Ask for consent first.",
+      "why": "Analysis starts from memory and scattered notes, and details get lost.",
+      "ask": "Is your last important meeting searchable?",
+      "how": [],
+      "src": "9, 10, 11, 12"
+    },
+    {
+      "id": "research-structure",
+      "level": 1,
+      "scope": "self",
+      "disc": ["des"],
+      "core": false,
+      "what": "Structure research data so it can be found",
+      "why": "The agent cannot answer from material it cannot find.",
+      "ask": "Could the agent find every interview on one theme?",
+      "how": [],
+      "src": "11"
+    },
+    {
+      "id": "handoff-analysis",
+      "level": 1,
+      "scope": "self",
+      "disc": ["des"],
+      "core": false,
+      "what": "Critical analysis at each handoff",
+      "why": "Confident summaries with errors reach the client.",
+      "ask": "Do you check the synthesis against the raw material?",
+      "how": [],
+      "src": "11"
+    },
+    {
+      "id": "sparring-partner",
+      "level": 1,
+      "scope": "self",
+      "disc": ["sales"],
+      "core": true,
+      "what": "The assistant as a sparring partner",
+      "why": "You use it as a search engine and miss what it is good at.",
+      "ask": "Do you describe problems to it, or only ask for facts?",
+      "how": [],
+      "src": "12"
+    },
+    {
+      "id": "connect-work-systems",
+      "level": 1,
+      "scope": "self",
+      "disc": ["sales"],
+      "core": false,
+      "what": "Connect email, statistics and the systems you work in",
+      "why": "The agent only knows what you paste in.",
+      "ask": "Which daily system is still not connected?",
+      "how": [],
+      "src": "12"
+    },
+    {
+      "id": "know-terms",
+      "level": 1,
+      "scope": "self",
+      "disc": ["sales"],
+      "core": false,
+      "what": "Know what MCP, skills and Git are",
+      "why": "You cannot follow where the tools are going, or talk about them with clients.",
+      "ask": "Can you explain what a skill is to a colleague?",
+      "how": [],
+      "src": "8"
+    },
+    {
+      "id": "case-project",
+      "level": 1,
+      "scope": "self",
+      "disc": ["adv"],
+      "core": true,
+      "what": "A project per client or case, as a sparring partner",
+      "why": "Every conversation starts from zero, and the material is spread out.",
+      "ask": "Does the assistant know the case before you start typing?",
+      "how": [],
+      "src": "9, 10"
+    },
+    {
+      "id": "connect-office",
+      "level": 1,
+      "scope": "self",
+      "disc": ["adv"],
+      "core": false,
+      "what": "Connect files, spreadsheets and Office 365, and decide what to leave out",
+      "why": "It is easy to lose control of a spreadsheet, and private conversations should not be connected.",
+      "ask": "Which of your connected sources holds something private?",
+      "how": [],
+      "src": "9, 10"
+    },
+    {
+      "id": "trust-source",
+      "level": 1,
+      "scope": "self",
+      "disc": ["adv"],
+      "core": true,
+      "what": "Build trust by checking output against the source",
+      "why": "Too much trust or none at all. Both cost you.",
+      "ask": "How do you check a number the agent gives you?",
+      "how": [],
+      "src": "9"
+    },
+    {
+      "id": "tone-of-voice",
+      "level": 1,
+      "scope": "self",
+      "disc": ["adv"],
+      "core": false,
+      "what": "Tone of voice",
+      "why": "Text that does not sound like you.",
+      "ask": "Would a client recognize your voice in the draft?",
+      "how": [],
+      "src": "9"
+    },
+    {
+      "id": "team-agree-tools",
+      "level": 1,
+      "scope": "team",
+      "disc": ["all"],
+      "core": true,
+      "what": "Agree what the team uses",
+      "detail": "Tools, skills and one set of instructions every agent reads.",
+      "why": "Everyone uses agents their own way, and quality depends on who did the task.",
+      "ask": "Is there one file that tells every agent how the team works?",
+      "how": [],
+      "src": "4, 5, 6, 7, 13"
+    },
+    {
+      "id": "team-no-prod",
+      "level": 1,
+      "scope": "team",
+      "disc": ["all"],
+      "core": true,
+      "what": "No agent writes to production",
+      "why": "One mistake becomes an incident.",
+      "ask": "Can any agent on the team reach production today?",
+      "how": [],
+      "src": "4"
+    },
+    {
+      "id": "team-roles-done",
+      "level": 1,
+      "scope": "team",
+      "disc": ["all"],
+      "core": false,
+      "what": "Roles, boundaries and definition of done",
+      "why": "Nobody knows when a part is finished, or who owns it.",
+      "ask": "Who owns a change a designer delivers as code?",
+      "how": [],
+      "src": "1"
+    },
+    {
+      "id": "team-share",
+      "level": 1,
+      "scope": "team",
+      "disc": ["all"],
+      "core": false,
+      "what": "Share what works",
+      "detail": "A channel and a regular slot for what people learn about AI.",
+      "why": "Everyone rediscovers the same things.",
+      "ask": "When did the team last share an AI finding?",
+      "how": [],
+      "src": "2, 8"
+    },
+    {
+      "id": "org-allowed-tools",
+      "level": 1,
+      "scope": "org",
+      "disc": ["all"],
+      "core": true,
+      "what": "Help the client publish which tools and plugins are allowed",
+      "why": "People avoid the tools, or install anything.",
+      "ask": "Can someone at the client find out what is allowed in a minute?",
+      "how": [],
+      "src": "6, 7, 13"
+    },
+    {
+      "id": "org-data-rules",
+      "level": 1,
+      "scope": "org",
+      "disc": ["all"],
+      "core": false,
+      "what": "Help the client set rules for which data can go where",
+      "why": "Confidentiality rests on individual guesses.",
+      "ask": "Does everyone at the client know the rule for their own data?",
+      "how": [],
+      "src": "6, 10"
+    },
+    {
+      "id": "org-learning",
+      "level": 1,
+      "scope": "org",
+      "disc": ["all"],
+      "core": false,
+      "what": "Help the client set up a shared way to learn",
+      "detail": "A planned path and a sharing culture, not chance.",
+      "why": "Learning is mostly random.",
+      "ask": "Is there a planned path at the client, or do people find things by chance?",
+      "how": [],
+      "src": "8, 10, 11"
+    },
+    {
+      "id": "work-mode",
+      "level": 2,
+      "scope": "self",
+      "disc": ["all"],
+      "core": true,
+      "what": "Choose how to work, based on the task",
+      "detail": "Pick how much to hand over based on the context, how correct the result must be, and how much you need a correct mental model of the system. A developer picks between a spec, TODOs in code, or a one-shot. A designer between a throwaway exploration and a deliverable. A business role between a draft for yourself and a figure for the client.",
+      "why": "One way of working for everything is either too slow or too risky.",
+      "ask": "On your last task, did you choose how much to hand over, or do what you always do?",
+      "how": [],
+      "src": "3, 7"
+    },
+    {
+      "id": "model-per-job",
+      "level": 2,
+      "scope": "self",
+      "disc": ["all"],
+      "core": true,
+      "what": "Pick model and effort per job",
+      "detail": "For example a strong model to plan and orchestrate, and a cheaper one to implement.",
+      "why": "Slow and expensive runs, or weak plans.",
+      "ask": "Do you know which model and effort did your last task?",
+      "how": [],
+      "src": "5, 6, 7, 13"
+    },
+    {
+      "id": "write-skills",
+      "level": 2,
+      "scope": "self",
+      "disc": ["all"],
+      "core": true,
+      "what": "Write your own skills, and know which to keep personal",
+      "why": "You repeat the same instructions, and the quality varies.",
+      "ask": "Have you written a skill for something you do every week?",
+      "how": [
+        {
+          "text": "Matt Pocock's skills, as examples",
+          "url": "https://github.com/mattpocock/skills"
+        },
+        { "text": "Ponytail", "url": "https://github.com/DietrichGebert/ponytail" }
+      ],
+      "src": "4, 6, 10, 13"
+    },
+    {
+      "id": "connect-context",
+      "level": 2,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Connect project context through MCP, read-only by default",
+      "detail": "The backlog, docs, logs and dashboards. For example the Atlassian plugin or a Grafana MCP.",
+      "why": "The agent guesses about things it could look up.",
+      "ask": "Which system would save you most time if the agent could read it?",
+      "how": [],
+      "src": "6, 8, 13"
+    },
+    {
+      "id": "craft-steer",
+      "level": 2,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Use your craft and domain knowledge to steer",
+      "why": "Generic output, and no way to tell good from bad.",
+      "ask": "Where did your expertise change the result last week?",
+      "how": [],
+      "src": "3, 5, 9, 10, 13"
+    },
+    {
+      "id": "review-handoff",
+      "level": 2,
+      "scope": "self",
+      "disc": ["all"],
+      "core": true,
+      "what": "A fixed way to review agent output at every handoff",
+      "why": "Errors pass on to the client or the next person.",
+      "ask": "Do you have a fixed way of checking agent output?",
+      "how": [],
+      "src": "3, 6, 11"
+    },
+    {
+      "id": "sandboxing",
+      "level": 2,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Permissions and sandboxing",
+      "detail": "Know what an agent on your machine may read and change. Developers can run agents in a sandbox, for example Docker.",
+      "why": "An agent with your full access makes your worst mistake at machine speed.",
+      "ask": "What is the most damaging thing your agent could do today?",
+      "how": [],
+      "src": "4, 11"
+    },
+    {
+      "id": "learn-with-ai",
+      "level": 2,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Use AI to learn, not only to fetch information",
+      "why": "You get faster but not better.",
+      "ask": "Have you asked the agent to teach you something this month?",
+      "how": [],
+      "src": "5, 8, 9"
+    },
+    {
+      "id": "healthy-codebase",
+      "level": 2,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": true,
+      "what": "A healthy codebase with conventions and good examples",
+      "why": "Agents copy the patterns they find, bad ones too.",
+      "ask": "Would a new session find one clear way to do things?",
+      "how": [],
+      "src": "2, 4, 6"
+    },
+    {
+      "id": "tests-over-prompts",
+      "level": 2,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": true,
+      "what": "Less time on prompts, more on domain and architecture tests",
+      "why": "Nothing stops the agent from drifting.",
+      "ask": "Do your tests check the domain, or only utilities?",
+      "how": [],
+      "src": "2, 4"
+    },
+    {
+      "id": "mental-model-first",
+      "level": 2,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "Build your own mental model before the change",
+      "why": "Review gets harder than writing would have been.",
+      "ask": "Can you sketch the change before the agent makes it?",
+      "how": [],
+      "src": "3"
+    },
+    {
+      "id": "grill-with-docs",
+      "level": 2,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "Grilling with docs, decision records and time on the domain",
+      "why": "Decisions vanish, and each session starts from zero.",
+      "ask": "Where are your last three design decisions written down?",
+      "how": [
+        {
+          "text": "Matt Pocock's grill-with-docs skill",
+          "url": "https://github.com/mattpocock/skills"
+        }
+      ],
+      "src": "5, 13"
+    },
+    {
+      "id": "architecture",
+      "level": 2,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "Application and system architecture",
+      "why": "The agent does not know which direction to go. Developers still know best.",
+      "ask": "Who decided the structure of your last feature?",
+      "how": [],
+      "src": "4"
+    },
+    {
+      "id": "mixed-review",
+      "level": 2,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "Mix manual review with AI review",
+      "why": "Review becomes a bottleneck or a rubber stamp.",
+      "ask": "How much of your week is review now?",
+      "how": [],
+      "src": "3, 5, 6"
+    },
+    {
+      "id": "multi-session",
+      "level": 2,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "Several sessions with a clear overview",
+      "detail": "For example tmux or remote sessions.",
+      "why": "It is easy to lose control.",
+      "ask": "Can you say what each of your running sessions is doing right now?",
+      "how": [],
+      "src": "13"
+    },
+    {
+      "id": "beyond-features",
+      "level": 2,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "Reverse engineering, prototyping and infrastructure as code with AI",
+      "why": "You only use agents for feature work.",
+      "ask": "Have you used an agent on infrastructure or legacy code?",
+      "how": [],
+      "src": "S"
+    },
+    {
+      "id": "design-to-code",
+      "level": 2,
+      "scope": "self",
+      "disc": ["des"],
+      "core": true,
+      "what": "Design to code: where the handover reinterprets",
+      "why": "The built result drifts from the design.",
+      "ask": "Do you know where your design gets reinterpreted?",
+      "how": [],
+      "src": "1"
+    },
+    {
+      "id": "explore-variants",
+      "level": 2,
+      "scope": "self",
+      "disc": ["des"],
+      "core": true,
+      "what": "Explore instead of imagine",
+      "detail": "Try other clicks, other scales and other domains, instead of thinking them through.",
+      "why": "UX flows thought through for one case only.",
+      "ask": "How many variants did you test before choosing?",
+      "how": [],
+      "src": "1"
+    },
+    {
+      "id": "worth-making",
+      "level": 2,
+      "scope": "self",
+      "disc": ["des"],
+      "core": false,
+      "what": "Know what is worth making, tied to the product strategy",
+      "why": "Cheap production leads to low-value work.",
+      "ask": "Can you tie your last prototype to a product goal?",
+      "how": [],
+      "src": "1"
+    },
+    {
+      "id": "agent-loop",
+      "level": 2,
+      "scope": "self",
+      "disc": ["des"],
+      "core": false,
+      "what": "How an agent loop works, when you design agent products",
+      "why": "You design for a system you do not understand.",
+      "ask": "Can you describe the loop behind your product?",
+      "how": [{ "text": "LangSmith Fleet" }],
+      "src": "1"
+    },
+    {
+      "id": "research-meaning",
+      "level": 2,
+      "scope": "self",
+      "disc": ["des", "adv"],
+      "core": true,
+      "what": "Research analysis by meaning, not only by words",
+      "detail": "Ask your interview material how people talked about and reasoned around a topic. Still do the interviews yourself.",
+      "why": "Analysis stays at four to five hours per interview hour.",
+      "ask": "Can you ask your material how people reasoned?",
+      "how": [],
+      "src": "9, 11"
+    },
+    {
+      "id": "second-brain",
+      "level": 2,
+      "scope": "self",
+      "disc": ["sales"],
+      "core": true,
+      "what": "A second brain: meetings and sources in one knowledge base",
+      "why": "Information cannot be combined for decisions.",
+      "ask": "Where would the agent find what you learned last quarter?",
+      "how": [{ "text": "Andrej Karpathy on personal knowledge bases" }],
+      "src": "8"
+    },
+    {
+      "id": "structured-outputs",
+      "level": 2,
+      "scope": "self",
+      "disc": ["sales", "adv"],
+      "core": true,
+      "what": "Structured input, many outputs",
+      "detail": "Reports, templates and business cases from the same material.",
+      "why": "Each deliverable is handmade from zero.",
+      "ask": "Has the agent filled your standard template from raw data?",
+      "how": [],
+      "src": "9, 12"
+    },
+    {
+      "id": "scheduled-tasks",
+      "level": 2,
+      "scope": "self",
+      "disc": ["sales", "adv"],
+      "core": false,
+      "what": "Scheduled tasks that prepare work before you need it",
+      "why": "You prepare every meeting by hand.",
+      "ask": "What gets prepared for you automatically each week?",
+      "how": [],
+      "src": "10, 12"
+    },
+    {
+      "id": "voice-input",
+      "level": 2,
+      "scope": "self",
+      "disc": ["sales"],
+      "core": false,
+      "what": "Voice recordings as input",
+      "why": "You lose thoughts away from the keyboard.",
+      "ask": "Do you talk your notes in?",
+      "how": [],
+      "src": "12"
+    },
+    {
+      "id": "git-business",
+      "level": 2,
+      "scope": "self",
+      "disc": ["sales", "adv"],
+      "core": false,
+      "what": "Git basics, for knowledge bases and skills kept as files",
+      "why": "You cannot share or version what you build.",
+      "ask": "Could a colleague get your skills and notes without you emailing them?",
+      "how": [],
+      "src": "8"
+    },
+    {
+      "id": "ethics-leaders",
+      "level": 2,
+      "scope": "self",
+      "disc": ["adv"],
+      "core": false,
+      "what": "AI and ethics, and AI for business leaders",
+      "why": "You advise on something you have not studied.",
+      "ask": "Have you taken a structured course?",
+      "how": [{ "text": "DataCamp", "url": "https://www.datacamp.com" }],
+      "src": "10"
+    },
+    {
+      "id": "workshop-tools",
+      "level": 2,
+      "scope": "self",
+      "disc": ["adv"],
+      "core": false,
+      "what": "Connect the assistant to Figma and workshop tools",
+      "why": "You move things between tools by hand.",
+      "ask": "Has an agent built a workshop board for you?",
+      "how": [],
+      "src": "10"
+    },
+    {
+      "id": "experience-create",
+      "level": 2,
+      "scope": "self",
+      "disc": ["adv"],
+      "core": false,
+      "what": "Use your experience to create, not to skip experience",
+      "why": "Polished output with nothing behind it.",
+      "ask": "What in your last deliverable could only you have added?",
+      "how": [],
+      "src": "10"
+    },
+    {
+      "id": "team-shared-skills",
+      "level": 2,
+      "scope": "team",
+      "disc": ["all"],
+      "core": true,
+      "what": "Shared, project-specific skills",
+      "detail": "In the repository or a shared space. For example skills for your stack and for handling secrets.",
+      "why": "Agents get your stack wrong the same way every time.",
+      "ask": "Does everyone run the same skills for planning and review?",
+      "how": [{ "text": "Ponytail", "url": "https://github.com/DietrichGebert/ponytail" }],
+      "src": "4, 5, 6, 13"
+    },
+    {
+      "id": "team-decisions",
+      "level": 2,
+      "scope": "team",
+      "disc": ["all"],
+      "core": true,
+      "what": "Decision records, post mortems and runbooks",
+      "detail": "Readable by people, numbered and dated, kept where the agent can read them.",
+      "why": "Decisions vanish, and the agent cannot act on knowledge that lives in people's heads.",
+      "ask": "Could an agent follow your runbook for the last incident?",
+      "how": [],
+      "src": "5, 13"
+    },
+    {
+      "id": "team-review",
+      "level": 2,
+      "scope": "team",
+      "disc": ["all"],
+      "core": false,
+      "what": "Shared rules for review, and one shared first review by an agent",
+      "why": "Review quality depends on who reviews.",
+      "ask": "Does every pull request get the same first review?",
+      "how": [],
+      "src": "5, 6, 13"
+    },
+    {
+      "id": "team-guardrails",
+      "level": 2,
+      "scope": "team",
+      "disc": ["all"],
+      "core": true,
+      "what": "Guardrails set up once for everyone",
+      "detail": "Sandboxing, read-only by default, and secrets handled through skills.",
+      "why": "Each agent can reach everything its owner can.",
+      "ask": "Is sandboxing set up once, or left to each person?",
+      "how": [],
+      "src": "4, 13"
+    },
+    {
+      "id": "team-pair",
+      "level": 2,
+      "scope": "team",
+      "disc": ["all"],
+      "core": false,
+      "what": "Pair through prompting on hard problems",
+      "why": "Decisions made by one person and one agent.",
+      "ask": "Have two of you prompted together on a hard problem?",
+      "how": [],
+      "src": "1"
+    },
+    {
+      "id": "team-practices",
+      "level": 2,
+      "scope": "team",
+      "disc": ["all"],
+      "core": false,
+      "what": "Written practices, shared mental models, and follow-up on how each person works",
+      "why": "Juniors dump the task into the agent and push it, without seeing the bigger picture.",
+      "ask": "Do you know how each person on the team works with agents?",
+      "how": [
+        {
+          "text": "pstack, a set of skills for a full development flow",
+          "url": "https://github.com/cursor/plugins/tree/main/pstack"
+        }
+      ],
+      "src": "2, 5, 11"
+    },
+    {
+      "id": "org-connect-knowledge",
+      "level": 2,
+      "scope": "org",
+      "disc": ["all"],
+      "core": true,
+      "what": "Connect documentation and knowledge bases, also for development",
+      "why": "Agents cannot look up base data and domain information.",
+      "ask": "Can a coding agent at the client look up domain facts without someone pasting them in?",
+      "how": [],
+      "src": "12, 13"
+    },
+    {
+      "id": "org-knowledge-base",
+      "level": 2,
+      "scope": "org",
+      "disc": ["all"],
+      "core": false,
+      "what": "A shared knowledge base",
+      "why": "Information is spread over many systems and cannot support decisions.",
+      "ask": "Could an agent answer a question about a past project at the client?",
+      "how": [],
+      "src": "8"
+    },
+    {
+      "id": "org-local-models",
+      "level": 2,
+      "scope": "org",
+      "disc": ["all"],
+      "core": false,
+      "what": "Local models where privacy requires it",
+      "why": "Some clients cannot use cloud AI at all.",
+      "ask": "What do you advise a client that forbids cloud models?",
+      "how": [],
+      "src": "8, 11"
+    },
+    {
+      "id": "org-quality-time",
+      "level": 2,
+      "scope": "org",
+      "disc": ["all"],
+      "core": false,
+      "what": "Make time for quality culture",
+      "why": "Culture loses to delivery every week.",
+      "ask": "Is time for this in anyone's plan at the client?",
+      "how": [],
+      "src": "5"
+    },
+    {
+      "id": "product-role",
+      "level": 3,
+      "scope": "self",
+      "disc": ["all"],
+      "core": true,
+      "what": "Take a broader product role",
+      "detail": "Change how you work, what you take responsibility for and which positions you take. You are still a technical expert, but above all an expert in turning the real world into systems, processes and formal structures that work as modelled.",
+      "why": "Making things gets cheap, so judgment about what to make and why is what counts. Caring about what you make matters even more.",
+      "ask": "What did you take responsibility for this month that is outside your title?",
+      "how": [{ "text": "Laurie Voss's talk on becoming product engineers" }],
+      "src": "1, 2"
+    },
+    {
+      "id": "should-not-can",
+      "level": 3,
+      "scope": "self",
+      "disc": ["all"],
+      "core": true,
+      "what": "Choose what you should do, not what you can do",
+      "why": "A pile of nice-to-haves nobody asked for.",
+      "ask": "What did you decide not to make this week?",
+      "how": [],
+      "src": "1, 10"
+    },
+    {
+      "id": "several-agents",
+      "level": 3,
+      "scope": "self",
+      "disc": ["all"],
+      "core": true,
+      "what": "Several agents at once",
+      "detail": "Subagents, parallel sessions and orchestration, with one agent checking another.",
+      "why": "You wait on one agent, or run many and lose quality.",
+      "ask": "Does anything other than you check the agent's work?",
+      "how": [],
+      "src": "2, 5, 7, 13, S"
+    },
+    {
+      "id": "cognitive-load",
+      "level": 3,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Manage cognitive load and text fatigue",
+      "why": "You stop reading what the agents write.",
+      "ask": "How much agent output did you skim this week?",
+      "how": [],
+      "src": "2, 3, 4"
+    },
+    {
+      "id": "processes-systems",
+      "level": 3,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Build processes and systems, not single outputs",
+      "detail": "For example onboarding, or a research setup others can run.",
+      "why": "The gain stays with one task and one person.",
+      "ask": "Which of your routines could a colleague run tomorrow?",
+      "how": [],
+      "src": "10, 11"
+    },
+    {
+      "id": "curate-skills",
+      "level": 3,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Curate your skills",
+      "detail": "Prune and rewrite them, know when no skill is needed, and share the good ones with the team and the client.",
+      "why": "Skills pile up and fill the context.",
+      "ask": "Which skill did you last delete or rewrite?",
+      "how": [],
+      "src": "9, 12, 13"
+    },
+    {
+      "id": "assess-risks",
+      "level": 3,
+      "scope": "self",
+      "disc": ["all"],
+      "core": false,
+      "what": "Assess the risks of connected tools",
+      "why": "Security comes second to hype.",
+      "ask": "Do you know what an MCP server you installed can do?",
+      "how": [],
+      "src": "4, 5"
+    },
+    {
+      "id": "architecture-tests",
+      "level": 3,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": true,
+      "what": "Tests for the application architecture itself",
+      "why": "Structure erodes one merge at a time.",
+      "ask": "Would a test fail if an agent broke your layering?",
+      "how": [],
+      "src": "2, 4"
+    },
+    {
+      "id": "on-call-triage",
+      "level": 3,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "Agentic on-call and triage across agents",
+      "why": "Operations stays manual while development speeds up.",
+      "ask": "Could an agent do the first ten minutes of your last incident?",
+      "how": [],
+      "src": "S"
+    },
+    {
+      "id": "own-harness",
+      "level": 3,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "Your own agent setup and local models",
+      "why": "You depend on defaults you do not understand, and some data stays off limits.",
+      "ask": "Do you know what a local model can and cannot do for you?",
+      "how": [],
+      "src": "6, 7"
+    },
+    {
+      "id": "mcp-internals",
+      "level": 3,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "How MCP works inside",
+      "why": "You install servers you cannot assess.",
+      "ask": "Have you read the code of an MCP server you use?",
+      "how": [],
+      "src": "5"
+    },
+    {
+      "id": "routing-skills",
+      "level": 3,
+      "scope": "self",
+      "disc": ["dev"],
+      "core": false,
+      "what": "Routing skills that load others only when needed",
+      "why": "Context fills up and quality drops.",
+      "ask": "Do your skills load only when the task needs them?",
+      "how": [],
+      "src": "13"
+    },
+    {
+      "id": "pr-workday",
+      "level": 3,
+      "scope": "self",
+      "disc": ["des"],
+      "core": true,
+      "what": "A workday that starts from pull requests",
+      "why": "You become the bottleneck when others send code.",
+      "ask": "Can you review a design change that arrives as code?",
+      "how": [],
+      "src": "1"
+    },
+    {
+      "id": "read-design-code",
+      "level": 3,
+      "scope": "self",
+      "disc": ["des"],
+      "core": false,
+      "what": "Read design out of code with the agent's help",
+      "why": "Changes land that no designer has seen.",
+      "ask": "How do you look at a pull request you cannot read?",
+      "how": [],
+      "src": "1"
+    },
+    {
+      "id": "research-practice",
+      "level": 3,
+      "scope": "self",
+      "disc": ["des"],
+      "core": false,
+      "what": "Write down the new practices for the field",
+      "why": "Everyone invents their own method, and the skill stays with one person.",
+      "ask": "Has your team written down how you research with AI?",
+      "how": [],
+      "src": "11"
+    },
+    {
+      "id": "automate-low-value",
+      "level": 3,
+      "scope": "self",
+      "disc": ["sales"],
+      "core": true,
+      "what": "Automate the tasks that take time but do not matter",
+      "why": "Less face time with clients and consultants.",
+      "ask": "What took an hour last week that an agent could have done?",
+      "how": [],
+      "src": "8"
+    },
+    {
+      "id": "business-skills",
+      "level": 3,
+      "scope": "self",
+      "disc": ["sales", "adv"],
+      "core": false,
+      "what": "Skills for business routines",
+      "why": "You know of skills but have not seen the value, so it stays untried.",
+      "ask": "Have you tried one skill on a real task?",
+      "how": [],
+      "src": "9, 12"
+    },
+    {
+      "id": "quality-whole-system",
+      "level": 3,
+      "scope": "self",
+      "disc": ["adv"],
+      "core": true,
+      "what": "Protect quality and correctness in the whole system",
+      "why": "Errors multiply when automation scales.",
+      "ask": "What catches a wrong figure before the client does?",
+      "how": [],
+      "src": "9"
+    },
+    {
+      "id": "forecasting",
+      "level": 3,
+      "scope": "self",
+      "disc": ["adv"],
+      "core": false,
+      "what": "AI in forecasting work",
+      "why": "Forecasts stay manual.",
+      "ask": "Which part of your forecast could an agent prepare?",
+      "how": [],
+      "src": "9"
+    },
+    {
+      "id": "team-smaller",
+      "level": 3,
+      "scope": "team",
+      "disc": ["all"],
+      "core": true,
+      "what": "New ways of working as teams get smaller",
+      "why": "A process built for more people.",
+      "ask": "What would you stop doing with three people?",
+      "how": [],
+      "src": "8"
+    },
+    {
+      "id": "team-ownership",
+      "level": 3,
+      "scope": "team",
+      "disc": ["all"],
+      "core": true,
+      "what": "Ownership shared by people and agents",
+      "why": "Shared ownership of the code gets lost.",
+      "ask": "Who on your team knows why the code looks the way it does?",
+      "how": [],
+      "src": "6"
+    },
+    {
+      "id": "team-test-codebase",
+      "level": 3,
+      "scope": "team",
+      "disc": ["all"],
+      "core": false,
+      "what": "Test the codebase and conventions, not only the application",
+      "why": "Agents break conventions nothing protects.",
+      "ask": "Which team convention is enforced by a test?",
+      "how": [],
+      "src": "2, 4"
+    },
+    {
+      "id": "org-software-factory",
+      "level": 3,
+      "scope": "org",
+      "disc": ["all"],
+      "core": true,
+      "what": "One agreed way of building with agents",
+      "detail": "A software factory, built into existing workflows, with a named owner. It takes large, systematic change.",
+      "why": "AI use stays a personal habit.",
+      "ask": "Can the client describe their way of building with agents in one sentence?",
+      "how": [],
+      "src": "13"
+    },
+    {
+      "id": "org-ask-differently",
+      "level": 3,
+      "scope": "org",
+      "disc": ["all"],
+      "core": false,
+      "what": "Make someone own the question of what to do differently",
+      "detail": "Beyond solving each day's tasks.",
+      "why": "Tasks get optimized, and the purpose gets missed.",
+      "ask": "Who at the client is responsible for that question?",
+      "how": [],
+      "src": "5"
+    },
+    {
+      "id": "org-ai-in-systems",
+      "level": 3,
+      "scope": "org",
+      "disc": ["all"],
+      "core": false,
+      "what": "Build AI into the systems where work happens",
+      "detail": "For example an assistant connected to the CV system.",
+      "why": "AI stays a side window.",
+      "ask": "Which client system should have this built in first?",
+      "how": [],
+      "src": "12"
     }
-  },
-  "GAPS": {
-    "all": {
-      "0": {
-        "m": [
-          "Nobody interviewed is a total beginner. These steps are synthesis from day-one advice."
-        ],
-        "r": [
-          "A one-page start guide per discipline",
-          "A short sheet of which data may go into which tool, per client"
-        ],
-        "n": "Interviewees said: jump in, find a course to follow, or start with small tasks and challenge what the AI says. You are the expert."
-      },
-      "1": {
-        "m": ["Few answers to why it matters and how people found out"],
-        "r": [
-          "A grilling walkthrough for design and business work",
-          "An overview of models, harnesses, effort and price, kept current",
-          "A curated course list per discipline"
-        ],
-        "n": "Named: Matt Pocock's skills and aihero.dev, Andrej Karpathy's videos, LLM arena, vendor docs, DataCamp."
-      },
-      "2": {
-        "m": [],
-        "r": [
-          "Examples of skills outside development, and a shared skill library",
-          "A sandboxing setup guide the whole team can copy"
-        ],
-        "n": "Named: Matt Pocock's skills (developers only)."
-      },
-      "3": {
-        "m": ["Few people outside development described this level"],
-        "r": [
-          "Shared practice on parallel agents and cognitive load",
-          "A short security and MCP risk checklist",
-          "A fact sheet on climate and energy use"
-        ],
-        "n": "Nothing named."
-      }
-    },
-    "dev": {
-      "0": {
-        "m": ["No beginners interviewed"],
-        "r": ["A first-hour guide: install, explain, one small change"],
-        "n": ""
-      },
-      "1": {
-        "m": [],
-        "r": ["A plain explanation of spec-driven work, with one example and when not to use it"],
-        "n": "Named: aihero.dev, Laurie Voss's talk on product engineers, Karpathy."
-      },
-      "2": {
-        "m": [],
-        "r": [
-          "Worked examples of architecture tests in our stacks",
-          "An example routing skill, and a guide to running several sessions with an overview"
-        ],
-        "n": "Named: grill-with-docs, Ponytail, and tmux, claude-rc and remote sessions for multi-session work."
-      },
-      "3": {
-        "m": ["On-call and triage comes from one unfinished map"],
-        "r": ["Shared practice from people running parallel agents today"],
-        "n": "Nothing named."
-      }
-    },
-    "des": {
-      "0": {
-        "m": ["Design rests on 3 people in total"],
-        "r": ["A start guide for designers"],
-        "n": ""
-      },
-      "1": {
-        "m": [],
-        "r": ["A hands-on Git session: clone, branch, pull request"],
-        "n": "Nothing named."
-      },
-      "2": {
-        "m": [],
-        "r": [
-          "A worked case from Figma structure to merged pull request",
-          "A setup guide for research analysis with AI"
-        ],
-        "n": "Nothing named."
-      },
-      "3": {
-        "m": ["Only 2 people described this level"],
-        "r": ["Pairing with a developer on reading PRs, then a short guide"],
-        "n": "Nothing named."
-      }
-    },
-    "biz": {
-      "0": {
-        "m": [
-          "The 4 interviews here had no discipline recorded. Sales, advisory and leadership may need separate paths."
-        ],
-        "r": ["A start guide for non-technical roles"],
-        "n": ""
-      },
-      "1": {
-        "m": [],
-        "r": ["A curated course list", "How to connect Office 365 and what to leave out"],
-        "n": "Named: DataCamp courses, AI and ethics, AI for business leaders."
-      },
-      "2": {
-        "m": [],
-        "r": [
-          "The SAAB interview analysis case written up as an internal example",
-          "A second brain setup guide"
-        ],
-        "n": "Named: Andrej Karpathy on knowledge bases."
-      },
-      "3": {
-        "m": [
-          "People here named skills they have not tried yet. Need people who run automated work."
-        ],
-        "r": ["Examples of skills for business work"],
-        "n": "Nothing named."
-      }
-    },
-    "org": {
-      "0": {
-        "m": ["No leader or client-side view interviewed"],
-        "r": ["A published list of allowed tools and data rules"],
-        "n": ""
-      },
-      "1": {
-        "m": ["Only 6 of 13 said anything about the organization"],
-        "r": [
-          "Templates for team AI rules, definition of done and decision records",
-          "A sharing channel and a regular sharing slot"
-        ],
-        "n": "One person asked for an AI-specific developer channel."
-      },
-      "2": {
-        "m": ["4 people on the organization, 8 on the team"],
-        "r": ["Guidance on local models for privacy-sensitive clients"],
-        "n": "Nothing named."
-      },
-      "3": {
-        "m": ["1 person on team level 3, 2 on organization level 3."],
-        "r": ["Stories from teams that changed their process because of agents"],
-        "n": "Nothing named."
-      }
-    }
-  }
+  ]
 }

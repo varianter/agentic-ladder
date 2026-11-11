@@ -1,6 +1,6 @@
 // Entry point: loads state, wires the actions to it and renders the page with lit-html.
 import { render } from "lit-html";
-import { discName, isDisc, LEVELS } from "./model.js";
+import { discName, isDisc, levelByK } from "./model.js";
 import { loadState, saveState } from "./store.js";
 import { initTheme } from "./theme.js";
 import * as view from "./views.js";
@@ -36,15 +36,8 @@ const act = {
       () => {
         state.view = level;
       },
-      () => `Showing level ${level}, ${LEVELS[level].name}.`,
+      () => `Showing level ${level}, ${levelByK(level).name}.`,
       { animate: true },
-    ),
-  showCore: (on) =>
-    update(
-      () => {
-        state.core = on;
-      },
-      on ? "Shared core topics shown." : "Shared core topics hidden.",
     ),
 };
 
@@ -55,7 +48,7 @@ function draw() {
   render(view.ladder(state, act), $("ladder"));
   render(view.panel(state, act), $("panel"));
   render(view.summary(state), $("summary"));
-  render(view.unknowns(state), $("unk"));
+  render(view.plan(state), $("plan"));
 }
 
 /**

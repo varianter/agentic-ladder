@@ -48,10 +48,14 @@ for (const [width, scheme] of [
 
   // Put the page in a realistic state: developer at level 2 with one topic rated.
   await page.click("#disc-dev");
-  await page.click("#q0-yes");
   await page.click("#q1-yes");
   await page.click("#q2-no");
-  await page.click("#r-dev-2-0-new");
+  await page.click("#r-healthy-codebase-new");
+  await page.click("#r-model-per-job-know");
+  // Open the folded topics, so they are checked too.
+  await page.evaluate(() => {
+    for (const d of document.querySelectorAll("details")) d.open = true;
+  });
 
   await page.addScriptTag({ path: fileURLToPath(import.meta.resolve("axe-core")) });
   const result = await page.evaluate(() =>

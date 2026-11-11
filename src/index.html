@@ -6,7 +6,7 @@
     <title>Variant Agentic Ladder</title>
     <meta
       name="description"
-      content="Variant's four-level roadmap for working with AI agents, per discipline, built from consultant interviews."
+      content="Variant's three-level roadmap for working with AI agents, per discipline: for yourself, your team and the client."
     >
     <link
       rel="icon"
@@ -93,13 +93,14 @@
         <color-mode palette="blue" class="d-block surface-tinted br-xl">
           <div class="stack-v gap-xs p-l">
             <p class="eyebrow fs-xs fw-medium tt-uppercase ink-subtle">
-              Agentic mapping · 13 interviews and 1 map · November 2026
+              Variant Agentic Ladder · November 2026
             </p>
             <h1 class="fs-4xl fw-bold lh-snug">From first prompt to running agents</h1>
             <p class="lede fs-l ink-subtle">
-              A four-level model for working with AI agents, built from Variant consultants' own
-              experience. Pick your discipline, find your level, do the three steps, then rate the
-              topics to see what you did not know you were missing.
+              Three levels for working with AI agents, built from Variant consultants' own
+              experience. At each level: what to train on for yourself, how to lift your team, and
+              what to advise the client. Pick your discipline, find your level, rate the topics, and
+              get your own training plan.
             </p>
           </div>
         </color-mode>
@@ -117,7 +118,7 @@
         <section class="stack-v gap-s" aria-labelledby="h-level">
           <h2 class="fs-xl fw-bold" id="h-level">2. Find your level</h2>
           <p class="lede ink-subtle">
-            Answer the four tests from the top. The first one you answer "Not yet" is the level to
+            Answer the three tests from the top. The first one you answer "Not yet" is the level to
             work on. You can also pick any step on the ladder to look at it.
           </p>
           <div class="stack-v gap-2xs" id="quiz"></div>
@@ -126,12 +127,8 @@
             class="ladder"
             id="ladder"
             role="list"
-            aria-label="The four levels, from beginner to expert"
+            aria-label="The three levels, from beginner to leading"
           ></ol>
-          <p class="b-all bc-default br-l px-s py-2xs fs-s ink-subtle ta-center">
-            Team and organization carry every level: shared rules, shared skills, allowed tools,
-            time to learn.
-          </p>
         </section>
 
         <section
@@ -140,19 +137,15 @@
           aria-labelledby="panel-title"
         ></section>
 
-        <section class="stack-v gap-s" aria-labelledby="h-unk">
-          <h2 class="fs-xl fw-bold" id="h-unk">3. Your unknown unknowns</h2>
+        <section class="stack-v gap-s" aria-labelledby="h-plan">
+          <h2 class="fs-xl fw-bold" id="h-plan">3. Your training plan</h2>
           <p class="lede ink-subtle">
-            Every topic you mark "Never heard of it" collects here. Pick two and try them this week.
-            Your answers stay in this browser only.
+            Topics you have never heard of come first: those are your unknown unknowns. Then the
+            ones you know of but do not do yet. Pick two and try them this week. Your answers stay
+            in this browser only.
           </p>
           <ul class="summary" id="summary" role="list" aria-label="Your ratings"></ul>
-          <ul
-            class="stack-v gap-2xs"
-            id="unk"
-            role="list"
-            aria-label="Topics you had never heard of"
-          ></ul>
+          <ul class="stack-v gap-2xs" id="plan" role="list" aria-label="Your training plan"></ul>
           <div class="stack-h gap-s">
             <color-mode id="reset-mode" palette="grey">
               <button class="v-button" data-variant="outlined" id="reset" type="button">
@@ -164,98 +157,20 @@
         </section>
 
         <details class="b-all bc-subtle br-xl">
-          <summary class="fs-l fw-bold px-m py-s">Where the interviewees disagree</summary>
-          <div class="stack-v gap-s px-m pb-m">
-            <p class="fs-s ink-subtle">
-              No single right answer here. Know both sides, then decide for your task. Numbers refer
-              to interviews.
-            </p>
-            <div
-              class="table-scroll"
-              tabindex="0"
-              role="region"
-              aria-label="Disagreements, scrolls sideways on small screens"
-            >
-              <table class="v-table">
-                <caption class="sr-only">
-                  Where the interviewees disagree
-                </caption>
-                <thead>
-                  <tr>
-                    <th scope="col">Tension</th>
-                    <th scope="col">One side</th>
-                    <th scope="col">Other side</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Grilling</th>
-                    <td>
-                      Being interviewed by the agent first makes the result good (2, 4, 5, 10)
-                    </td>
-                    <td>Grill-me is tiring, and sitting in chat is not how I want to work (3)</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Specs or code first</th>
-                    <td>Writing specs and issues is now the developer's main job (4)</td>
-                    <td>Gave up on specs. Writes TODOs in code and sends those to the agent (3)</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Prompts or tests</th>
-                    <td>Better instructions give better results (4)</td>
-                    <td>Less time on prompts, more on tests (2)</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">One-shot or step by step</th>
-                    <td>Claude can deliver a whole product from one prompt (7)</td>
-                    <td>Much looks fine but is not in place. Write more yourself (3, 5)</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">General or specialized tools</th>
-                    <td>Specialized tools are usually worse than Claude (11)</td>
-                    <td>Dedicated meeting and transcription tools are daily kit (10, 12)</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Frontier model or not</th>
-                    <td>
-                      The strongest models are what made agents workable, for example for
-                      orchestration (2, 5)
-                    </td>
-                    <td>
-                      Never uses the frontier model. A non-frontier model at medium effort does the
-                      job (13)
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </details>
-
-        <details class="b-all bc-subtle br-xl">
           <summary class="fs-l fw-bold px-m py-s">What this model rests on</summary>
           <div class="v-typeset fs-s px-m pb-m">
             <ul>
               <li>
-                13 interviews and 1 unfinished self-submitted map, collected 4 to 11 November 2026.
-                Numbers refer to interviews, and S is the map.
+                Agentic mapping interviews with Variant consultants in November 2026: what they had
+                to learn, why it matters and how they found out.
               </li>
               <li>
-                Developers are best covered (2, 3, 4, 6, 7, 13, S). Design rests on 3 people (1, 2,
-                11). Business and advisory rests on 4 interviews with no discipline recorded (8, 9,
-                10, 12).
+                Where interviewees disagreed, we chose one answer. Which level a topic sits on is
+                partly our own judgment, and experts will review it.
               </li>
               <li>
-                Level 0 Start and the pass tests are synthesis. Nobody interviewed is a total
-                beginner.
-              </li>
-              <li>
-                No product managers, project leads, testers, data or platform engineers were
-                interviewed.
-              </li>
-              <li>
-                Team and organization are thin: one person described the top team level and two the
-                top organization level.
+                "Missing: no resource yet" means nobody has named a good way to learn it. Send us
+                one if you know it.
               </li>
             </ul>
           </div>

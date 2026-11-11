@@ -1,19 +1,18 @@
-// Viewer state, kept in this browser only. The key and shape match earlier versions of the
-// page so saved ratings keep working.
-const KEY = "agentic-ladder-v1";
+// Viewer state, kept in this browser only. Topic ids are stable slugs, so ratings survive
+// reordering. v2 started with the three-level model; v1 ratings point at old topics.
+const KEY = "agentic-ladder-v2";
 const THEME_KEY = "agentic-ladder-theme";
 
 /**
  * @typedef {object} State
  * @property {import("./model.js").Disc} disc The chosen discipline.
- * @property {number | null} view The level the viewer clicked, or null to follow the tests.
+ * @property {number | null} view The level (1 to 3) the viewer clicked, or null to follow the tests.
  * @property {Partial<Record<string, Record<string, "yes" | "no">>>} quiz Test answers per discipline, by level.
  * @property {Record<string, "do" | "know" | "new">} rate Ratings by topic id.
- * @property {boolean} core Whether to show the shared core topics.
  */
 
 /** @returns {State} */
-const defaults = () => ({ disc: "all", view: null, quiz: {}, rate: {}, core: true });
+const defaults = () => ({ disc: "general", view: null, quiz: {}, rate: {} });
 
 /** @param {(k: string) => k is import("./model.js").Disc} isDisc */
 export function loadState(isDisc) {
@@ -22,7 +21,7 @@ export function loadState(isDisc) {
     const saved = JSON.parse(localStorage.getItem(KEY) ?? "null");
     if (saved && typeof saved === "object") Object.assign(state, saved);
   } catch {}
-  if (!isDisc(state.disc)) state.disc = "all";
+  if (!isDisc(state.disc)) state.disc = "general";
   return state;
 }
 

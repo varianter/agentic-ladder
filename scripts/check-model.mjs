@@ -4,43 +4,70 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const read = (p) => readFileSync(join(root, p), "utf8");
+const model = JSON.parse(readFileSync(join(root, "src/model.json"), "utf8"));
 
-const model = JSON.parse(read("src/model.json"));
-const required = ["LEVELS", "DISC", "PATH", "ROWS", "GAPS"];
-for (const key of required) {
-  if (!model[key]) throw new Error(`src/model.json is missing ${key}`);
-}
-
-// Every discipline needs steps, tests and gaps for all four levels, and rows for levels 1 to 3.
 const problems = [];
-for (const { k } of model.DISC) {
+for (const key of ["LEVELS", "SCOPES", "DISC", "STEPS", "PATH", "TOPICS"]) {
+  if (!model[key]) problems.push(`missing ${key}`);
+}
+if (problems.length) fail();
+
+const levels = model.LEVELS.map((l) => l.k);
+const scopes = model.SCOPES.map((s) => s.k);
+const discs = model.DISC.map((d) => d.k);
+const n = levels.length;
+
+// Every discipline has one self step and one test per level. Team and client steps are shared.
+for (const scope of ["team", "org"])
+  if (model.STEPS[scope]?.length !== n) problems.push(`STEPS.${scope} needs ${n} steps`);
+for (const k of discs) {
   const path = model.PATH[k];
   if (!path) {
     problems.push(`PATH.${k} missing`);
     continue;
   }
-  if (path.steps.length !== 4) problems.push(`PATH.${k}.steps needs 4 levels`);
-  if (path.tests.length !== 4) problems.push(`PATH.${k}.tests needs 4 levels`);
-  path.steps.forEach((s, i) => {
-    if (s.length !== 3) problems.push(`PATH.${k}.steps[${i}] needs 3 steps`);
-  });
-  for (const lvl of [0, 1, 2, 3])
-    if (!model.GAPS[k]?.[lvl]) problems.push(`GAPS.${k}.${lvl} missing`);
-  for (const lvl of [1, 2, 3]) {
-    (model.ROWS[k]?.[lvl] ?? []).forEach((row, i) => {
-      if (row.length !== 4)
-        problems.push(`ROWS.${k}.${lvl}[${i}] needs [topic, without it, ask yourself, sources]`);
-    });
+  if (path.self?.length !== n) problems.push(`PATH.${k}.self needs ${n} steps`);
+  if (path.tests?.length !== n) problems.push(`PATH.${k}.tests needs ${n} tests`);
+}
+
+// Topic ids are saved in viewers' browsers, so they must be unique and never reused.
+const ids = new Set();
+for (const t of model.TOPICS) {
+  const at = `topic ${t.id ?? "(no id)"}`;
+  if (!/^[a-z0-9-]+$/.test(t.id ?? "")) problems.push(`${at}: id must be a lowercase slug`);
+  if (ids.has(t.id)) problems.push(`${at}: duplicate id`);
+  ids.add(t.id);
+  if (!levels.includes(t.level)) problems.push(`${at}: unknown level ${t.level}`);
+  if (!scopes.includes(t.scope)) problems.push(`${at}: unknown scope ${t.scope}`);
+  if (!Array.isArray(t.disc) || !t.disc.length) problems.push(`${at}: disc must be a list`);
+  for (const d of t.disc ?? [])
+    if (d !== "all" && !discs.includes(d)) problems.push(`${at}: unknown discipline ${d}`);
+  for (const f of ["what", "why", "ask", "src"])
+    if (typeof t[f] !== "string" || !t[f]) problems.push(`${at}: needs ${f}`);
+  if (typeof t.core !== "boolean") problems.push(`${at}: core must be true or false`);
+  if (!Array.isArray(t.how)) problems.push(`${at}: how must be a list`);
+  for (const r of t.how ?? []) {
+    if (!r.text) problems.push(`${at}: every resource needs text`);
+    if (r.url && !r.url.startsWith("https://")) problems.push(`${at}: resource url must be https`);
   }
 }
-if (problems.length) {
+
+// Every discipline should see something at every level and scope.
+for (const d of discs)
+  for (const l of levels)
+    for (const s of scopes) {
+      const seen = model.TOPICS.some(
+        (t) => t.level === l && t.scope === s && (t.disc.includes("all") || t.disc.includes(d)),
+      );
+      if (!seen) problems.push(`${d} has no topics at level ${l}, ${s}`);
+    }
+
+if (problems.length) fail();
+
+const missing = model.TOPICS.filter((t) => !t.how.length).length;
+console.log(`Model OK (${model.TOPICS.length} topics, ${missing} without a resource).`);
+
+function fail() {
   console.error(`Model check failed:\n- ${problems.join("\n- ")}`);
   process.exit(1);
 }
-
-const rows = Object.values(model.ROWS).reduce(
-  (a, o) => a + Object.values(o).reduce((b, x) => b + x.length, 0),
-  0,
-);
-console.log(`Model OK (${rows} topics).`);
