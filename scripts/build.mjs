@@ -1,6 +1,5 @@
-// Builds dist/agentic-ladder.html: one self-contained page from src/ and data/model.json.
-// The artifact host wraps the file in its own <!doctype html><head><body>, so the output has no skeleton of its own.
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+// Checks data/model.json and builds dist/: the static site from src/ plus the model.
+import { cpSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -40,28 +39,15 @@ if (problems.length) {
   process.exit(1);
 }
 
-const data = required.map((k) => `const ${k}=${JSON.stringify(model[k])};`).join("\n");
-const html = [
-  read("src/head.html").trimEnd(),
-  "<style>",
-  read("src/styles.css").trimEnd(),
-  "</style>",
-  "",
-  read("src/body.html").trimEnd(),
-  "",
-  "<script>",
-  data,
-  read("src/app.js").trimEnd(),
-  "</script>",
-  "",
-].join("\n");
+// No bundling: the page ships as native ES modules. Copy src/ as is and put the model next to it,
+// where src/js/model.js imports it as a JSON module.
+const dist = join(root, "dist");
+rmSync(dist, { recursive: true, force: true });
+cpSync(join(root, "src"), dist, { recursive: true });
+writeFileSync(join(dist, "model.json"), JSON.stringify(model));
 
-mkdirSync(join(root, "dist"), { recursive: true });
-writeFileSync(join(root, "dist/agentic-ladder.html"), html);
 const rows = Object.values(model.ROWS).reduce(
   (a, o) => a + Object.values(o).reduce((b, x) => b + x.length, 0),
   0,
 );
-console.log(
-  `Built dist/agentic-ladder.html (${(html.length / 1024).toFixed(0)} KB, ${rows} topics)`,
-);
+console.log(`Built dist/ (${rows} topics). Run \`pnpm dev\` to view it.`);

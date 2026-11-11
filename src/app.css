@@ -1,0 +1,249 @@
+/*
+ * Page styles on top of Varde (https://varde.variant.dev/docs/).
+ * Varde does color, type, spacing and controls through classes in the markup.
+ * This file only adds the layout Varde has no utility for. It sets no colors:
+ * color comes from <color-mode> and Varde's surface, ink and border classes.
+ *
+ * Varde is imported into its own cascade layer so the order is explicit:
+ * Varde first, then this page's rules on top.
+ */
+@layer varde, app;
+@import url("https://varde.variant.dev/v/2.0.1/styles.css") layer(varde);
+
+@layer app {
+  .sr-only {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .skip-link {
+    position: absolute;
+    inset-inline-start: 16px;
+    inset-block-start: -100px;
+    z-index: 10;
+
+    &:focus-visible {
+      inset-block-start: 12px;
+    }
+  }
+
+  .logo {
+    display: block;
+    inline-size: 101px;
+    block-size: 24px;
+  }
+
+  .eyebrow {
+    letter-spacing: 0.08em;
+  }
+
+  .lede {
+    max-inline-size: 65ch;
+  }
+
+  fieldset {
+    margin: 0;
+    padding: 0;
+    min-inline-size: 0;
+  }
+
+  [tabindex="-1"]:focus {
+    outline: none;
+  }
+
+  /* Radio options drawn as pills. The native input is hidden visually but still takes focus,
+     so the focus ring moves to the pill. */
+  .option {
+    position: relative;
+    min-block-size: 44px;
+    cursor: pointer;
+
+    &:has(.option-input:focus-visible) {
+      outline: 2px solid currentColor;
+      outline-offset: 2px;
+    }
+  }
+
+  .option-input {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /*
+   * Varde's .stack-v is `flex-flow: column wrap`. With no set height it never wraps, but
+   * Chrome then sizes it from its children's min-content heights, leaving thousands of pixels
+   * of empty space below the quiz and the topic list. A single line fixes that and lets
+   * children stretch to the full width.
+   */
+  .stack-v {
+    flex-wrap: nowrap;
+  }
+
+  /* The four tests: text beside the answer, stacked when narrow. */
+  .test-row > div {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem 1rem;
+    align-items: center;
+
+    @media (width < 40rem) {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  /* The ladder: four rungs that rise left to right. --step is set per rung in the markup. */
+  .ladder {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.625rem;
+    align-items: end;
+
+    & > li {
+      display: flex;
+      min-inline-size: 0;
+    }
+
+    & color-mode {
+      inline-size: 100%;
+    }
+  }
+
+  .rung {
+    inline-size: 100%;
+    min-block-size: calc(10.5rem + var(--step) * 3.5rem);
+    cursor: pointer;
+    transition: translate 0.15s ease;
+
+    &:hover {
+      translate: 0 -2px;
+    }
+
+    &[aria-pressed="true"] {
+      outline: 2px solid currentColor;
+      outline-offset: 3px;
+    }
+
+    & .name {
+      overflow-wrap: anywhere;
+    }
+
+    & .tag {
+      margin-block-start: auto;
+      letter-spacing: 0.06em;
+    }
+  }
+
+  @media (width < 45rem) {
+    .ladder {
+      gap: 0.375rem;
+    }
+
+    .rung {
+      min-block-size: calc(6rem + var(--step) * 2rem);
+
+      & .idea {
+        display: none;
+      }
+    }
+  }
+
+  .steps,
+  .gaps {
+    display: grid;
+    gap: 0.75rem;
+
+    & > * {
+      min-inline-size: 0;
+    }
+  }
+
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .gaps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .topic {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.875rem;
+    align-items: start;
+
+    & .segmented {
+      justify-self: end;
+      flex-wrap: nowrap;
+    }
+  }
+
+  @media (width < 48rem) {
+    .steps,
+    .gaps,
+    .topic {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .topic .segmented {
+      justify-self: stretch;
+
+      & > color-mode {
+        flex: 1 1 auto;
+      }
+
+      & label {
+        white-space: nowrap;
+        padding-inline: 0.375rem;
+      }
+    }
+  }
+
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+
+    @media (width < 45rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+
+    & table {
+      min-inline-size: 35rem;
+    }
+
+    & th,
+    & td {
+      vertical-align: top;
+      text-align: start;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rung {
+      transition: none;
+
+      &:hover {
+        translate: none;
+      }
+    }
+  }
+
+  @media (forced-colors: active) {
+    .option:has(:checked) {
+      outline: 3px solid Highlight;
+    }
+  }
+}

@@ -2,17 +2,19 @@
 // at desktop width in light mode and phone width in dark mode, after answering a few questions.
 // Also fails if the page scrolls sideways.
 //
-// Needs Chrome or Chromium. Set CHROME_PATH if it is not at a standard location.
+// Needs Chrome or Chromium (set CHROME_PATH if it is not at a standard location), and network
+// access, since the page loads Varde from its CDN.
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 import puppeteer from "puppeteer-core";
+import { serve } from "./serve.mjs";
 
 const require = createRequire(import.meta.url);
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const built = join(root, "dist/agentic-ladder.html");
+const built = join(root, "dist/index.html");
 if (!existsSync(built)) {
   console.error("Run `pnpm build` first.");
   process.exit(1);
@@ -31,16 +33,7 @@ if (!executablePath) {
   process.exit(1);
 }
 
-// Wrap the page the way the artifact host does.
-mkdirSync(join(root, ".cache"), { recursive: true });
-const wrapped = join(root, ".cache/a11y-page.html");
-writeFileSync(
-  wrapped,
-  '<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>' +
-    readFileSync(built, "utf8") +
-    "</body></html>",
-);
-
+const { server, url } = await serve();
 const browser = await puppeteer.launch({ executablePath, args: ["--no-sandbox"] });
 let failed = false;
 
@@ -51,7 +44,13 @@ for (const [width, scheme] of [
   const page = await browser.newPage();
   await page.setViewport({ width, height: 900 });
   await page.emulateMediaFeatures([{ name: "prefers-color-scheme", value: scheme }]);
-  await page.goto(pathToFileURL(wrapped).href, { waitUntil: "load" });
+  const errors = [];
+  page.on("pageerror", (err) => errors.push(err.message));
+  page.on("requestfailed", (req) => errors.push(`failed to load ${req.url()}`));
+  await page.goto(url, { waitUntil: "networkidle0" });
+  await page.waitForSelector("#disc-dev");
+  // The page defaults to light. Pick the theme the way a viewer would, so dark stays covered.
+  await page.select("#theme", scheme);
 
   // Put the page in a realistic state: developer at level 2 with one topic rated.
   await page.click("#disc-dev");
@@ -64,9 +63,39 @@ for (const [width, scheme] of [
   const result = await page.evaluate(() =>
     axe.run(document, { runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "best-practice"] }),
   );
+  // Catch layout gaps: a flex column should end close to where its last child ends. Skip
+  // columns that a grid or flex row stretches on purpose to match their neighbours.
+  const gaps = await page.evaluate(() =>
+    [...document.querySelectorAll(".stack-v")]
+      .map((el) => {
+        // A display: contents child has no box of its own, so measure its last child instead.
+        let last = el.lastElementChild;
+        while (last && getComputedStyle(last).display === "contents") last = last.lastElementChild;
+        const parent = getComputedStyle(el.parentElement);
+        const stretched =
+          parent.display.includes("grid") ||
+          (parent.display.includes("flex") && parent.flexDirection.startsWith("row"));
+        if (!last || stretched) return null;
+        const pad = Number.parseFloat(getComputedStyle(el).paddingBottom) || 0;
+        const empty = el.getBoundingClientRect().bottom - pad - last.getBoundingClientRect().bottom;
+        return empty > 8
+          ? `#${el.id || el.className.split(" ")[0]} has ${Math.round(empty)}px empty`
+          : null;
+      })
+      .filter(Boolean),
+  );
+  errors.push(...gaps.map((g) => `layout gap: ${g}`));
   const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
 
   const label = `${width}px ${scheme}`;
+  const vardeLoaded = await page.evaluate(() =>
+    getComputedStyle(document.documentElement).getPropertyValue("--surface-base").trim(),
+  );
+  if (!vardeLoaded) errors.push("Varde stylesheet did not load");
+  if (errors.length) {
+    failed = true;
+    for (const e of errors) console.log(`${label}: ${e}`);
+  }
   if (result.violations.length) {
     failed = true;
     console.log(`${label}: ${result.violations.length} violation types`);
@@ -85,4 +114,5 @@ for (const [width, scheme] of [
 }
 
 await browser.close();
+server.close();
 process.exit(failed ? 1 : 0);

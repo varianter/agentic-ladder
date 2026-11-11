@@ -11,13 +11,13 @@ description: Add a new agentic mapping interview to the model, the ladder page a
    - matches an existing row: add the interview number to that row's sources;
    - is new: write a new row `[topic, what goes wrong without it, ask yourself, sources]` in plain English and append it at the end of the right `ROWS[disc][level]`;
    - changes a path step, a test or a gap: update `PATH` or `GAPS`;
-   - contradicts another interview: add it to the disagreements table in `src/body.html`.
+   - contradicts another interview: add it to the disagreements table in `src/index.html`.
    Map dimensions to disciplines: Individual goes to the interviewee's discipline (`dev`, `des`, `biz`), or to `all` when it applies to every discipline. Team and Organization go to `org`, prefixed "Team:" or "Org:".
    Map levels: getting started is 1, getting good is 2, next level is 3.
 
 3. **Look up unknown names.** Search for tools, skills or terms you do not recognize. If you cannot confirm one, leave it out of the model and list it for the user.
 
-4. **Update the counts.** Change interview totals, dates and coverage numbers in `src/body.html` (eyebrow and "What this model rests on") and in `GAPS` notes that cite counts.
+4. **Update the counts.** Change interview totals, dates and coverage numbers in `src/index.html` (eyebrow and "What this model rests on") and in `GAPS` notes that cite counts.
 
 5. **Build and check.** Run `pnpm check`. Fix any model check or accessibility failure.
 

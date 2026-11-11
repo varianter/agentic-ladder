@@ -44,7 +44,7 @@
   },
   "overrides": [
     {
-      "includes": ["src/body.html"],
+      "includes": ["src/index.html"],
       "linter": {
         "rules": {
           "a11y": {
