@@ -376,6 +376,17 @@ export function summary(state) {
 }
 
 /**
+ * The line under the plan heading in the PDF: discipline, level and date.
+ * @param {State} state
+ */
+export function planMeta(state) {
+  const level = currentLevel(state);
+  const where = level === 4 ? "Passed all three tests" : `Level ${level} ${levelByK(level).name}`;
+  const date = new Date().toLocaleDateString("en-GB", { dateStyle: "long" });
+  return `Variant Agentic Ladder · ${discName(state.disc)} · ${where} · ${date}`;
+}
+
+/**
  * The training plan: topics never heard of first, then those known but not practised, each
  * sorted by level and scope, with why and how to train.
  * @param {State} state

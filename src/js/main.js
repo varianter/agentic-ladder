@@ -49,6 +49,7 @@ function draw() {
   render(view.panel(state, act), $("panel"));
   render(view.summary(state), $("summary"));
   render(view.plan(state), $("plan"));
+  render(view.planMeta(state), $("plan-meta"));
 }
 
 /**
@@ -113,6 +114,23 @@ $("reset").addEventListener("click", (e) => {
     $("resetmsg").textContent = "This removes all your answers.";
     announce("Press again to clear all your answers.");
   }
+});
+
+// Save as PDF goes through the print dialog. The print is always light, and the title
+// becomes the suggested file name.
+$("save").addEventListener("click", () => print());
+const page = { title: document.title, scheme: document.documentElement.dataset.colorScheme };
+addEventListener("beforeprint", () => {
+  page.title = document.title;
+  page.scheme = document.documentElement.dataset.colorScheme;
+  document.title = `Agentic training plan - ${discName(state.disc)}`;
+  render(view.planMeta(state), $("plan-meta"));
+  document.documentElement.dataset.colorScheme = "light";
+});
+addEventListener("afterprint", () => {
+  document.title = page.title;
+  if (page.scheme) document.documentElement.dataset.colorScheme = page.scheme;
+  else delete document.documentElement.dataset.colorScheme;
 });
 
 initTheme(/** @type {HTMLSelectElement} */ ($("theme")));

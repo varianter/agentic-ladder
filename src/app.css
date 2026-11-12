@@ -226,6 +226,26 @@
     }
   }
 
+  .print-only {
+    display: none;
+  }
+
+  /* Save as PDF prints only the training plan. main.js switches to light while printing. */
+  @media print {
+    .no-print {
+      display: none;
+    }
+
+    .print-only {
+      display: block;
+    }
+
+    #plan > li {
+      break-inside: avoid;
+      print-color-adjust: exact;
+    }
+  }
+
   @media (forced-colors: active) {
     .option:has(:checked) {
       outline: 3px solid Highlight;
