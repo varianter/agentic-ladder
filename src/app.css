@@ -240,7 +240,11 @@
       display: block;
     }
 
-    #plan > li {
+    #plan h3 {
+      break-after: avoid;
+    }
+
+    #plan li {
       break-inside: avoid;
       print-color-adjust: exact;
     }

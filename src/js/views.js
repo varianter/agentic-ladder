@@ -387,39 +387,57 @@ export function planMeta(state) {
 }
 
 /**
- * The training plan: topics never heard of first, then those known but not practised, each
- * sorted by level and scope, with why and how to train.
+ * The training plan, split by scope since yourself, your team and the client mean different
+ * work. In each scope, topics never heard of come first, then those known but not practised,
+ * each sorted by level, with why and how to train.
  * @param {State} state
  */
 export function plan(state) {
-  const order = SCOPES.map((s) => s.k);
   /** @param {"new" | "know"} rating */
   const pick = (rating) =>
     Object.entries(state.rate)
       .filter(([, v]) => v === rating)
       .map(([id]) => topicById(id))
       .filter((t) => t !== null)
-      .sort((a, b) => a.level - b.level || order.indexOf(a.scope) - order.indexOf(b.scope));
+      .sort((a, b) => a.level - b.level);
   const items = [...pick("new"), ...pick("know")];
   if (!items.length)
-    return html`<li class="ink-subtle">Nothing yet. Rate topics in the panel above.</li>`;
-  return items.map((t) => {
-    const rating = RATING[state.rate[t.id]];
-    const scope = SCOPES.find((s) => s.k === t.scope)?.name ?? "";
-    return html`<li>
-      <color-mode palette=${rating.palette} class="d-block surface-tinted br-l px-s py-xs">
-        <div class="stack-v gap-3xs">
-          <span class="fs-xs ink-subtle"
-            >Level ${t.level} ${levelByK(t.level).name} · ${scope} · ${rating.label}</span
-          >
-          <h3 class="fw-bold">${t.what}</h3>
-          <p class="fs-s"><strong>Why:</strong> ${t.why}</p>
-          <div class="stack-v gap-4xs fs-s">
-            <strong>How to learn it</strong>
-            ${resources(t.how)}
-          </div>
-        </div>
-      </color-mode>
-    </li>`;
+    return html`<p class="ink-subtle">Nothing yet. Rate topics in the panel above.</p>`;
+  return SCOPES.map((scope) => {
+    const mine = items.filter((t) => t.scope === scope.k);
+    if (!mine.length) return nothing;
+    return html`<div class="stack-v gap-xs">
+      <div class="stack-v gap-4xs">
+        <h3 class="fs-l fw-bold">${scope.name}</h3>
+        <p class="fs-s ink-subtle">${scope.lede}</p>
+      </div>
+      <ul class="stack-v gap-2xs" role="list">
+        ${mine.map((t) => planItem(state, t))}
+      </ul>
+    </div>`;
   });
+}
+
+/**
+ * One topic in the training plan.
+ * @param {State} state
+ * @param {Topic} t
+ */
+function planItem(state, t) {
+  const rating = RATING[state.rate[t.id]];
+  return html`<li>
+    <color-mode palette=${rating.palette} class="d-block surface-tinted br-l px-s py-xs">
+      <div class="stack-v gap-3xs">
+        <span class="fs-xs ink-subtle"
+          >Level ${t.level} ${levelByK(t.level).name} · ${rating.label}</span
+        >
+        <h4 class="fw-bold">${t.what}</h4>
+        <p class="fs-s"><strong>Why:</strong> ${t.why}</p>
+        <div class="stack-v gap-4xs fs-s">
+          <strong>How to learn it</strong>
+          ${resources(t.how)}
+        </div>
+      </div>
+    </color-mode>
+  </li>`;
 }
