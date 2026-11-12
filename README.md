@@ -1,9 +1,9 @@
 # Agentic Ladder
 
-A roadmap for Variant consultants who want to get good at working with AI agents, from total beginner to expert. It is built from agentic mapping interviews and comes in two forms:
+A roadmap for Variant consultants who want to get good at working with AI agents, over three levels, from no experience to leading. It is built from agentic mapping interviews and comes in two forms:
 
 - **The ladder page**, an interactive model. Pick your discipline, answer three tests to find your level, do the three steps, and rate topics to find your unknown unknowns.
-- **The roadmap doc**, the long-form version with every topic, the disagreements, open questions, vocabulary and where we need more material or learning resources. A snapshot is in `docs/roadmap.md`.
+- **The roadmap doc**, the long-form version with every topic and its sources, how disagreements were settled, which topics were placed by judgment, open questions, vocabulary and where we need more material or learning resources. A snapshot is in `docs/roadmap.md`.
 
 ## Getting started
 
@@ -24,7 +24,7 @@ All content lives in `src/model.json`. Edit it and run `pnpm check`. Pushing to 
 
 ## Adding an interview
 
-Open the project in Claude Code and paste the interview. The `add-interview` skill saves it, updates the model, the page and the doc, and runs the checks.
+Open the project in Claude Code, type `/add-interview` and paste or attach the interview. Pasting it without the command works too. The skill saves the raw text, then asks you about each change one at a time: new topics, wording, topics to combine, and topics an answer could improve. Nothing changes in the model until you say yes. It then updates the page and the roadmap doc and runs the checks.
 
 ## Data
 
