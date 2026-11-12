@@ -20,7 +20,11 @@
     }
   ],
   "SCOPES": [
-    { "k": "self", "name": "Yourself", "lede": "How you work on your own." },
+    {
+      "k": "self",
+      "name": "Yourself",
+      "lede": "How you work on your own."
+    },
     {
       "k": "team",
       "name": "Your team",
@@ -33,11 +37,26 @@
     }
   ],
   "DISC": [
-    { "k": "general", "name": "General" },
-    { "k": "dev", "name": "Developer" },
-    { "k": "des", "name": "Designer" },
-    { "k": "sales", "name": "Sales & management" },
-    { "k": "adv", "name": "Advisory" }
+    {
+      "k": "general",
+      "name": "General"
+    },
+    {
+      "k": "dev",
+      "name": "Developer"
+    },
+    {
+      "k": "des",
+      "name": "Designer"
+    },
+    {
+      "k": "sales",
+      "name": "Sales & management"
+    },
+    {
+      "k": "adv",
+      "name": "Advisory"
+    }
   ],
   "STEPS": {
     "team": [
@@ -125,7 +144,10 @@
       "why": "You learn what it is good at without risking real work. Your expertise is what catches its mistakes.",
       "ask": "When did you last disagree with the agent and turn out to be right?",
       "how": [
-        { "text": "DataCamp, if you like a course to follow", "url": "https://www.datacamp.com" }
+        {
+          "text": "DataCamp, if you like a course to follow",
+          "url": "https://www.datacamp.com"
+        }
       ],
       "src": "4, 7, 10, 12, 13"
     },
@@ -136,13 +158,21 @@
       "disc": ["all"],
       "core": false,
       "what": "Models and the app around them",
-      "detail": "The model is not the app. Model families differ in strengths, input types and price.",
-      "why": "You judge all AI by one tool's weak spots, and expect the wrong things.",
-      "ask": "Can you name a task where another model or app does better than your default?",
+      "detail": "The model is not the app. Model families differ in strengths, input types and price. Give the same task to two tools now and then. For developers, that means other coding agents too.",
+      "why": "You judge all AI by one tool's weak spots, and settle on the first setup that worked.",
+      "ask": "Have you given the same task to two tools?",
       "how": [
-        { "text": "LMArena, to compare models", "url": "https://lmarena.ai" },
-        { "text": "Andrej Karpathy's videos", "url": "https://www.youtube.com/@AndrejKarpathy" },
-        { "text": "Your vendor's model documentation" }
+        {
+          "text": "LMArena, to compare models",
+          "url": "https://lmarena.ai"
+        },
+        {
+          "text": "Andrej Karpathy's videos",
+          "url": "https://www.youtube.com/@AndrejKarpathy"
+        },
+        {
+          "text": "Your vendor's model documentation"
+        }
       ],
       "src": "4, 5, 6, 7, 12"
     },
@@ -156,7 +186,11 @@
       "detail": "Tokens, effort, context size and model choice decide what a task costs and how good it gets. The strongest model at full effort is not the default.",
       "why": "Throwing frontier models at everything can be lose-lose: worse results, a large bill for the client, poor return and more energy used.",
       "ask": "Do you know roughly what your last task cost, and whether a smaller model would have done?",
-      "how": [{ "text": "Your vendor's pricing documentation" }],
+      "how": [
+        {
+          "text": "Your vendor's pricing documentation"
+        }
+      ],
       "src": "1, 5, 6, 7, 13"
     },
     {
@@ -178,18 +212,21 @@
       "scope": "self",
       "disc": ["all"],
       "core": true,
-      "what": "Grilling: let the agent interview you first",
-      "detail": "Before it makes anything, the agent asks you questions until you agree on what to make.",
-      "why": "You and the agent agree on the goal before work starts, and it finds gaps you would miss.",
+      "what": "Use ready-made skills, starting with grilling",
+      "detail": "A skill is a packaged instruction the agent loads for a kind of task. Start with skills others wrote. Try grilling first: before it makes anything, the agent asks you questions until you agree on what to make.",
+      "why": "You get good routines without writing them yourself, and the agent finds gaps you would miss before work starts.",
       "ask": "Has an agent asked you ten questions before producing anything?",
       "how": [
         {
           "text": "Matt Pocock's skills, including grill-me",
           "url": "https://github.com/mattpocock/skills"
         },
-        { "text": "AI Hero", "url": "https://www.aihero.dev" }
+        {
+          "text": "AI Hero",
+          "url": "https://www.aihero.dev"
+        }
       ],
-      "src": "2, 4, 5, 10, 13"
+      "src": "2, 4, 5, 8, 10, 13"
     },
     {
       "id": "plan-first",
@@ -210,9 +247,9 @@
       "disc": ["all"],
       "core": false,
       "what": "Context, and when to start a new session",
-      "detail": "Know what the agent sees, when a session has gone stale, and how to hand over to a fresh one.",
-      "why": "Answers get worse in long sessions, and tokens burn.",
-      "ask": "Do you know when a session has gone stale?",
+      "detail": "Know what the agent sees, when a session has gone stale, and how to hand over to a fresh one. Developers keep an AGENTS.md in the repository so every session starts with the basics.",
+      "why": "Answers get worse in long sessions, tokens burn, and each new session starts cold.",
+      "ask": "What does a new session know before you type?",
       "how": [],
       "src": "7, 10, 13"
     },
@@ -221,10 +258,10 @@
       "level": 1,
       "scope": "self",
       "disc": ["all"],
-      "core": false,
-      "what": "Use it to explain and to think with",
+      "core": true,
+      "what": "Use it as a sparring partner, to explain and to think with",
       "detail": "Describe the problem and ask why, not only for facts or fixes.",
-      "why": "You get answers, but never reason with it.",
+      "why": "It is not a fact machine. Use it to help you think, and do not trust an answer you have not thought through.",
       "ask": "Do you describe problems to it, or only ask for answers?",
       "how": [],
       "src": "2, 9, 12"
@@ -249,23 +286,11 @@
       "disc": ["all"],
       "core": false,
       "what": "Connect the sources you work in, and decide what not to connect",
-      "why": "Without them you copy and paste. Connect too much and private conversations leak.",
+      "why": "Without them the agent only knows what you paste in. Connect too much and private conversations leak.",
       "ask": "Can you list what your assistant can read right now?",
       "how": [],
-      "src": "6, 8, 9, 10, 12, S"
-    },
-    {
-      "id": "ready-skills",
-      "level": 1,
-      "scope": "self",
-      "disc": ["all"],
-      "core": false,
-      "what": "Use ready-made skills",
-      "detail": "A skill is a packaged instruction the agent loads for a kind of task. Start with skills others wrote.",
-      "why": "You get good routines without writing them yourself.",
-      "ask": "Have you installed a skill and used it on real work?",
-      "how": [{ "text": "Matt Pocock's skills", "url": "https://github.com/mattpocock/skills" }],
-      "src": "4, 5, 8, 13"
+      "src": "6, 8, 9, 10, 12, S",
+      "detail": "Email, calendar, files, spreadsheets, Office 365, statistics and the other systems you use every day. Leave private conversations out, and keep control of what the agent can change."
     },
     {
       "id": "own-delivery",
@@ -347,30 +372,6 @@
       "src": "13"
     },
     {
-      "id": "agents-md",
-      "level": 1,
-      "scope": "self",
-      "disc": ["dev"],
-      "core": false,
-      "what": "An AGENTS.md in the repository, and handover between sessions",
-      "why": "Each session starts cold, or drags stale context along.",
-      "ask": "What does a new session know about your repository before you type?",
-      "how": [],
-      "src": "13"
-    },
-    {
-      "id": "try-harnesses",
-      "level": 1,
-      "scope": "self",
-      "disc": ["dev"],
-      "core": false,
-      "what": "Try different coding agents and models",
-      "why": "You settle on the first setup that worked.",
-      "ask": "Have you given the same task to two tools?",
-      "how": [],
-      "src": "4, 6, 7"
-    },
-    {
       "id": "figma-structure",
       "level": 1,
       "scope": "self",
@@ -445,30 +446,6 @@
       "src": "11"
     },
     {
-      "id": "sparring-partner",
-      "level": 1,
-      "scope": "self",
-      "disc": ["sales"],
-      "core": true,
-      "what": "The assistant as a sparring partner",
-      "why": "You use it as a search engine and miss what it is good at.",
-      "ask": "Do you describe problems to it, or only ask for facts?",
-      "how": [],
-      "src": "12"
-    },
-    {
-      "id": "connect-work-systems",
-      "level": 1,
-      "scope": "self",
-      "disc": ["sales"],
-      "core": false,
-      "what": "Connect email, statistics and the systems you work in",
-      "why": "The agent only knows what you paste in.",
-      "ask": "Which daily system is still not connected?",
-      "how": [],
-      "src": "12"
-    },
-    {
       "id": "know-terms",
       "level": 1,
       "scope": "self",
@@ -489,18 +466,6 @@
       "what": "A project per client or case, as a sparring partner",
       "why": "Every conversation starts from zero, and the material is spread out.",
       "ask": "Does the assistant know the case before you start typing?",
-      "how": [],
-      "src": "9, 10"
-    },
-    {
-      "id": "connect-office",
-      "level": 1,
-      "scope": "self",
-      "disc": ["adv"],
-      "core": false,
-      "what": "Connect files, spreadsheets and Office 365, and decide what to leave out",
-      "why": "It is easy to lose control of a spreadsheet, and private conversations should not be connected.",
-      "ask": "Which of your connected sources holds something private?",
       "how": [],
       "src": "9, 10"
     },
@@ -655,7 +620,10 @@
           "text": "Matt Pocock's skills, as examples",
           "url": "https://github.com/mattpocock/skills"
         },
-        { "text": "Ponytail", "url": "https://github.com/DietrichGebert/ponytail" }
+        {
+          "text": "Ponytail",
+          "url": "https://github.com/DietrichGebert/ponytail"
+        }
       ],
       "src": "4, 6, 10, 13"
     },
@@ -679,10 +647,11 @@
       "disc": ["all"],
       "core": false,
       "what": "Use your craft and domain knowledge to steer",
-      "why": "Generic output, and no way to tell good from bad.",
-      "ask": "Where did your expertise change the result last week?",
+      "why": "Generic, polished output with nothing behind it, and no way to tell good from bad.",
+      "ask": "What in your last deliverable could only you have added?",
       "how": [],
-      "src": "3, 5, 9, 10, 13"
+      "src": "3, 5, 9, 10, 13",
+      "detail": "Use your experience to make something better, not to skip the experience."
     },
     {
       "id": "review-handoff",
@@ -869,7 +838,11 @@
       "what": "How an agent loop works, when you design agent products",
       "why": "You design for a system you do not understand.",
       "ask": "Can you describe the loop behind your product?",
-      "how": [{ "text": "LangSmith Fleet" }],
+      "how": [
+        {
+          "text": "LangSmith Fleet"
+        }
+      ],
       "src": "1"
     },
     {
@@ -894,7 +867,11 @@
       "what": "A second brain: meetings and sources in one knowledge base",
       "why": "Information cannot be combined for decisions.",
       "ask": "Where would the agent find what you learned last quarter?",
-      "how": [{ "text": "Andrej Karpathy on personal knowledge bases" }],
+      "how": [
+        {
+          "text": "Andrej Karpathy on personal knowledge bases"
+        }
+      ],
       "src": "8"
     },
     {
@@ -955,7 +932,12 @@
       "what": "AI and ethics, and AI for business leaders",
       "why": "You advise on something you have not studied.",
       "ask": "Have you taken a structured course?",
-      "how": [{ "text": "DataCamp", "url": "https://www.datacamp.com" }],
+      "how": [
+        {
+          "text": "DataCamp",
+          "url": "https://www.datacamp.com"
+        }
+      ],
       "src": "10"
     },
     {
@@ -971,18 +953,6 @@
       "src": "10"
     },
     {
-      "id": "experience-create",
-      "level": 2,
-      "scope": "self",
-      "disc": ["adv"],
-      "core": false,
-      "what": "Use your experience to create, not to skip experience",
-      "why": "Polished output with nothing behind it.",
-      "ask": "What in your last deliverable could only you have added?",
-      "how": [],
-      "src": "10"
-    },
-    {
       "id": "team-shared-skills",
       "level": 2,
       "scope": "team",
@@ -992,7 +962,12 @@
       "detail": "In the repository or a shared space. For example skills for your stack and for handling secrets.",
       "why": "Agents get your stack wrong the same way every time.",
       "ask": "Does everyone run the same skills for planning and review?",
-      "how": [{ "text": "Ponytail", "url": "https://github.com/DietrichGebert/ponytail" }],
+      "how": [
+        {
+          "text": "Ponytail",
+          "url": "https://github.com/DietrichGebert/ponytail"
+        }
+      ],
       "src": "4, 5, 6, 13"
     },
     {
@@ -1068,23 +1043,12 @@
       "scope": "org",
       "disc": ["all"],
       "core": true,
-      "what": "Connect documentation and knowledge bases, also for development",
-      "why": "Agents cannot look up base data and domain information.",
+      "what": "A shared knowledge base, connected for every agent, also for development",
+      "why": "Agents cannot look up base data and domain information, and spread-out information cannot support decisions.",
       "ask": "Can a coding agent at the client look up domain facts without someone pasting them in?",
       "how": [],
-      "src": "12, 13"
-    },
-    {
-      "id": "org-knowledge-base",
-      "level": 2,
-      "scope": "org",
-      "disc": ["all"],
-      "core": false,
-      "what": "A shared knowledge base",
-      "why": "Information is spread over many systems and cannot support decisions.",
-      "ask": "Could an agent answer a question about a past project at the client?",
-      "how": [],
-      "src": "8"
+      "src": "8, 12, 13",
+      "detail": "Gather documentation, base data and domain information that is spread over many systems, and connect it so agents can look it up."
     },
     {
       "id": "org-local-models",
@@ -1120,7 +1084,11 @@
       "detail": "Change how you work, what you take responsibility for and which positions you take. You are still a technical expert, but above all an expert in turning the real world into systems, processes and formal structures that work as modelled.",
       "why": "Making things gets cheap, so judgment about what to make and why is what counts, and so does caring about what you make.",
       "ask": "What did you take responsibility for this month that is outside your title?",
-      "how": [{ "text": "Laurie Voss's talk on becoming product engineers" }],
+      "how": [
+        {
+          "text": "Laurie Voss's talk on becoming product engineers"
+        }
+      ],
       "src": "1, 2"
     },
     {
@@ -1193,10 +1161,11 @@
       "disc": ["all"],
       "core": false,
       "what": "Assess the risks of connected tools",
-      "why": "Security comes second to hype.",
+      "why": "Security comes second to hype, and you install servers you cannot assess.",
       "ask": "Do you know what an MCP server you installed can do?",
       "how": [],
-      "src": "4, 5"
+      "src": "4, 5",
+      "detail": "Know what an MCP server or plugin can read and do before you install it. Developers learn how MCP works inside and read the server's code."
     },
     {
       "id": "architecture-tests",
@@ -1233,18 +1202,6 @@
       "ask": "Do you know what a local model can and cannot do for you?",
       "how": [],
       "src": "6, 7"
-    },
-    {
-      "id": "mcp-internals",
-      "level": 3,
-      "scope": "self",
-      "disc": ["dev"],
-      "core": false,
-      "what": "How MCP works inside",
-      "why": "You install servers you cannot assess.",
-      "ask": "Have you read the code of an MCP server you use?",
-      "how": [],
-      "src": "5"
     },
     {
       "id": "routing-skills",
