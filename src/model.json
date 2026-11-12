@@ -224,7 +224,7 @@
       "core": false,
       "what": "Use it to explain and to think with",
       "detail": "Describe the problem and ask why, not only for facts or fixes.",
-      "why": "It is not a better search engine. It helps you reason.",
+      "why": "You get answers, but never reason with it.",
       "ask": "Do you describe problems to it, or only ask for answers?",
       "how": [],
       "src": "2, 9, 12"
@@ -340,7 +340,7 @@
       "disc": ["dev"],
       "core": false,
       "what": "Split work into small tasks",
-      "detail": "This matters more than ever. A pull request should be a gift.",
+      "detail": "A pull request should be a gift.",
       "why": "Large changes nobody can review.",
       "ask": "Would you enjoy reviewing your last pull request?",
       "how": [],
@@ -511,7 +511,7 @@
       "disc": ["adv"],
       "core": true,
       "what": "Build trust by checking output against the source",
-      "why": "Too much trust or none at all. Both cost you.",
+      "why": "You trust it too much, or not at all.",
       "ask": "How do you check a number the agent gives you?",
       "how": [],
       "src": "9"
@@ -1118,7 +1118,7 @@
       "core": true,
       "what": "Take a broader product role",
       "detail": "Change how you work, what you take responsibility for and which positions you take. You are still a technical expert, but above all an expert in turning the real world into systems, processes and formal structures that work as modelled.",
-      "why": "Making things gets cheap, so judgment about what to make and why is what counts. Caring about what you make matters even more.",
+      "why": "Making things gets cheap, so judgment about what to make and why is what counts, and so does caring about what you make.",
       "ask": "What did you take responsibility for this month that is outside your title?",
       "how": [{ "text": "Laurie Voss's talk on becoming product engineers" }],
       "src": "1, 2"

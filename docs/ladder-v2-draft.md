@@ -76,7 +76,7 @@ Disciplines: Developer, Designer, Sales & management, Advisory, and General (onl
 
 8. **Use AI to explain and to think with**
    - What: describe the problem and ask why, not only for facts or fixes.
-   - Why: it is not a better search engine. It helps you reason.
+   - Why: you get answers, but never reason with it.
    - Ask: do you describe problems to it, or only ask for answers?
    - How: MISSING
    - src: 2, 9, 12

@@ -2,7 +2,7 @@
 
 A roadmap for Variant consultants who want to get good at working with AI agents, from total beginner to expert. It is built from agentic mapping interviews and comes in two forms:
 
-- **The ladder page**, an interactive model. Pick your discipline, answer four tests to find your level, do the three steps, and rate topics to find your unknown unknowns.
+- **The ladder page**, an interactive model. Pick your discipline, answer three tests to find your level, do the three steps, and rate topics to find your unknown unknowns.
 - **The roadmap doc**, the long-form version with every topic, the disagreements, open questions, vocabulary and where we need more material or learning resources. A snapshot is in `docs/roadmap.md`.
 
 ## Getting started

@@ -24,7 +24,7 @@ Package manager is pnpm (version pinned in `packageManager`, run through corepac
 ## The model
 
 - Three levels: 1 Beginner (no experience), 2 Experienced, 3 Leading (self-sufficient and leading). They match the interview sheet's getting started, getting good and next level, but a topic may sit on another level by our judgment. Experts review the placement.
-- Three scopes per level, in `SCOPES`: `self` (yourself), `team` (initiative for an AI-empowered team that keeps quality), `org` (what you advise the client). Organization means the client, not Variant.
+- Three scopes per level, in `SCOPES`: `self` (yourself), `team` (initiative so the team uses AI well and keeps quality), `org` (what you advise the client). Organization means the client, not Variant.
 - Disciplines in `DISC`: `general` (shared topics only), `dev`, `des`, `sales` (sales and management), `adv` (advisory).
 - `PATH[disc].self[i]` is the level's step for yourself and `PATH[disc].tests[i]` its "you are there when" test. `STEPS.team[i]` and `STEPS.org[i]` are shared by all disciplines.
 - `TOPICS` is a flat list. Each topic is `{ id, level, scope, disc, core, what, detail?, why, ask, how, src }`. `disc` is a list of discipline keys, or `["all"]`. `core` topics show first, the rest fold under "more at this level". `how` is a list of `{ text, url? }`. An empty list shows "Missing: no resource yet".

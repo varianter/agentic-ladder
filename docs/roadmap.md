@@ -79,7 +79,7 @@ Each path has three steps per level and one test. Do the steps in order.
 
 ## Where we need more material
 
-The model is weakest at both ends: nobody interviewed is a total beginner, and few described the expert level outside development. These are the places where more interviews or maps are needed before the path can be trusted.
+The model is weakest at both ends: nobody interviewed is a total beginner, and few described the expert level outside development. We need more interviews or maps here before we can trust the path.
 
 | Part of the model | What we have | What to collect |
 | --- | --- | --- |
@@ -171,7 +171,7 @@ These topics came up across developers, designers and business roles alike. The 
 
 ## Developer track
 
-The developers agree on one thing: old engineering wisdom matters more with agents, not less. The work moves from writing code to writing goals, tests and conventions, and to reviewing.
+The developers agree that old engineering wisdom matters more with agents. The work moves from writing code to writing goals, tests and conventions, and to reviewing.
 
 ### Getting started
 
@@ -183,7 +183,7 @@ The developers agree on one thing: old engineering wisdom matters more with agen
 | Solid software engineering fundamentals | You cannot judge what the agent hands you | Which part of the agent's last change would you have done differently? | 2, S |
 | Try different harnesses and models, and dare to experiment | You settle on the first setup that worked | Have you given the same task to two tools? | 4, 6, 7 |
 | Keep responsibility for everything you push | Code nobody understands reaches main | Would you defend every line in review? | 3, 7 |
-| Split work into small tasks. This matters more than ever | Large changes nobody can review. A pull request should be a gift | Would you enjoy reviewing your last pull request? | 13 |
+| Split work into small tasks | Large changes nobody can review. A pull request should be a gift | Would you enjoy reviewing your last pull request? | 13 |
 | Handover and compacting between sessions, and an AGENTS.md in the repo | Each session starts cold or drags stale context along | What does a new session know about your repo before you type? | 13 |
 
 ### Getting good
@@ -316,7 +316,7 @@ Eight of thirteen interviewees said something about the team, and only one reach
 
 ## Organization level
 
-Six of thirteen interviewees had something to say here, and two touched the next level. One named the gap: what should we work on beyond solving our tasks each day? The other named an answer: a software factory.
+Six of thirteen interviewees had something to say here, and two touched the next level. One asked what we should work on beyond solving our tasks each day. The other proposed a software factory.
 
 | Level | What the organization has to enable | What goes wrong without it | Check as an organization | Source |
 | --- | --- | --- | --- | --- |
@@ -334,7 +334,7 @@ One interviewee listed three failure patterns the organization should avoid: doo
 
 ## Where the interviewees disagree
 
-The roadmap is not one agreed path. On these seven points people have reached opposite conclusions, and each consultant should know both sides before choosing.
+On these seven points people reached opposite conclusions. Know both sides before you choose.
 
 | Tension | One side | Other side |
 | --- | --- | --- |
@@ -346,7 +346,7 @@ The roadmap is not one agreed path. On these seven points people have reached op
 | Careful or casual prompting | Open questions at the right level matter (2) | You do not always need to think every wording through (7) |
 | Frontier model or not | The strongest models are what made agents workable, for example for orchestration (2, 5) | Never uses the frontier model. A non-frontier model at medium effort does the job (13) |
 
-None of these are settled by the data. They are good topics for a team discussion, because the answer likely depends on the task and the person.
+The data does not settle any of them. They are good topics for a team discussion, because the answer likely depends on the task and the person.
 
 ## Open questions people say they are still missing
 
@@ -357,7 +357,7 @@ These are the known unknowns from the reflections. Nobody in the interviews has 
 - How to solve text fatigue and balance cognitive load when agents produce more than anyone can read (2, 4).
 - How to keep ownership of a codebase that agents write (6).
 - How juniors build judgment when the agent does the work (5).
-- What spec-driven work actually is, and whether it is worth it (3).
+- What spec-driven work is, and whether it is worth it (3).
 - Where to share: one person wants an AI-specific developer channel, another wants better sharing and recommended courses in Variant (2, 10).
 - What the new practices for each field are, when so much still changes (11).
 - What we should be working on beyond solving the daily tasks (5).
