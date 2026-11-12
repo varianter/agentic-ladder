@@ -92,51 +92,51 @@ Use AI on small, real tasks and check what it gives you.
 
 ### Yourself
 
-| Topic | Who | What it means | What goes wrong without it | Ask yourself | How to learn | Source |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Start small, and challenge the answers** | Everyone | Use it on small, real tasks from today's work. Disagree with it when you know better. Nobody is behind. | You learn what it is good at without risking real work. Your expertise is what catches its mistakes. | When did you last disagree with the agent and turn out to be right? | [DataCamp, if you like a course to follow](https://www.datacamp.com) | 4, 7, 10, 12, 13 |
-| **Token management: cost, quality and climate** | Everyone | Tokens, effort, context size and model choice decide what a task costs and how good it gets. The strongest model at full effort is not the default. Know your usage limits and watch how fast you use them. | Throwing frontier models at everything can be lose-lose: worse results, a large bill for the client, poor return and more energy used. Or you hit your limit and wait hours to work again. | Do you know roughly what your last task cost, and whether a smaller model would have done? | Your vendor's pricing documentation | 1, 5, 6, 7, 13, 14 |
-| **Use ready-made skills, starting with grilling** | Everyone | A skill is a packaged instruction the agent loads for a kind of task. Start with skills others wrote. Try grilling first: before it makes anything, the agent asks you questions until you agree on what to make. | You get good routines without writing them yourself, and the agent finds gaps you would miss before work starts. | Has an agent asked you ten questions before producing anything? | [Matt Pocock's skills, including grill-me](https://github.com/mattpocock/skills); [AI Hero](https://www.aihero.dev) | 2, 4, 5, 8, 10, 13, 14 |
-| **Use it as a sparring partner, to explain and to think with** | Everyone | Describe the problem and ask why, not only for facts or fixes. | It is not a fact machine. Use it to help you think, and do not trust an answer you have not thought through. | Do you describe problems to it, or only ask for answers? | Missing | 2, 9, 12 |
-| **Keep sensitive data out** | Everyone | Know which data the client allows in which tool. Mask sensitive data on the way in. | A privacy breach at the client. | Do you know the data rule for your current client? | Missing | 6, 7, 10 |
-| **You own what you deliver** | Everyone | You are the expert, and the systems you build affect the real world. Speed is no reason for a bad system. A bus driver does not speed because the manager wants efficiency. Push back, and explain why. | Work can look fine without being in place. | Could you explain every part of your last delivery without the agent? | Missing | 3, 7, 11, 14 |
-| **A coding agent with plan mode, and an inline assistant in the IDE** | Developer |  | In a chat window you copy and paste, and the agent never sees the codebase. | Has an agent made a change across several files for you? | Missing | 2, 5, 6, 7, S |
-| **Give the agent a clear goal, by one of two routes** | Developer | Write an issue or spec the agent can solve from the text alone. Or build your own mental model and leave TODOs in the code for the agent. | The agent writes the code, so our job is to set better goals. | Could an agent solve your last issue from the text alone? | [Matt Pocock's skills for writing issues](https://github.com/mattpocock/skills) | 3, 4 |
-| **Give the design agent your Figma structure, not a screenshot** | Designer |  | A sketched screen gives the agent very little. | Does the agent get your components, or only a picture? | Missing | 1 |
-| **Transcribe meetings and interviews** | Designer, Sales & management, Advisory | For example the transcription in Word, Trale or Jamie. Ask for consent first. | Analysis starts from memory and scattered notes, and details get lost. | Is your last important meeting searchable? | Missing | 9, 10, 11, 12 |
-| **A project per client or case, as a sparring partner** | Advisory |  | Every conversation starts from zero, and the material is spread out. | Does the assistant know the case before you start typing? | Missing | 9, 10 |
-| **Build trust by checking output against the source** | Advisory |  | You trust it too much, or not at all. | How do you check a number the agent gives you? | Missing | 9 |
-| Models and the app around them | Everyone | The model is not the app. Model families differ in strengths, input types and price. Give the same task to two tools now and then. For developers, that means other coding agents too. | You judge all AI by one tool's weak spots, and settle on the first setup that worked. | Have you given the same task to two tools? | [LMArena, to compare models](https://lmarena.ai); [Andrej Karpathy's videos](https://www.youtube.com/@AndrejKarpathy); Your vendor's model documentation | 4, 5, 6, 7, 12, 14 |
-| Prompt at the right level | Everyone | Be concrete about the goal, the limits and the size of the task. Be open about the solution, and let the agent propose. Do not polish the wording. | Dictating the solution gives you the wrong thing. A vague goal gives you vague work. | When did you last ask for options instead of dictating the answer? | Missing | 2, 4, 6, 7 |
-| Plan first, and keep research apart from doing | Everyone |  | You make the important choices yourself, and keep your own competence. | Do you read and correct a plan before the agent acts? | Missing | 3, 6, 7 |
-| Context, and when to start a new session | Everyone | Know what the agent sees, when a session has gone stale, and how to hand over to a fresh one. Developers keep an AGENTS.md in the repository so every session starts with the basics. | Answers get worse in long sessions, tokens burn, and each new session starts cold. | What does a new session know before you type? | Missing | 7, 10, 13, 14 |
-| Connect the sources you work in, and decide what not to connect | Everyone | Email, calendar, files, spreadsheets, Office 365, statistics and the other systems you use every day. Leave private conversations out, and keep control of what the agent can change. | Without them the agent only knows what you paste in. Connect too much and private conversations leak. | Can you list what your assistant can read right now? | Missing | 6, 8, 9, 10, 12, S |
-| Use the agent to explain code and odd behavior | Developer |  | You miss the cheapest way to learn a codebase. | Do you ask why before you ask for a fix? | Missing | 2 |
-| Solid software engineering fundamentals | Developer |  | You cannot judge what the agent hands you. | Which part of the agent's last change would you have done differently? | Missing | 2, S |
-| Split work into small tasks | Developer | A pull request should be a gift. | Large changes nobody can review. | Would you enjoy reviewing your last pull request? | Missing | 13 |
-| Git and GitHub: clone, branch, pull request | Designer |  | You cannot deliver design as code, or follow work that lives in repositories. | Can you open a pull request and read someone else's? | Missing | 1 |
-| AI in every research step | Designer | Research questions, interviews, transcripts, summaries, common patterns and ideas. | You run the old process at the old speed. | Which research step has not changed yet? | Missing | 11 |
-| Structure research data so it can be found | Designer |  | The agent cannot answer from material it cannot find. | Could the agent find every interview on one theme? | Missing | 11 |
-| Critical analysis at each handoff | Designer |  | Confident summaries with errors reach the client. | Do you check the synthesis against the raw material? | Missing | 11 |
-| Know what MCP, skills and Git are | Sales & management |  | You cannot follow where the tools are going, or talk about them with clients. | Can you explain what a skill is to a colleague? | Missing | 8 |
-| Tone of voice | Advisory |  | Text that does not sound like you. | Would a client recognize your voice in the draft? | Missing | 9 |
+| Topic | Who | What it means | What goes wrong without it | Ask yourself | Source |
+| --- | --- | --- | --- | --- | --- |
+| **Start small, and challenge the answers** | Everyone | Use it on small, real tasks from today's work. Disagree with it when you know better. Nobody is behind. | You learn what it is good at without risking real work. Your expertise is what catches its mistakes. | When did you last disagree with the agent and turn out to be right? | 4, 7, 10, 12, 13 |
+| **Token management: cost, quality and climate** | Everyone | Tokens, effort, context size and model choice decide what a task costs and how good it gets. The strongest model at full effort is not the default. Know your usage limits and watch how fast you use them. | Throwing frontier models at everything can be lose-lose: worse results, a large bill for the client, poor return and more energy used. Or you hit your limit and wait hours to work again. | Do you know roughly what your last task cost, and whether a smaller model would have done? | 1, 5, 6, 7, 13, 14 |
+| **Use ready-made skills, starting with grilling** | Everyone | A skill is a packaged instruction the agent loads for a kind of task. Start with skills others wrote. Try grilling first: before it makes anything, the agent asks you questions until you agree on what to make. | You get good routines without writing them yourself, and the agent finds gaps you would miss before work starts. | Has an agent asked you ten questions before producing anything? | 2, 4, 5, 8, 10, 13, 14 |
+| **Use it as a sparring partner, to explain and to think with** | Everyone | Describe the problem and ask why, not only for facts or fixes. | It is not a fact machine. Use it to help you think, and do not trust an answer you have not thought through. | Do you describe problems to it, or only ask for answers? | 2, 9, 12 |
+| **Keep sensitive data out** | Everyone | Know which data the client allows in which tool. Mask sensitive data on the way in. | A privacy breach at the client. | Do you know the data rule for your current client? | 6, 7, 10 |
+| **You own what you deliver** | Everyone | You are the expert, and the systems you build affect the real world. Speed is no reason for a bad system. A bus driver does not speed because the manager wants efficiency. Push back, and explain why. | Work can look fine without being in place. | Could you explain every part of your last delivery without the agent? | 3, 7, 11, 14 |
+| **A coding agent with plan mode, and an inline assistant in the IDE** | Developer |  | In a chat window you copy and paste, and the agent never sees the codebase. | Has an agent made a change across several files for you? | 2, 5, 6, 7, S |
+| **Give the agent a clear goal, by one of two routes** | Developer | Write an issue or spec the agent can solve from the text alone. Or build your own mental model and leave TODOs in the code for the agent. | The agent writes the code, so our job is to set better goals. | Could an agent solve your last issue from the text alone? | 3, 4 |
+| **Give the design agent your Figma structure, not a screenshot** | Designer |  | A sketched screen gives the agent very little. | Does the agent get your components, or only a picture? | 1 |
+| **Transcribe meetings and interviews** | Designer, Sales & management, Advisory | For example the transcription in Word, Trale or Jamie. Ask for consent first. | Analysis starts from memory and scattered notes, and details get lost. | Is your last important meeting searchable? | 9, 10, 11, 12 |
+| **A project per client or case, as a sparring partner** | Advisory |  | Every conversation starts from zero, and the material is spread out. | Does the assistant know the case before you start typing? | 9, 10 |
+| **Build trust by checking output against the source** | Advisory |  | You trust it too much, or not at all. | How do you check a number the agent gives you? | 9 |
+| Models and the app around them | Everyone | The model is not the app. Model families differ in strengths, input types and price. Give the same task to two tools now and then. For developers, that means other coding agents too. | You judge all AI by one tool's weak spots, and settle on the first setup that worked. | Have you given the same task to two tools? | 4, 5, 6, 7, 12, 14 |
+| Prompt at the right level | Everyone | Be concrete about the goal, the limits and the size of the task. Be open about the solution, and let the agent propose. Do not polish the wording. | Dictating the solution gives you the wrong thing. A vague goal gives you vague work. | When did you last ask for options instead of dictating the answer? | 2, 4, 6, 7 |
+| Plan first, and keep research apart from doing | Everyone |  | You make the important choices yourself, and keep your own competence. | Do you read and correct a plan before the agent acts? | 3, 6, 7 |
+| Context, and when to start a new session | Everyone | Know what the agent sees, when a session has gone stale, and how to hand over to a fresh one. Developers keep an AGENTS.md in the repository so every session starts with the basics. | Answers get worse in long sessions, tokens burn, and each new session starts cold. | What does a new session know before you type? | 7, 10, 13, 14 |
+| Connect the sources you work in, and decide what not to connect | Everyone | Email, calendar, files, spreadsheets, Office 365, statistics and the other systems you use every day. Leave private conversations out, and keep control of what the agent can change. | Without them the agent only knows what you paste in. Connect too much and private conversations leak. | Can you list what your assistant can read right now? | 6, 8, 9, 10, 12, S |
+| Use the agent to explain code and odd behavior | Developer |  | You miss the cheapest way to learn a codebase. | Do you ask why before you ask for a fix? | 2 |
+| Solid software engineering fundamentals | Developer |  | You cannot judge what the agent hands you. | Which part of the agent's last change would you have done differently? | 2, S |
+| Split work into small tasks | Developer | A pull request should be a gift. | Large changes nobody can review. | Would you enjoy reviewing your last pull request? | 13 |
+| Git and GitHub: clone, branch, pull request | Designer |  | You cannot deliver design as code, or follow work that lives in repositories. | Can you open a pull request and read someone else's? | 1 |
+| AI in every research step | Designer | Research questions, interviews, transcripts, summaries, common patterns and ideas. | You run the old process at the old speed. | Which research step has not changed yet? | 11 |
+| Structure research data so it can be found | Designer |  | The agent cannot answer from material it cannot find. | Could the agent find every interview on one theme? | 11 |
+| Critical analysis at each handoff | Designer |  | Confident summaries with errors reach the client. | Do you check the synthesis against the raw material? | 11 |
+| Know what MCP, skills and Git are | Sales & management |  | You cannot follow where the tools are going, or talk about them with clients. | Can you explain what a skill is to a colleague? | 8 |
+| Tone of voice | Advisory |  | Text that does not sound like you. | Would a client recognize your voice in the draft? | 9 |
 
 ### Your team
 
-| Topic | Who | What it means | What goes wrong without it | Ask yourself | How to learn | Source |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Agree what the team uses** | Everyone | Tools, skills and one set of instructions every agent reads. Prefer one shared setup, with the same skills and settings. Someone who knows what they are doing can use their own. | Everyone uses agents their own way, and quality depends on who did the task. | Is there one file that tells every agent how the team works? | Missing | 4, 5, 6, 7, 13, 14 |
-| **No agent writes to production** | Everyone |  | One mistake becomes an incident. | Can any agent on the team reach production today? | Missing | 4 |
-| Roles, boundaries and definition of done | Everyone |  | Nobody knows when a part is finished, or who owns it. | Who owns a change a designer delivers as code? | Missing | 1 |
-| Share what works | Everyone | A channel and a regular slot for what people learn about AI. | Everyone rediscovers the same things. | When did the team last share an AI finding? | Missing | 2, 8, 14 |
+| Topic | Who | What it means | What goes wrong without it | Ask yourself | Source |
+| --- | --- | --- | --- | --- | --- |
+| **Agree what the team uses** | Everyone | Tools, skills and one set of instructions every agent reads. Prefer one shared setup, with the same skills and settings. Someone who knows what they are doing can use their own. | Everyone uses agents their own way, and quality depends on who did the task. | Is there one file that tells every agent how the team works? | 4, 5, 6, 7, 13, 14 |
+| **No agent writes to production** | Everyone |  | One mistake becomes an incident. | Can any agent on the team reach production today? | 4 |
+| Roles, boundaries and definition of done | Everyone |  | Nobody knows when a part is finished, or who owns it. | Who owns a change a designer delivers as code? | 1 |
+| Share what works | Everyone | A channel and a regular slot for what people learn about AI. | Everyone rediscovers the same things. | When did the team last share an AI finding? | 2, 8, 14 |
 
 ### The client
 
-| Topic | Who | What it means | What goes wrong without it | Ask yourself | How to learn | Source |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Help the client publish which tools and plugins are allowed** | Everyone | People will find a way. Give them approved tools to experiment with, or they use private accounts. | People avoid the tools, or use private accounts nobody controls, where client data may be used for training. | Can someone at the client find out what is allowed in a minute? | Missing | 6, 7, 13, 14 |
-| Help the client set rules for which data can go where | Everyone |  | Confidentiality rests on individual guesses. | Does everyone at the client know the rule for their own data? | Missing | 6, 10 |
-| Help the client set up a shared way to learn and experiment | Everyone | A planned path, room to experiment, and a sharing culture, not chance. | Learning is mostly random. | Is there a planned path at the client, or do people find things by chance? | Missing | 8, 10, 11, 14 |
+| Topic | Who | What it means | What goes wrong without it | Ask yourself | Source |
+| --- | --- | --- | --- | --- | --- |
+| **Help the client publish which tools and plugins are allowed** | Everyone | People will find a way. Give them approved tools to experiment with, or they use private accounts. | People avoid the tools, or use private accounts nobody controls, where client data may be used for training. | Can someone at the client find out what is allowed in a minute? | 6, 7, 13, 14 |
+| Help the client set rules for which data can go where | Everyone |  | Confidentiality rests on individual guesses. | Does everyone at the client know the rule for their own data? | 6, 10 |
+| Help the client set up a shared way to learn and experiment | Everyone | A planned path, room to experiment, and a sharing culture, not chance. | Learning is mostly random. | Is there a planned path at the client, or do people find things by chance? | 8, 10, 11, 14 |
 
 ## Level 2 Experienced: topics
 
@@ -144,57 +144,57 @@ Give it your context, standards and limits, and choose how to work per task.
 
 ### Yourself
 
-| Topic | Who | What it means | What goes wrong without it | Ask yourself | How to learn | Source |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Choose how to work, based on the task** | Everyone | Pick how much to hand over based on the context, how correct the result must be, and how much you need a correct mental model of the system. A developer picks between a spec, TODOs in code, or a one-shot. A designer between a throwaway exploration and a deliverable. A business role between a draft for yourself and a figure for the client. | One way of working for everything is either too slow or too risky. | On your last task, did you choose how much to hand over, or do what you always do? | Missing | 3, 7 |
-| **Pick model and effort per job** | Everyone | For example a strong model to plan and orchestrate, and a cheaper one to implement. | Slow and expensive runs, or weak plans. | Do you know which model and effort did your last task? | Missing | 5, 6, 7, 13, 14 |
-| **Write your own skills, and know which to keep personal** | Everyone | Keep them short. Run the task with and without the skill, and keep it only if the result is better. | You repeat the same instructions, and the quality varies. | Have you written a skill for something you do every week? | [Matt Pocock's skills, as examples](https://github.com/mattpocock/skills); [Ponytail](https://github.com/DietrichGebert/ponytail) | 4, 6, 10, 13, 14 |
-| **A fixed way to review agent output at every handoff** | Everyone |  | Errors pass on to the client or the next person. | Do you have a fixed way of checking agent output? | Missing | 3, 6, 11 |
-| **A healthy codebase with conventions and good examples** | Developer |  | Agents copy the patterns they find, bad ones too. | Would a new session find one clear way to do things? | Missing | 2, 4, 6 |
-| **Less time on prompts, more on domain and architecture tests** | Developer |  | Nothing stops the agent from drifting. | Do your tests check the domain, or only utilities? | Missing | 2, 4 |
-| **Design to code: where the handover reinterprets** | Designer |  | The built result drifts from the design. | Do you know where your design gets reinterpreted? | Missing | 1 |
-| **Explore instead of imagine** | Designer | Try other clicks, other scales and other domains, instead of thinking them through. | UX flows thought through for one case only. | How many variants did you test before choosing? | Missing | 1 |
-| **Research analysis by meaning, not only by words** | Designer, Advisory | Ask your interview material how people talked about and reasoned around a topic. Still do the interviews yourself. | Analysis stays at four to five hours per interview hour. | Can you ask your material how people reasoned? | Missing | 9, 11 |
-| **A second brain: meetings and sources in one knowledge base** | Sales & management |  | Information cannot be combined for decisions. | Where would the agent find what you learned last quarter? | Andrej Karpathy on personal knowledge bases | 8 |
-| **Structured input, many outputs** | Sales & management, Advisory | Reports, templates and business cases from the same material. | Each deliverable is handmade from zero. | Has the agent filled your standard template from raw data? | Missing | 9, 12 |
-| Connect project context, read-only by default | Everyone | The backlog, docs, logs and dashboards. Judge when MCP is the right tool. For developers it often is not needed. For example the Atlassian plugin or a Grafana MCP. | The agent guesses about things it could look up. | Which system would save you most time if the agent could read it? | Missing | 6, 8, 13, 14 |
-| Use your craft and domain knowledge to steer | Everyone | Use your experience to make something better, not to skip the experience. | Generic, polished output with nothing behind it, and no way to tell good from bad. | What in your last deliverable could only you have added? | Missing | 3, 5, 9, 10, 13 |
-| Permissions and sandboxing | Everyone | Know what an agent on your machine may read and change. Developers can run agents in a sandbox, for example Docker. | An agent with your full access makes your worst mistake at machine speed. | What is the most damaging thing your agent could do today? | Missing | 4, 11, 14 |
-| Use AI to learn, not only to fetch information | Everyone | Learn while you work. For example a skill that teaches you a new technology, or a quiz on a change you just reviewed. | You get faster but not better. | Have you asked the agent to teach you something this month? | Missing | 5, 8, 9, 14 |
-| Build your own mental model before the change | Developer |  | Review gets harder than writing would have been. | Can you sketch the change before the agent makes it? | Missing | 3, 14 |
-| Grilling with docs, decision records and time on the domain | Developer |  | Decisions vanish, and each session starts from zero. | Where are your last three design decisions written down? | [Matt Pocock's grill-with-docs skill](https://github.com/mattpocock/skills) | 5, 13 |
-| Application and system architecture | Developer |  | The agent does not know which direction to go. Developers still know best. | Who decided the structure of your last feature? | Missing | 4 |
-| Mix manual review with AI review | Developer |  | Review becomes a bottleneck or a rubber stamp. | How much of your week is review now? | Missing | 3, 5, 6 |
-| Several sessions with a clear overview | Developer | For example tmux or remote sessions. | It is easy to lose control. | Can you say what each of your running sessions is doing right now? | Missing | 13 |
-| Reverse engineering, prototyping and infrastructure as code with AI | Developer |  | You only use agents for feature work. | Have you used an agent on infrastructure or legacy code? | Missing | S |
-| Know what is worth making, tied to the product strategy | Designer |  | Cheap production leads to low-value work. | Can you tie your last prototype to a product goal? | Missing | 1 |
-| How an agent loop works, when you design or build AI into products | Designer, Developer |  | You design or build a system you do not understand. | Can you describe the loop behind your product? | LangSmith Fleet | 1, 14 |
-| Scheduled tasks that prepare work before you need it | Sales & management, Advisory |  | You prepare every meeting by hand. | What gets prepared for you automatically each week? | Missing | 10, 12 |
-| Voice recordings as input | Sales & management |  | You lose thoughts away from the keyboard. | Do you talk your notes in? | Missing | 12 |
-| Git basics, for knowledge bases and skills kept as files | Sales & management, Advisory |  | You cannot share or version what you build. | Could a colleague get your skills and notes without you emailing them? | Missing | 8 |
-| AI and ethics, and AI for business leaders | Advisory |  | You advise on something you have not studied. | Have you taken a structured course? | [DataCamp](https://www.datacamp.com) | 10 |
-| Connect the assistant to Figma and workshop tools | Advisory |  | You move things between tools by hand. | Has an agent built a workshop board for you? | Missing | 10 |
+| Topic | Who | What it means | What goes wrong without it | Ask yourself | Source |
+| --- | --- | --- | --- | --- | --- |
+| **Choose how to work, based on the task** | Everyone | Pick how much to hand over based on the context, how correct the result must be, and how much you need a correct mental model of the system. A developer picks between a spec, TODOs in code, or a one-shot. A designer between a throwaway exploration and a deliverable. A business role between a draft for yourself and a figure for the client. | One way of working for everything is either too slow or too risky. | On your last task, did you choose how much to hand over, or do what you always do? | 3, 7 |
+| **Pick model and effort per job** | Everyone | For example a strong model to plan and orchestrate, and a cheaper one to implement. | Slow and expensive runs, or weak plans. | Do you know which model and effort did your last task? | 5, 6, 7, 13, 14 |
+| **Write your own skills, and know which to keep personal** | Everyone | Keep them short. Run the task with and without the skill, and keep it only if the result is better. | You repeat the same instructions, and the quality varies. | Have you written a skill for something you do every week? | 4, 6, 10, 13, 14 |
+| **A fixed way to review agent output at every handoff** | Everyone |  | Errors pass on to the client or the next person. | Do you have a fixed way of checking agent output? | 3, 6, 11 |
+| **A healthy codebase with conventions and good examples** | Developer |  | Agents copy the patterns they find, bad ones too. | Would a new session find one clear way to do things? | 2, 4, 6 |
+| **Less time on prompts, more on domain and architecture tests** | Developer |  | Nothing stops the agent from drifting. | Do your tests check the domain, or only utilities? | 2, 4 |
+| **Design to code: where the handover reinterprets** | Designer |  | The built result drifts from the design. | Do you know where your design gets reinterpreted? | 1 |
+| **Explore instead of imagine** | Designer | Try other clicks, other scales and other domains, instead of thinking them through. | UX flows thought through for one case only. | How many variants did you test before choosing? | 1 |
+| **Research analysis by meaning, not only by words** | Designer, Advisory | Ask your interview material how people talked about and reasoned around a topic. Still do the interviews yourself. | Analysis stays at four to five hours per interview hour. | Can you ask your material how people reasoned? | 9, 11 |
+| **A second brain: meetings and sources in one knowledge base** | Sales & management |  | Information cannot be combined for decisions. | Where would the agent find what you learned last quarter? | 8 |
+| **Structured input, many outputs** | Sales & management, Advisory | Reports, templates and business cases from the same material. | Each deliverable is handmade from zero. | Has the agent filled your standard template from raw data? | 9, 12 |
+| Connect project context, read-only by default | Everyone | The backlog, docs, logs and dashboards. Judge when MCP is the right tool. For developers it often is not needed. For example the Atlassian plugin or a Grafana MCP. | The agent guesses about things it could look up. | Which system would save you most time if the agent could read it? | 6, 8, 13, 14 |
+| Use your craft and domain knowledge to steer | Everyone | Use your experience to make something better, not to skip the experience. | Generic, polished output with nothing behind it, and no way to tell good from bad. | What in your last deliverable could only you have added? | 3, 5, 9, 10, 13 |
+| Permissions and sandboxing | Everyone | Know what an agent on your machine may read and change. Developers can run agents in a sandbox, for example Docker. | An agent with your full access makes your worst mistake at machine speed. | What is the most damaging thing your agent could do today? | 4, 11, 14 |
+| Use AI to learn, not only to fetch information | Everyone | Learn while you work. For example a skill that teaches you a new technology, or a quiz on a change you just reviewed. | You get faster but not better. | Have you asked the agent to teach you something this month? | 5, 8, 9, 14 |
+| Build your own mental model before the change | Developer |  | Review gets harder than writing would have been. | Can you sketch the change before the agent makes it? | 3, 14 |
+| Grilling with docs, decision records and time on the domain | Developer |  | Decisions vanish, and each session starts from zero. | Where are your last three design decisions written down? | 5, 13 |
+| Application and system architecture | Developer |  | The agent does not know which direction to go. Developers still know best. | Who decided the structure of your last feature? | 4 |
+| Mix manual review with AI review | Developer |  | Review becomes a bottleneck or a rubber stamp. | How much of your week is review now? | 3, 5, 6 |
+| Several sessions with a clear overview | Developer | For example tmux or remote sessions. | It is easy to lose control. | Can you say what each of your running sessions is doing right now? | 13 |
+| Reverse engineering, prototyping and infrastructure as code with AI | Developer |  | You only use agents for feature work. | Have you used an agent on infrastructure or legacy code? | S |
+| Know what is worth making, tied to the product strategy | Designer |  | Cheap production leads to low-value work. | Can you tie your last prototype to a product goal? | 1 |
+| How an agent loop works, when you design or build AI into products | Designer, Developer |  | You design or build a system you do not understand. | Can you describe the loop behind your product? | 1, 14 |
+| Scheduled tasks that prepare work before you need it | Sales & management, Advisory |  | You prepare every meeting by hand. | What gets prepared for you automatically each week? | 10, 12 |
+| Voice recordings as input | Sales & management |  | You lose thoughts away from the keyboard. | Do you talk your notes in? | 12 |
+| Git basics, for knowledge bases and skills kept as files | Sales & management, Advisory |  | You cannot share or version what you build. | Could a colleague get your skills and notes without you emailing them? | 8 |
+| AI and ethics, and AI for business leaders | Advisory |  | You advise on something you have not studied. | Have you taken a structured course? | 10 |
+| Connect the assistant to Figma and workshop tools | Advisory |  | You move things between tools by hand. | Has an agent built a workshop board for you? | 10 |
 
 ### Your team
 
-| Topic | Who | What it means | What goes wrong without it | Ask yourself | How to learn | Source |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Shared, project-specific skills** | Everyone | In the repository or a shared plugin. Golden paths for recurring work: debugging, review, changelogs, sprint planning, post mortems and decision records. Skills for your stack and for handling secrets. Built for the project, not for one person. | Agents get your stack wrong the same way every time. | Does everyone run the same skills for planning and review? | [Ponytail](https://github.com/DietrichGebert/ponytail) | 4, 5, 6, 13, 14 |
-| **Decision records, post mortems and runbooks** | Everyone | Readable by people, numbered and dated, kept where the agent can read them. | Decisions vanish, and the agent cannot act on knowledge that lives in people's heads. | Could an agent follow your runbook for the last incident? | Missing | 5, 13, 14 |
-| **Guardrails set up once for everyone** | Everyone | Sandboxing, read-only by default, and secrets handled through skills. | Each agent can reach everything its owner can. | Is sandboxing set up once, or left to each person? | Missing | 4, 13, 14 |
-| Shared rules for review, and one shared first review by an agent | Everyone |  | Review quality depends on who reviews. | Does every pull request get the same first review? | Missing | 5, 6, 13 |
-| Pair through prompting on hard problems | Everyone |  | Decisions made by one person and one agent. | Have two of you prompted together on a hard problem? | Missing | 1 |
-| A team contract for AI, and follow-up on how each person works | Everyone | Write down how the team uses AI to keep quality and work well together, so everyone shares the same mental model. | Juniors dump the task into the agent and push it, without seeing the bigger picture. | Does your team have a contract for how you use AI, and does everyone follow it? | [pstack, a set of skills for a full development flow](https://github.com/cursor/plugins/tree/main/pstack) | 2, 5, 11, 14 |
+| Topic | Who | What it means | What goes wrong without it | Ask yourself | Source |
+| --- | --- | --- | --- | --- | --- |
+| **Shared, project-specific skills** | Everyone | In the repository or a shared plugin. Golden paths for recurring work: debugging, review, changelogs, sprint planning, post mortems and decision records. Skills for your stack and for handling secrets. Built for the project, not for one person. | Agents get your stack wrong the same way every time. | Does everyone run the same skills for planning and review? | 4, 5, 6, 13, 14 |
+| **Decision records, post mortems and runbooks** | Everyone | Readable by people, numbered and dated, kept where the agent can read them. | Decisions vanish, and the agent cannot act on knowledge that lives in people's heads. | Could an agent follow your runbook for the last incident? | 5, 13, 14 |
+| **Guardrails set up once for everyone** | Everyone | Sandboxing, read-only by default, and secrets handled through skills. | Each agent can reach everything its owner can. | Is sandboxing set up once, or left to each person? | 4, 13, 14 |
+| Shared rules for review, and one shared first review by an agent | Everyone |  | Review quality depends on who reviews. | Does every pull request get the same first review? | 5, 6, 13 |
+| Pair through prompting on hard problems | Everyone |  | Decisions made by one person and one agent. | Have two of you prompted together on a hard problem? | 1 |
+| A team contract for AI, and follow-up on how each person works | Everyone | Write down how the team uses AI to keep quality and work well together, so everyone shares the same mental model. | Juniors dump the task into the agent and push it, without seeing the bigger picture. | Does your team have a contract for how you use AI, and does everyone follow it? | 2, 5, 11, 14 |
 
 ### The client
 
-| Topic | Who | What it means | What goes wrong without it | Ask yourself | How to learn | Source |
-| --- | --- | --- | --- | --- | --- | --- |
-| **A shared knowledge base, connected for every agent, also for development** | Everyone | Gather documentation, base data and domain information that is spread over many systems, and connect it so agents can look it up. | Agents cannot look up base data and domain information, and spread-out information cannot support decisions. | Can a coding agent at the client look up domain facts without someone pasting them in? | Missing | 8, 12, 13, 14 |
-| **Help the client make sure agents see no more than the person using them** | Everyone | A shared hub of connectors moves the access check from the person to a server, and the server often sees more. Check access per person, and log what agents read and do. | Losing control of data is easy, and people reach data they should not see. | When an agent reads data at the client, whose access does it use? | Missing | 14 |
-| Local models where privacy requires it | Everyone |  | Some clients cannot use cloud AI at all. | What do you advise a client that forbids cloud models? | Missing | 8, 11 |
-| Make time for quality culture | Everyone |  | Culture loses to delivery every week. | Is time for this in anyone's plan at the client? | Missing | 5 |
-| Help the client build their own skills, plugins and MCP servers | Everyone | Their internal best practice, packaged so every agent can use it, and improved as they learn. | Each team writes its own, and what the client learns does not build up. | Can teams at the client find and install skills other teams built? | Missing | 14 |
+| Topic | Who | What it means | What goes wrong without it | Ask yourself | Source |
+| --- | --- | --- | --- | --- | --- |
+| **A shared knowledge base, connected for every agent, also for development** | Everyone | Gather documentation, base data and domain information that is spread over many systems, and connect it so agents can look it up. | Agents cannot look up base data and domain information, and spread-out information cannot support decisions. | Can a coding agent at the client look up domain facts without someone pasting them in? | 8, 12, 13, 14 |
+| **Help the client make sure agents see no more than the person using them** | Everyone | A shared hub of connectors moves the access check from the person to a server, and the server often sees more. Check access per person, and log what agents read and do. | Losing control of data is easy, and people reach data they should not see. | When an agent reads data at the client, whose access does it use? | 14 |
+| Local models where privacy requires it | Everyone |  | Some clients cannot use cloud AI at all. | What do you advise a client that forbids cloud models? | 8, 11 |
+| Make time for quality culture | Everyone |  | Culture loses to delivery every week. | Is time for this in anyone's plan at the client? | 5 |
+| Help the client build their own skills, plugins and MCP servers | Everyone | Their internal best practice, packaged so every agent can use it, and improved as they learn. | Each team writes its own, and what the client learns does not build up. | Can teams at the client find and install skills other teams built? | 14 |
 
 ## Level 3 Leading: topics
 
@@ -202,73 +202,46 @@ Change how you work and what you take on, and lift the people around you.
 
 ### Yourself
 
-| Topic | Who | What it means | What goes wrong without it | Ask yourself | How to learn | Source |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Take a broader product role** | Everyone | Change how you work, what you take responsibility for and which positions you take. You are still a technical expert, but above all an expert in turning the real world into systems, processes and formal structures that work as modelled. | Making things gets cheap, so judgment about what to make and why is what counts, and so does caring about what you make. | What did you take responsibility for this month that is outside your title? | Laurie Voss's talk on becoming product engineers | 1, 2, 14 |
-| **Choose what you should do, not what you can do** | Everyone |  | A pile of nice-to-haves nobody asked for. | What did you decide not to make this week? | Missing | 1, 10 |
-| **Several agents at once** | Everyone | Subagents, parallel sessions and orchestration, with one agent checking another. Give each subagent one narrow mandate. | You wait on one agent, or run many and lose quality. | Does anything other than you check the agent's work? | Missing | 2, 5, 7, 13, 14, S |
-| **Tests for the application architecture itself** | Developer |  | Structure erodes one merge at a time. | Would a test fail if an agent broke your layering? | Missing | 2, 4 |
-| **A workday that starts from pull requests** | Designer |  | You become the bottleneck when others send code. | Can you review a design change that arrives as code? | Missing | 1 |
-| **Automate the tasks that take time but do not matter** | Sales & management |  | Less face time with clients and consultants. | What took an hour last week that an agent could have done? | Missing | 8 |
-| **Protect quality and correctness in the whole system** | Advisory |  | Errors multiply when automation scales. | What catches a wrong figure before the client does? | Missing | 9 |
-| Manage cognitive load and text fatigue | Everyone |  | You stop reading what the agents write. | How much agent output did you skim this week? | Missing | 2, 3, 4 |
-| Build processes and systems, not single outputs | Everyone | For example onboarding, or a research setup others can run. | The gain stays with one task and one person. | Which of your routines could a colleague run tomorrow? | Missing | 10, 11 |
-| Curate your skills | Everyone | Prune and rewrite them, know when no skill is needed, and share the good ones with the team and the client. | Skills pile up and fill the context. | Which skill did you last delete or rewrite? | Missing | 9, 12, 13, 14 |
-| Assess the risks of connected tools | Everyone | Know what an MCP server or plugin can read and do before you install it. Developers learn how MCP works inside and read the server's code. | Security comes second to hype, and you install servers you cannot assess. | Do you know what an MCP server you installed can do? | Missing | 4, 5 |
-| Agentic on-call and triage across agents | Developer |  | Operations stays manual while development speeds up. | Could an agent do the first ten minutes of your last incident? | Missing | S |
-| Your own agent setup and local models | Developer |  | You depend on defaults you do not understand, and some data stays off limits. | Do you know what a local model can and cannot do for you? | Missing | 6, 7 |
-| Routing skills that load others only when needed | Developer |  | Context fills up and quality drops. | Do your skills load only when the task needs them? | Missing | 13, 14 |
-| Read design out of code with the agent's help | Designer |  | Changes land that no designer has seen. | How do you look at a pull request you cannot read? | Missing | 1 |
-| Write down the new practices for the field | Designer |  | Everyone invents their own method, and the skill stays with one person. | Has your team written down how you research with AI? | Missing | 11 |
-| Skills for business routines | Sales & management, Advisory |  | You know of skills but have not seen the value, so it stays untried. | Have you tried one skill on a real task? | Missing | 9, 12 |
-| AI in forecasting work | Advisory |  | Forecasts stay manual. | Which part of your forecast could an agent prepare? | Missing | 9 |
+| Topic | Who | What it means | What goes wrong without it | Ask yourself | Source |
+| --- | --- | --- | --- | --- | --- |
+| **Take a broader product role** | Everyone | Change how you work, what you take responsibility for and which positions you take. You are still a technical expert, but above all an expert in turning the real world into systems, processes and formal structures that work as modelled. | Making things gets cheap, so judgment about what to make and why is what counts, and so does caring about what you make. | What did you take responsibility for this month that is outside your title? | 1, 2, 14 |
+| **Choose what you should do, not what you can do** | Everyone |  | A pile of nice-to-haves nobody asked for. | What did you decide not to make this week? | 1, 10 |
+| **Several agents at once** | Everyone | Subagents, parallel sessions and orchestration, with one agent checking another. Give each subagent one narrow mandate. | You wait on one agent, or run many and lose quality. | Does anything other than you check the agent's work? | 2, 5, 7, 13, 14, S |
+| **Tests for the application architecture itself** | Developer |  | Structure erodes one merge at a time. | Would a test fail if an agent broke your layering? | 2, 4 |
+| **A workday that starts from pull requests** | Designer |  | You become the bottleneck when others send code. | Can you review a design change that arrives as code? | 1 |
+| **Automate the tasks that take time but do not matter** | Sales & management |  | Less face time with clients and consultants. | What took an hour last week that an agent could have done? | 8 |
+| **Protect quality and correctness in the whole system** | Advisory |  | Errors multiply when automation scales. | What catches a wrong figure before the client does? | 9 |
+| Manage cognitive load and text fatigue | Everyone |  | You stop reading what the agents write. | How much agent output did you skim this week? | 2, 3, 4 |
+| Build processes and systems, not single outputs | Everyone | For example onboarding, or a research setup others can run. | The gain stays with one task and one person. | Which of your routines could a colleague run tomorrow? | 10, 11 |
+| Curate your skills | Everyone | Prune and rewrite them, know when no skill is needed, and share the good ones with the team and the client. | Skills pile up and fill the context. | Which skill did you last delete or rewrite? | 9, 12, 13, 14 |
+| Assess the risks of connected tools | Everyone | Know what an MCP server or plugin can read and do before you install it. Developers learn how MCP works inside and read the server's code. | Security comes second to hype, and you install servers you cannot assess. | Do you know what an MCP server you installed can do? | 4, 5 |
+| Agentic on-call and triage across agents | Developer |  | Operations stays manual while development speeds up. | Could an agent do the first ten minutes of your last incident? | S |
+| Your own agent setup and local models | Developer |  | You depend on defaults you do not understand, and some data stays off limits. | Do you know what a local model can and cannot do for you? | 6, 7 |
+| Routing skills that load others only when needed | Developer |  | Context fills up and quality drops. | Do your skills load only when the task needs them? | 13, 14 |
+| Read design out of code with the agent's help | Designer |  | Changes land that no designer has seen. | How do you look at a pull request you cannot read? | 1 |
+| Write down the new practices for the field | Designer |  | Everyone invents their own method, and the skill stays with one person. | Has your team written down how you research with AI? | 11 |
+| Skills for business routines | Sales & management, Advisory |  | You know of skills but have not seen the value, so it stays untried. | Have you tried one skill on a real task? | 9, 12 |
+| AI in forecasting work | Advisory |  | Forecasts stay manual. | Which part of your forecast could an agent prepare? | 9 |
 
 ### Your team
 
-| Topic | Who | What it means | What goes wrong without it | Ask yourself | How to learn | Source |
-| --- | --- | --- | --- | --- | --- | --- |
-| **New ways of working as teams get smaller** | Everyone | Use AI to solve new things better, not the same tasks faster. Shift work left, and spend the time on the critical parts of the craft. | A process built for more people. | What would you stop doing with three people? | Missing | 8, 14 |
-| **Ownership shared by people and agents** | Everyone |  | Shared ownership of the code gets lost. | Who on your team knows why the code looks the way it does? | Missing | 6 |
-| Test the codebase and conventions, not only the application | Everyone |  | Agents break conventions nothing protects. | Which team convention is enforced by a test? | Missing | 2, 4 |
+| Topic | Who | What it means | What goes wrong without it | Ask yourself | Source |
+| --- | --- | --- | --- | --- | --- |
+| **New ways of working as teams get smaller** | Everyone | Use AI to solve new things better, not the same tasks faster. Shift work left, and spend the time on the critical parts of the craft. | A process built for more people. | What would you stop doing with three people? | 8, 14 |
+| **Ownership shared by people and agents** | Everyone |  | Shared ownership of the code gets lost. | Who on your team knows why the code looks the way it does? | 6 |
+| Test the codebase and conventions, not only the application | Everyone |  | Agents break conventions nothing protects. | Which team convention is enforced by a test? | 2, 4 |
 
 ### The client
 
-| Topic | Who | What it means | What goes wrong without it | Ask yourself | How to learn | Source |
-| --- | --- | --- | --- | --- | --- | --- |
-| **One agreed way of building with agents** | Everyone | A software factory, built into existing workflows, with a named owner. It takes large, systematic change. | AI use stays a personal habit. | Can the client describe their way of building with agents in one sentence? | Missing | 13, 14 |
-| Make someone own the question of what to do differently | Everyone | Beyond solving each day's tasks. | Tasks get optimized, and the purpose gets missed. | Who at the client is responsible for that question? | Missing | 5, 14 |
-| Build AI into the systems where work happens | Everyone | Assistants built around how the business works, not only a general chat app. Tools that act, not only find: HR changes, onboarding, KPI reports, slides. One place where people discover them, with guided tours. For example an assistant connected to the CV system. | AI stays a side window. | Which client system should have this built in first? | Missing | 12, 14 |
+| Topic | Who | What it means | What goes wrong without it | Ask yourself | Source |
+| --- | --- | --- | --- | --- | --- |
+| **One agreed way of building with agents** | Everyone | A software factory, built into existing workflows, with a named owner. It takes large, systematic change. | AI use stays a personal habit. | Can the client describe their way of building with agents in one sentence? | 13, 14 |
+| Make someone own the question of what to do differently | Everyone | Beyond solving each day's tasks. | Tasks get optimized, and the purpose gets missed. | Who at the client is responsible for that question? | 5, 14 |
+| Build AI into the systems where work happens | Everyone | Assistants built around how the business works, not only a general chat app. Tools that act, not only find: HR changes, onboarding, KPI reports, slides. One place where people discover them, with guided tours. For example an assistant connected to the CV system. | AI stays a side window. | Which client system should have this built in first? | 12, 14 |
 
-## Where we need learning resources
+## Learning resources
 
-83 of 96 topics have no learning resource yet. They show as Missing in the topic tables, and as "Missing: no resource yet" on the page.
-
-| Level | Yourself | Your team | The client |
-| --- | --- | --- | --- |
-| 1 Beginner | 21 of 26 | 4 of 4 | 3 of 3 |
-| 2 Experienced | 23 of 28 | 4 of 6 | 5 of 5 |
-| 3 Leading | 17 of 18 | 3 of 3 | 3 of 3 |
-
-These are the gaps we would fill first. The interviewees named almost nothing for them.
-
-| Topic | Level | Who | What we need |
-| --- | --- | --- | --- |
-| Start small, and challenge the answers | 1 | Everyone | A one-page start guide per discipline: which tool, how to get access, a first task. And a curated course list |
-| Keep sensitive data out | 1 | Everyone | A short rule sheet, kept per client |
-| Use ready-made skills, starting with grilling | 1 | Everyone | A walkthrough of grilling for design and business work |
-| Models and the app around them | 1 | Everyone | A short overview of models, harnesses, effort and price, updated when the models change |
-| Token management: cost, quality and climate | 1 | Everyone | A fact sheet on energy use, so people can make an informed choice |
-| Share what works | 1 | Everyone | A channel and a regular sharing slot |
-| Git and GitHub, and Git basics | 1 and 2 | Designers, sales and management, advisory | A hands-on session: clone, branch, pull request |
-| Write your own skills, and Skills for business routines | 2 and 3 | Everyone | Examples of skills for design and business work, and a shared library |
-| Permissions and sandboxing, and Guardrails set up once for everyone | 2 | Everyone | A setup guide the whole team can copy |
-| Design to code: where the handover reinterprets | 2 | Designers | A worked case, from Figma structure to merged pull request |
-| Research analysis by meaning, and A second brain | 2 | Designers, advisory, sales and management | Write up the interview analysis case from interview 9 as an internal example, plus a setup guide |
-| Decision records, post mortems and runbooks | 2 | Teams | Templates a team can adopt in one meeting |
-| Several agents at once | 3 | Everyone | Shared practice from the people who do it today, such as the multi-session setup in interview 13 |
-| Tests for the application architecture itself | 3 | Developers | Worked examples in the stacks we use |
-| Read design out of code with the agent's help | 3 | Designers | Pairing with a developer, then a short guide |
-| Assess the risks of connected tools | 3 | Everyone | A short risk briefing and a checklist |
+Learning resources are not listed here. Each topic's resources live on the ladder page and in `src/resources/` in the repo, where anyone can suggest one through GitHub.
 
 ## Where we need more material
 

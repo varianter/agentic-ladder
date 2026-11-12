@@ -143,12 +143,6 @@
       "detail": "Use it on small, real tasks from today's work. Disagree with it when you know better. Nobody is behind.",
       "why": "You learn what it is good at without risking real work. Your expertise is what catches its mistakes.",
       "ask": "When did you last disagree with the agent and turn out to be right?",
-      "how": [
-        {
-          "text": "DataCamp, if you like a course to follow",
-          "url": "https://www.datacamp.com"
-        }
-      ],
       "src": "4, 7, 10, 12, 13"
     },
     {
@@ -161,19 +155,6 @@
       "detail": "The model is not the app. Model families differ in strengths, input types and price. Give the same task to two tools now and then. For developers, that means other coding agents too.",
       "why": "You judge all AI by one tool's weak spots, and settle on the first setup that worked.",
       "ask": "Have you given the same task to two tools?",
-      "how": [
-        {
-          "text": "LMArena, to compare models",
-          "url": "https://lmarena.ai"
-        },
-        {
-          "text": "Andrej Karpathy's videos",
-          "url": "https://www.youtube.com/@AndrejKarpathy"
-        },
-        {
-          "text": "Your vendor's model documentation"
-        }
-      ],
       "src": "4, 5, 6, 7, 12, 14"
     },
     {
@@ -186,11 +167,6 @@
       "detail": "Tokens, effort, context size and model choice decide what a task costs and how good it gets. The strongest model at full effort is not the default. Know your usage limits and watch how fast you use them.",
       "why": "Throwing frontier models at everything can be lose-lose: worse results, a large bill for the client, poor return and more energy used. Or you hit your limit and wait hours to work again.",
       "ask": "Do you know roughly what your last task cost, and whether a smaller model would have done?",
-      "how": [
-        {
-          "text": "Your vendor's pricing documentation"
-        }
-      ],
       "src": "1, 5, 6, 7, 13, 14"
     },
     {
@@ -203,7 +179,6 @@
       "detail": "Be concrete about the goal, the limits and the size of the task. Be open about the solution, and let the agent propose. Do not polish the wording.",
       "why": "Dictating the solution gives you the wrong thing. A vague goal gives you vague work.",
       "ask": "When did you last ask for options instead of dictating the answer?",
-      "how": [],
       "src": "2, 4, 6, 7"
     },
     {
@@ -216,16 +191,6 @@
       "detail": "A skill is a packaged instruction the agent loads for a kind of task. Start with skills others wrote. Try grilling first: before it makes anything, the agent asks you questions until you agree on what to make.",
       "why": "You get good routines without writing them yourself, and the agent finds gaps you would miss before work starts.",
       "ask": "Has an agent asked you ten questions before producing anything?",
-      "how": [
-        {
-          "text": "Matt Pocock's skills, including grill-me",
-          "url": "https://github.com/mattpocock/skills"
-        },
-        {
-          "text": "AI Hero",
-          "url": "https://www.aihero.dev"
-        }
-      ],
       "src": "2, 4, 5, 8, 10, 13, 14"
     },
     {
@@ -237,7 +202,6 @@
       "what": "Plan first, and keep research apart from doing",
       "why": "You make the important choices yourself, and keep your own competence.",
       "ask": "Do you read and correct a plan before the agent acts?",
-      "how": [],
       "src": "3, 6, 7"
     },
     {
@@ -250,7 +214,6 @@
       "detail": "Know what the agent sees, when a session has gone stale, and how to hand over to a fresh one. Developers keep an AGENTS.md in the repository so every session starts with the basics.",
       "why": "Answers get worse in long sessions, tokens burn, and each new session starts cold.",
       "ask": "What does a new session know before you type?",
-      "how": [],
       "src": "7, 10, 13, 14"
     },
     {
@@ -263,7 +226,6 @@
       "detail": "Describe the problem and ask why, not only for facts or fixes.",
       "why": "It is not a fact machine. Use it to help you think, and do not trust an answer you have not thought through.",
       "ask": "Do you describe problems to it, or only ask for answers?",
-      "how": [],
       "src": "2, 9, 12"
     },
     {
@@ -276,7 +238,6 @@
       "detail": "Know which data the client allows in which tool. Mask sensitive data on the way in.",
       "why": "A privacy breach at the client.",
       "ask": "Do you know the data rule for your current client?",
-      "how": [],
       "src": "6, 7, 10"
     },
     {
@@ -288,7 +249,6 @@
       "what": "Connect the sources you work in, and decide what not to connect",
       "why": "Without them the agent only knows what you paste in. Connect too much and private conversations leak.",
       "ask": "Can you list what your assistant can read right now?",
-      "how": [],
       "src": "6, 8, 9, 10, 12, S",
       "detail": "Email, calendar, files, spreadsheets, Office 365, statistics and the other systems you use every day. Leave private conversations out, and keep control of what the agent can change."
     },
@@ -302,7 +262,6 @@
       "detail": "You are the expert, and the systems you build affect the real world. Speed is no reason for a bad system. A bus driver does not speed because the manager wants efficiency. Push back, and explain why.",
       "why": "Work can look fine without being in place.",
       "ask": "Could you explain every part of your last delivery without the agent?",
-      "how": [],
       "src": "3, 7, 11, 14"
     },
     {
@@ -314,7 +273,6 @@
       "what": "A coding agent with plan mode, and an inline assistant in the IDE",
       "why": "In a chat window you copy and paste, and the agent never sees the codebase.",
       "ask": "Has an agent made a change across several files for you?",
-      "how": [],
       "src": "2, 5, 6, 7, S"
     },
     {
@@ -327,12 +285,6 @@
       "detail": "Write an issue or spec the agent can solve from the text alone. Or build your own mental model and leave TODOs in the code for the agent.",
       "why": "The agent writes the code, so our job is to set better goals.",
       "ask": "Could an agent solve your last issue from the text alone?",
-      "how": [
-        {
-          "text": "Matt Pocock's skills for writing issues",
-          "url": "https://github.com/mattpocock/skills"
-        }
-      ],
       "src": "3, 4"
     },
     {
@@ -344,7 +296,6 @@
       "what": "Use the agent to explain code and odd behavior",
       "why": "You miss the cheapest way to learn a codebase.",
       "ask": "Do you ask why before you ask for a fix?",
-      "how": [],
       "src": "2"
     },
     {
@@ -356,7 +307,6 @@
       "what": "Solid software engineering fundamentals",
       "why": "You cannot judge what the agent hands you.",
       "ask": "Which part of the agent's last change would you have done differently?",
-      "how": [],
       "src": "2, S"
     },
     {
@@ -369,7 +319,6 @@
       "detail": "A pull request should be a gift.",
       "why": "Large changes nobody can review.",
       "ask": "Would you enjoy reviewing your last pull request?",
-      "how": [],
       "src": "13"
     },
     {
@@ -381,7 +330,6 @@
       "what": "Give the design agent your Figma structure, not a screenshot",
       "why": "A sketched screen gives the agent very little.",
       "ask": "Does the agent get your components, or only a picture?",
-      "how": [],
       "src": "1"
     },
     {
@@ -393,7 +341,6 @@
       "what": "Git and GitHub: clone, branch, pull request",
       "why": "You cannot deliver design as code, or follow work that lives in repositories.",
       "ask": "Can you open a pull request and read someone else's?",
-      "how": [],
       "src": "1"
     },
     {
@@ -406,7 +353,6 @@
       "detail": "Research questions, interviews, transcripts, summaries, common patterns and ideas.",
       "why": "You run the old process at the old speed.",
       "ask": "Which research step has not changed yet?",
-      "how": [],
       "src": "11"
     },
     {
@@ -419,7 +365,6 @@
       "detail": "For example the transcription in Word, Trale or Jamie. Ask for consent first.",
       "why": "Analysis starts from memory and scattered notes, and details get lost.",
       "ask": "Is your last important meeting searchable?",
-      "how": [],
       "src": "9, 10, 11, 12"
     },
     {
@@ -431,7 +376,6 @@
       "what": "Structure research data so it can be found",
       "why": "The agent cannot answer from material it cannot find.",
       "ask": "Could the agent find every interview on one theme?",
-      "how": [],
       "src": "11"
     },
     {
@@ -443,7 +387,6 @@
       "what": "Critical analysis at each handoff",
       "why": "Confident summaries with errors reach the client.",
       "ask": "Do you check the synthesis against the raw material?",
-      "how": [],
       "src": "11"
     },
     {
@@ -455,7 +398,6 @@
       "what": "Know what MCP, skills and Git are",
       "why": "You cannot follow where the tools are going, or talk about them with clients.",
       "ask": "Can you explain what a skill is to a colleague?",
-      "how": [],
       "src": "8"
     },
     {
@@ -467,7 +409,6 @@
       "what": "A project per client or case, as a sparring partner",
       "why": "Every conversation starts from zero, and the material is spread out.",
       "ask": "Does the assistant know the case before you start typing?",
-      "how": [],
       "src": "9, 10"
     },
     {
@@ -479,7 +420,6 @@
       "what": "Build trust by checking output against the source",
       "why": "You trust it too much, or not at all.",
       "ask": "How do you check a number the agent gives you?",
-      "how": [],
       "src": "9"
     },
     {
@@ -491,7 +431,6 @@
       "what": "Tone of voice",
       "why": "Text that does not sound like you.",
       "ask": "Would a client recognize your voice in the draft?",
-      "how": [],
       "src": "9"
     },
     {
@@ -504,7 +443,6 @@
       "detail": "Tools, skills and one set of instructions every agent reads. Prefer one shared setup, with the same skills and settings. Someone who knows what they are doing can use their own.",
       "why": "Everyone uses agents their own way, and quality depends on who did the task.",
       "ask": "Is there one file that tells every agent how the team works?",
-      "how": [],
       "src": "4, 5, 6, 7, 13, 14"
     },
     {
@@ -516,7 +454,6 @@
       "what": "No agent writes to production",
       "why": "One mistake becomes an incident.",
       "ask": "Can any agent on the team reach production today?",
-      "how": [],
       "src": "4"
     },
     {
@@ -528,7 +465,6 @@
       "what": "Roles, boundaries and definition of done",
       "why": "Nobody knows when a part is finished, or who owns it.",
       "ask": "Who owns a change a designer delivers as code?",
-      "how": [],
       "src": "1"
     },
     {
@@ -541,7 +477,6 @@
       "detail": "A channel and a regular slot for what people learn about AI.",
       "why": "Everyone rediscovers the same things.",
       "ask": "When did the team last share an AI finding?",
-      "how": [],
       "src": "2, 8, 14"
     },
     {
@@ -554,7 +489,6 @@
       "detail": "People will find a way. Give them approved tools to experiment with, or they use private accounts.",
       "why": "People avoid the tools, or use private accounts nobody controls, where client data may be used for training.",
       "ask": "Can someone at the client find out what is allowed in a minute?",
-      "how": [],
       "src": "6, 7, 13, 14"
     },
     {
@@ -566,7 +500,6 @@
       "what": "Help the client set rules for which data can go where",
       "why": "Confidentiality rests on individual guesses.",
       "ask": "Does everyone at the client know the rule for their own data?",
-      "how": [],
       "src": "6, 10"
     },
     {
@@ -579,7 +512,6 @@
       "detail": "A planned path, room to experiment, and a sharing culture, not chance.",
       "why": "Learning is mostly random.",
       "ask": "Is there a planned path at the client, or do people find things by chance?",
-      "how": [],
       "src": "8, 10, 11, 14"
     },
     {
@@ -592,7 +524,6 @@
       "detail": "Pick how much to hand over based on the context, how correct the result must be, and how much you need a correct mental model of the system. A developer picks between a spec, TODOs in code, or a one-shot. A designer between a throwaway exploration and a deliverable. A business role between a draft for yourself and a figure for the client.",
       "why": "One way of working for everything is either too slow or too risky.",
       "ask": "On your last task, did you choose how much to hand over, or do what you always do?",
-      "how": [],
       "src": "3, 7"
     },
     {
@@ -605,7 +536,6 @@
       "detail": "For example a strong model to plan and orchestrate, and a cheaper one to implement.",
       "why": "Slow and expensive runs, or weak plans.",
       "ask": "Do you know which model and effort did your last task?",
-      "how": [],
       "src": "5, 6, 7, 13, 14"
     },
     {
@@ -618,16 +548,6 @@
       "detail": "Keep them short. Run the task with and without the skill, and keep it only if the result is better.",
       "why": "You repeat the same instructions, and the quality varies.",
       "ask": "Have you written a skill for something you do every week?",
-      "how": [
-        {
-          "text": "Matt Pocock's skills, as examples",
-          "url": "https://github.com/mattpocock/skills"
-        },
-        {
-          "text": "Ponytail",
-          "url": "https://github.com/DietrichGebert/ponytail"
-        }
-      ],
       "src": "4, 6, 10, 13, 14"
     },
     {
@@ -640,7 +560,6 @@
       "detail": "The backlog, docs, logs and dashboards. Judge when MCP is the right tool. For developers it often is not needed. For example the Atlassian plugin or a Grafana MCP.",
       "why": "The agent guesses about things it could look up.",
       "ask": "Which system would save you most time if the agent could read it?",
-      "how": [],
       "src": "6, 8, 13, 14"
     },
     {
@@ -652,7 +571,6 @@
       "what": "Use your craft and domain knowledge to steer",
       "why": "Generic, polished output with nothing behind it, and no way to tell good from bad.",
       "ask": "What in your last deliverable could only you have added?",
-      "how": [],
       "src": "3, 5, 9, 10, 13",
       "detail": "Use your experience to make something better, not to skip the experience."
     },
@@ -665,7 +583,6 @@
       "what": "A fixed way to review agent output at every handoff",
       "why": "Errors pass on to the client or the next person.",
       "ask": "Do you have a fixed way of checking agent output?",
-      "how": [],
       "src": "3, 6, 11"
     },
     {
@@ -678,7 +595,6 @@
       "detail": "Know what an agent on your machine may read and change. Developers can run agents in a sandbox, for example Docker.",
       "why": "An agent with your full access makes your worst mistake at machine speed.",
       "ask": "What is the most damaging thing your agent could do today?",
-      "how": [],
       "src": "4, 11, 14"
     },
     {
@@ -691,7 +607,6 @@
       "detail": "Learn while you work. For example a skill that teaches you a new technology, or a quiz on a change you just reviewed.",
       "why": "You get faster but not better.",
       "ask": "Have you asked the agent to teach you something this month?",
-      "how": [],
       "src": "5, 8, 9, 14"
     },
     {
@@ -703,7 +618,6 @@
       "what": "A healthy codebase with conventions and good examples",
       "why": "Agents copy the patterns they find, bad ones too.",
       "ask": "Would a new session find one clear way to do things?",
-      "how": [],
       "src": "2, 4, 6"
     },
     {
@@ -715,7 +629,6 @@
       "what": "Less time on prompts, more on domain and architecture tests",
       "why": "Nothing stops the agent from drifting.",
       "ask": "Do your tests check the domain, or only utilities?",
-      "how": [],
       "src": "2, 4"
     },
     {
@@ -727,7 +640,6 @@
       "what": "Build your own mental model before the change",
       "why": "Review gets harder than writing would have been.",
       "ask": "Can you sketch the change before the agent makes it?",
-      "how": [],
       "src": "3, 14"
     },
     {
@@ -739,12 +651,6 @@
       "what": "Grilling with docs, decision records and time on the domain",
       "why": "Decisions vanish, and each session starts from zero.",
       "ask": "Where are your last three design decisions written down?",
-      "how": [
-        {
-          "text": "Matt Pocock's grill-with-docs skill",
-          "url": "https://github.com/mattpocock/skills"
-        }
-      ],
       "src": "5, 13"
     },
     {
@@ -756,7 +662,6 @@
       "what": "Application and system architecture",
       "why": "The agent does not know which direction to go. Developers still know best.",
       "ask": "Who decided the structure of your last feature?",
-      "how": [],
       "src": "4"
     },
     {
@@ -768,7 +673,6 @@
       "what": "Mix manual review with AI review",
       "why": "Review becomes a bottleneck or a rubber stamp.",
       "ask": "How much of your week is review now?",
-      "how": [],
       "src": "3, 5, 6"
     },
     {
@@ -781,7 +685,6 @@
       "detail": "For example tmux or remote sessions.",
       "why": "It is easy to lose control.",
       "ask": "Can you say what each of your running sessions is doing right now?",
-      "how": [],
       "src": "13"
     },
     {
@@ -793,7 +696,6 @@
       "what": "Reverse engineering, prototyping and infrastructure as code with AI",
       "why": "You only use agents for feature work.",
       "ask": "Have you used an agent on infrastructure or legacy code?",
-      "how": [],
       "src": "S"
     },
     {
@@ -805,7 +707,6 @@
       "what": "Design to code: where the handover reinterprets",
       "why": "The built result drifts from the design.",
       "ask": "Do you know where your design gets reinterpreted?",
-      "how": [],
       "src": "1"
     },
     {
@@ -818,7 +719,6 @@
       "detail": "Try other clicks, other scales and other domains, instead of thinking them through.",
       "why": "UX flows thought through for one case only.",
       "ask": "How many variants did you test before choosing?",
-      "how": [],
       "src": "1"
     },
     {
@@ -830,7 +730,6 @@
       "what": "Know what is worth making, tied to the product strategy",
       "why": "Cheap production leads to low-value work.",
       "ask": "Can you tie your last prototype to a product goal?",
-      "how": [],
       "src": "1"
     },
     {
@@ -842,11 +741,6 @@
       "what": "How an agent loop works, when you design or build AI into products",
       "why": "You design or build a system you do not understand.",
       "ask": "Can you describe the loop behind your product?",
-      "how": [
-        {
-          "text": "LangSmith Fleet"
-        }
-      ],
       "src": "1, 14"
     },
     {
@@ -859,7 +753,6 @@
       "detail": "Ask your interview material how people talked about and reasoned around a topic. Still do the interviews yourself.",
       "why": "Analysis stays at four to five hours per interview hour.",
       "ask": "Can you ask your material how people reasoned?",
-      "how": [],
       "src": "9, 11"
     },
     {
@@ -871,11 +764,6 @@
       "what": "A second brain: meetings and sources in one knowledge base",
       "why": "Information cannot be combined for decisions.",
       "ask": "Where would the agent find what you learned last quarter?",
-      "how": [
-        {
-          "text": "Andrej Karpathy on personal knowledge bases"
-        }
-      ],
       "src": "8"
     },
     {
@@ -888,7 +776,6 @@
       "detail": "Reports, templates and business cases from the same material.",
       "why": "Each deliverable is handmade from zero.",
       "ask": "Has the agent filled your standard template from raw data?",
-      "how": [],
       "src": "9, 12"
     },
     {
@@ -900,7 +787,6 @@
       "what": "Scheduled tasks that prepare work before you need it",
       "why": "You prepare every meeting by hand.",
       "ask": "What gets prepared for you automatically each week?",
-      "how": [],
       "src": "10, 12"
     },
     {
@@ -912,7 +798,6 @@
       "what": "Voice recordings as input",
       "why": "You lose thoughts away from the keyboard.",
       "ask": "Do you talk your notes in?",
-      "how": [],
       "src": "12"
     },
     {
@@ -924,7 +809,6 @@
       "what": "Git basics, for knowledge bases and skills kept as files",
       "why": "You cannot share or version what you build.",
       "ask": "Could a colleague get your skills and notes without you emailing them?",
-      "how": [],
       "src": "8"
     },
     {
@@ -936,12 +820,6 @@
       "what": "AI and ethics, and AI for business leaders",
       "why": "You advise on something you have not studied.",
       "ask": "Have you taken a structured course?",
-      "how": [
-        {
-          "text": "DataCamp",
-          "url": "https://www.datacamp.com"
-        }
-      ],
       "src": "10"
     },
     {
@@ -953,7 +831,6 @@
       "what": "Connect the assistant to Figma and workshop tools",
       "why": "You move things between tools by hand.",
       "ask": "Has an agent built a workshop board for you?",
-      "how": [],
       "src": "10"
     },
     {
@@ -966,12 +843,6 @@
       "detail": "In the repository or a shared plugin. Golden paths for recurring work: debugging, review, changelogs, sprint planning, post mortems and decision records. Skills for your stack and for handling secrets. Built for the project, not for one person.",
       "why": "Agents get your stack wrong the same way every time.",
       "ask": "Does everyone run the same skills for planning and review?",
-      "how": [
-        {
-          "text": "Ponytail",
-          "url": "https://github.com/DietrichGebert/ponytail"
-        }
-      ],
       "src": "4, 5, 6, 13, 14"
     },
     {
@@ -984,7 +855,6 @@
       "detail": "Readable by people, numbered and dated, kept where the agent can read them.",
       "why": "Decisions vanish, and the agent cannot act on knowledge that lives in people's heads.",
       "ask": "Could an agent follow your runbook for the last incident?",
-      "how": [],
       "src": "5, 13, 14"
     },
     {
@@ -996,7 +866,6 @@
       "what": "Shared rules for review, and one shared first review by an agent",
       "why": "Review quality depends on who reviews.",
       "ask": "Does every pull request get the same first review?",
-      "how": [],
       "src": "5, 6, 13"
     },
     {
@@ -1009,7 +878,6 @@
       "detail": "Sandboxing, read-only by default, and secrets handled through skills.",
       "why": "Each agent can reach everything its owner can.",
       "ask": "Is sandboxing set up once, or left to each person?",
-      "how": [],
       "src": "4, 13, 14"
     },
     {
@@ -1021,7 +889,6 @@
       "what": "Pair through prompting on hard problems",
       "why": "Decisions made by one person and one agent.",
       "ask": "Have two of you prompted together on a hard problem?",
-      "how": [],
       "src": "1"
     },
     {
@@ -1034,12 +901,6 @@
       "detail": "Write down how the team uses AI to keep quality and work well together, so everyone shares the same mental model.",
       "why": "Juniors dump the task into the agent and push it, without seeing the bigger picture.",
       "ask": "Does your team have a contract for how you use AI, and does everyone follow it?",
-      "how": [
-        {
-          "text": "pstack, a set of skills for a full development flow",
-          "url": "https://github.com/cursor/plugins/tree/main/pstack"
-        }
-      ],
       "src": "2, 5, 11, 14"
     },
     {
@@ -1051,7 +912,6 @@
       "what": "A shared knowledge base, connected for every agent, also for development",
       "why": "Agents cannot look up base data and domain information, and spread-out information cannot support decisions.",
       "ask": "Can a coding agent at the client look up domain facts without someone pasting them in?",
-      "how": [],
       "src": "8, 12, 13, 14",
       "detail": "Gather documentation, base data and domain information that is spread over many systems, and connect it so agents can look it up."
     },
@@ -1064,7 +924,6 @@
       "what": "Local models where privacy requires it",
       "why": "Some clients cannot use cloud AI at all.",
       "ask": "What do you advise a client that forbids cloud models?",
-      "how": [],
       "src": "8, 11"
     },
     {
@@ -1076,7 +935,6 @@
       "what": "Make time for quality culture",
       "why": "Culture loses to delivery every week.",
       "ask": "Is time for this in anyone's plan at the client?",
-      "how": [],
       "src": "5"
     },
     {
@@ -1089,7 +947,6 @@
       "detail": "Their internal best practice, packaged so every agent can use it, and improved as they learn.",
       "why": "Each team writes its own, and what the client learns does not build up.",
       "ask": "Can teams at the client find and install skills other teams built?",
-      "how": [],
       "src": "14"
     },
     {
@@ -1102,7 +959,6 @@
       "detail": "A shared hub of connectors moves the access check from the person to a server, and the server often sees more. Check access per person, and log what agents read and do.",
       "why": "Losing control of data is easy, and people reach data they should not see.",
       "ask": "When an agent reads data at the client, whose access does it use?",
-      "how": [],
       "src": "14"
     },
     {
@@ -1115,11 +971,6 @@
       "detail": "Change how you work, what you take responsibility for and which positions you take. You are still a technical expert, but above all an expert in turning the real world into systems, processes and formal structures that work as modelled.",
       "why": "Making things gets cheap, so judgment about what to make and why is what counts, and so does caring about what you make.",
       "ask": "What did you take responsibility for this month that is outside your title?",
-      "how": [
-        {
-          "text": "Laurie Voss's talk on becoming product engineers"
-        }
-      ],
       "src": "1, 2, 14"
     },
     {
@@ -1131,7 +982,6 @@
       "what": "Choose what you should do, not what you can do",
       "why": "A pile of nice-to-haves nobody asked for.",
       "ask": "What did you decide not to make this week?",
-      "how": [],
       "src": "1, 10"
     },
     {
@@ -1144,7 +994,6 @@
       "detail": "Subagents, parallel sessions and orchestration, with one agent checking another. Give each subagent one narrow mandate.",
       "why": "You wait on one agent, or run many and lose quality.",
       "ask": "Does anything other than you check the agent's work?",
-      "how": [],
       "src": "2, 5, 7, 13, 14, S"
     },
     {
@@ -1156,7 +1005,6 @@
       "what": "Manage cognitive load and text fatigue",
       "why": "You stop reading what the agents write.",
       "ask": "How much agent output did you skim this week?",
-      "how": [],
       "src": "2, 3, 4"
     },
     {
@@ -1169,7 +1017,6 @@
       "detail": "For example onboarding, or a research setup others can run.",
       "why": "The gain stays with one task and one person.",
       "ask": "Which of your routines could a colleague run tomorrow?",
-      "how": [],
       "src": "10, 11"
     },
     {
@@ -1182,7 +1029,6 @@
       "detail": "Prune and rewrite them, know when no skill is needed, and share the good ones with the team and the client.",
       "why": "Skills pile up and fill the context.",
       "ask": "Which skill did you last delete or rewrite?",
-      "how": [],
       "src": "9, 12, 13, 14"
     },
     {
@@ -1194,7 +1040,6 @@
       "what": "Assess the risks of connected tools",
       "why": "Security comes second to hype, and you install servers you cannot assess.",
       "ask": "Do you know what an MCP server you installed can do?",
-      "how": [],
       "src": "4, 5",
       "detail": "Know what an MCP server or plugin can read and do before you install it. Developers learn how MCP works inside and read the server's code."
     },
@@ -1207,7 +1052,6 @@
       "what": "Tests for the application architecture itself",
       "why": "Structure erodes one merge at a time.",
       "ask": "Would a test fail if an agent broke your layering?",
-      "how": [],
       "src": "2, 4"
     },
     {
@@ -1219,7 +1063,6 @@
       "what": "Agentic on-call and triage across agents",
       "why": "Operations stays manual while development speeds up.",
       "ask": "Could an agent do the first ten minutes of your last incident?",
-      "how": [],
       "src": "S"
     },
     {
@@ -1231,7 +1074,6 @@
       "what": "Your own agent setup and local models",
       "why": "You depend on defaults you do not understand, and some data stays off limits.",
       "ask": "Do you know what a local model can and cannot do for you?",
-      "how": [],
       "src": "6, 7"
     },
     {
@@ -1243,7 +1085,6 @@
       "what": "Routing skills that load others only when needed",
       "why": "Context fills up and quality drops.",
       "ask": "Do your skills load only when the task needs them?",
-      "how": [],
       "src": "13, 14"
     },
     {
@@ -1255,7 +1096,6 @@
       "what": "A workday that starts from pull requests",
       "why": "You become the bottleneck when others send code.",
       "ask": "Can you review a design change that arrives as code?",
-      "how": [],
       "src": "1"
     },
     {
@@ -1267,7 +1107,6 @@
       "what": "Read design out of code with the agent's help",
       "why": "Changes land that no designer has seen.",
       "ask": "How do you look at a pull request you cannot read?",
-      "how": [],
       "src": "1"
     },
     {
@@ -1279,7 +1118,6 @@
       "what": "Write down the new practices for the field",
       "why": "Everyone invents their own method, and the skill stays with one person.",
       "ask": "Has your team written down how you research with AI?",
-      "how": [],
       "src": "11"
     },
     {
@@ -1291,7 +1129,6 @@
       "what": "Automate the tasks that take time but do not matter",
       "why": "Less face time with clients and consultants.",
       "ask": "What took an hour last week that an agent could have done?",
-      "how": [],
       "src": "8"
     },
     {
@@ -1303,7 +1140,6 @@
       "what": "Skills for business routines",
       "why": "You know of skills but have not seen the value, so it stays untried.",
       "ask": "Have you tried one skill on a real task?",
-      "how": [],
       "src": "9, 12"
     },
     {
@@ -1315,7 +1151,6 @@
       "what": "Protect quality and correctness in the whole system",
       "why": "Errors multiply when automation scales.",
       "ask": "What catches a wrong figure before the client does?",
-      "how": [],
       "src": "9"
     },
     {
@@ -1327,7 +1162,6 @@
       "what": "AI in forecasting work",
       "why": "Forecasts stay manual.",
       "ask": "Which part of your forecast could an agent prepare?",
-      "how": [],
       "src": "9"
     },
     {
@@ -1340,7 +1174,6 @@
       "detail": "Use AI to solve new things better, not the same tasks faster. Shift work left, and spend the time on the critical parts of the craft.",
       "why": "A process built for more people.",
       "ask": "What would you stop doing with three people?",
-      "how": [],
       "src": "8, 14"
     },
     {
@@ -1352,7 +1185,6 @@
       "what": "Ownership shared by people and agents",
       "why": "Shared ownership of the code gets lost.",
       "ask": "Who on your team knows why the code looks the way it does?",
-      "how": [],
       "src": "6"
     },
     {
@@ -1364,7 +1196,6 @@
       "what": "Test the codebase and conventions, not only the application",
       "why": "Agents break conventions nothing protects.",
       "ask": "Which team convention is enforced by a test?",
-      "how": [],
       "src": "2, 4"
     },
     {
@@ -1377,7 +1208,6 @@
       "detail": "A software factory, built into existing workflows, with a named owner. It takes large, systematic change.",
       "why": "AI use stays a personal habit.",
       "ask": "Can the client describe their way of building with agents in one sentence?",
-      "how": [],
       "src": "13, 14"
     },
     {
@@ -1390,7 +1220,6 @@
       "detail": "Beyond solving each day's tasks.",
       "why": "Tasks get optimized, and the purpose gets missed.",
       "ask": "Who at the client is responsible for that question?",
-      "how": [],
       "src": "5, 14"
     },
     {
@@ -1403,7 +1232,6 @@
       "detail": "Assistants built around how the business works, not only a general chat app. Tools that act, not only find: HR changes, onboarding, KPI reports, slides. One place where people discover them, with guided tours. For example an assistant connected to the CV system.",
       "why": "AI stays a side window.",
       "ask": "Which client system should have this built in first?",
-      "how": [],
       "src": "12, 14"
     }
   ]

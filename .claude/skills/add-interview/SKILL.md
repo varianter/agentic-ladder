@@ -18,7 +18,7 @@ Done when the file exists and its body matches the input.
 Read every answer in every dimension and level. For each one, find the closest existing topics in `TOPICS` (search by meaning, across all levels, scopes and disciplines, not only the cell it was asked in). Sort each answer into one kind:
 
 - **Covered**: an existing topic already says it. Only `src` changes.
-- **Enhance**: an existing topic covers it, but the answer adds something it lacks: a sharper `detail`, a better `ask`, a stronger `why`, a resource for `how`, or another discipline in `disc`.
+- **Enhance**: an existing topic covers it, but the answer adds something it lacks: a sharper `detail`, a better `ask`, a stronger `why`, a learning resource, or another discipline in `disc`.
 - **New**: no topic covers it.
 - **Combine**: the answer shows that two or more existing topics are one idea. Also look for this when a New candidate sits close to an existing topic: often the right move is one broader topic, not a new one.
 - **Step or test**: it changes a `PATH` step or test, or `STEPS.team` / `STEPS.org`.
@@ -31,7 +31,7 @@ Done when every answer in the interview has a kind, and every Enhance, New and C
 
 ## 3. Draft the wording
 
-For every New, Enhance and Combine candidate, write the full proposed text in the model's voice: `what`, `detail`, `why`, `ask`, `how`, plus `level`, `scope`, `disc`, `core` and the new `src`. For Enhance and Combine, show the current text next to the proposed text, field by field.
+For every New, Enhance and Combine candidate, write the full proposed text in the model's voice: `what`, `detail`, `why`, `ask`, any learning resources, plus `level`, `scope`, `disc`, `core` and the new `src`. For Enhance and Combine, show the current text next to the proposed text, field by field.
 
 Hold each draft to these tests before you show it:
 
@@ -57,10 +57,10 @@ Done when every candidate has a yes, a no or a changed wording from the user.
 
 ## 5. Apply what was agreed
 
-- New topic: a new lowercase slug `id`. Check it was never used: `git log -S '"id": "<slug>"' -- src/model.json` must return nothing.
-- Combine: keep the id of the topic most people would have rated, merge the `src` lists and `how` resources into it, and delete the others. Ratings on deleted ids are lost, so say which ids were removed. A deleted id is never used again.
-- Enhance and Covered: edit in place. Never change an id.
-- Resources: open every new `how` link and check it resolves.
+- New topic: a new lowercase slug `id`. Check it was never used: `git log -S '"id": "<slug>"' -- src/model.json` must return nothing. Create `src/resources/<id>.json` with the `about` line the model check asks for and the agreed resources, or an empty `resources` list.
+- Combine: keep the id of the topic most people would have rated, merge the `src` lists and the resource files into its file, and delete the others along with their resource files. Ratings on deleted ids are lost, so say which ids were removed. A deleted id is never used again.
+- Enhance and Covered: edit in place. Never change an id. If `what` changes, update the `about` line in the topic's resource file.
+- Resources: add them to `src/resources/<id>.json` (fields in `CONTRIBUTING.md`). Open every new link and check it resolves.
 
 Then run `pnpm format` and `pnpm check`. Fix any model check or accessibility failure. Done when `pnpm check` passes.
 
@@ -70,7 +70,6 @@ The roadmap doc in Claude Docs (link in `CLAUDE.md`) mirrors `src/model.json`. A
 
 - the topic tables for each level and scope, with core topics in bold and first;
 - the paths, if a step or test changed;
-- the count of topics without a resource;
 - "Placed by judgment", for every topic you placed on another level or built from your own framing;
 - "Where interviewees disagreed", for every conflict the user settled;
 - the interview counts in the lead and in "What the data covers".

@@ -6,6 +6,8 @@ import { repeat } from "lit-html/directives/repeat.js";
 import {
   DISC,
   discName,
+  editUrl,
+  KINDS,
   LEVELS,
   levelByK,
   PATH,
@@ -138,19 +140,66 @@ const pill = (text, palette = "grey") =>
     >${text}</color-mode
   >`;
 
+const languages = new Intl.DisplayNames(["en"], { type: "language" });
+
 /**
- * How to train on a topic: links where we have them, a yellow "missing" marker where not.
- * @param {Resource[]} how
+ * The muted label after a resource: its kind, its language when not English, and in General
+ * the discipline it is meant for.
+ * @param {Resource} r
+ * @param {Disc} disc
  */
-const resources = (how) =>
-  how.length
-    ? html`<ul class="stack-v gap-4xs" role="list">
-        ${how.map(
-          (r) =>
-            html`<li>${r.url ? html`<a class="v-link" href=${r.url} rel="noopener">${r.text}</a>` : r.text}</li>`,
-        )}
-      </ul>`
-    : pill("Missing: no resource yet", "yellow");
+function resourceLabel(r, disc) {
+  const parts = [];
+  if (r.kind) parts.push(KINDS[r.kind]);
+  if (r.lang && r.lang !== "en") parts.push(languages.of(r.lang) ?? r.lang);
+  if (r.disc && disc === "general") parts.push(`${discName(/** @type {Disc} */ (r.disc))} track`);
+  return parts.length ? html` <span class="ink-subtle">· ${parts.join(" · ")}</span>` : nothing;
+}
+
+/** A decorative plus that sets the suggest link apart from the resources above it. */
+const plusIcon = html`<svg class="suggest-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+  <path d="M8 3v10M3 8h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+</svg>`;
+
+/**
+ * How to train on a topic: links where we have them, a yellow "missing" marker where not, and a
+ * link to propose one on GitHub. A discipline view hides resources meant for other disciplines.
+ * @param {Topic} t
+ * @param {Disc} disc
+ */
+function resources(t, disc) {
+  const how = t.how.filter((r) => !r.disc || disc === "general" || r.disc === disc);
+  const suggest = (/** @type {string} */ text) =>
+    html`<a class="v-link suggest" href=${editUrl(t.id)}
+      >${plusIcon}<span>${text}<span class="sr-only"> for ${t.what}</span> (GitHub)</span></a
+    >`;
+  if (!how.length)
+    return html`<p>
+      ${pill("No resources yet", "yellow")}
+      <span class="no-print">${suggest("Be the first to add one")}</span>
+    </p>`;
+  return html`<ul class="list stack-v gap-4xs" role="list">
+      ${how.map(
+        (r) =>
+          html`<li>
+            ${r.url ? html`<a class="v-link" href=${r.url} rel="noopener">${r.text}</a>` : r.text}${resourceLabel(r, disc)}
+          </li>`,
+      )}
+    </ul>
+    <p class="no-print fs-xs ink-subtle">${suggest("Suggest a resource")}</p>`;
+}
+
+/**
+ * "How to learn it" as a band of its own under a divider, apart from what the topic is.
+ * @param {Topic} t
+ * @param {Disc} disc
+ * @param {string} padding Varde padding classes for the band.
+ */
+const howToLearn = (t, disc, padding) =>
+  html`<div class="b-t bc-subtle stack-v gap-4xs fs-s ${padding}">
+    <strong>How to learn it</strong>
+    ${resources(t, disc)}
+  </div>`;
 
 // ---- Sections ---------------------------------------------------------------------------
 
@@ -237,10 +286,6 @@ function topic(state, act, t) {
           ${t.detail ? html`<p class="fs-s">${t.detail}</p>` : nothing}
           <p class="fs-s"><strong>Why:</strong> ${t.why}</p>
           <p class="fs-s"><strong>Ask yourself:</strong> ${t.ask}</p>
-          <div class="stack-v gap-4xs fs-s">
-            <strong>How to learn it</strong>
-            ${resources(t.how)}
-          </div>
         </div>
         ${segmented(
           `t-${t.id}`,
@@ -255,6 +300,7 @@ function topic(state, act, t) {
           })),
         )}
       </div>
+      ${howToLearn(t, state.disc, "px-s py-xs")}
     </color-mode>
   </li>`;
 }
@@ -433,10 +479,7 @@ function planItem(state, t) {
         >
         <h4 class="fw-bold">${t.what}</h4>
         <p class="fs-s"><strong>Why:</strong> ${t.why}</p>
-        <div class="stack-v gap-4xs fs-s">
-          <strong>How to learn it</strong>
-          ${resources(t.how)}
-        </div>
+        ${howToLearn(t, state.disc, "pt-xs")}
       </div>
     </color-mode>
   </li>`;

@@ -1,5 +1,6 @@
-// Checks src/model.json, the model the page imports as is. There is no build: src/ is the site.
-import { readFileSync } from "node:fs";
+// Checks src/model.json and src/resources/, which the page loads as is. There is no build:
+// src/ is the site.
+import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -45,12 +46,57 @@ for (const t of model.TOPICS) {
   for (const f of ["what", "why", "ask", "src"])
     if (typeof t[f] !== "string" || !t[f]) problems.push(`${at}: needs ${f}`);
   if (typeof t.core !== "boolean") problems.push(`${at}: core must be true or false`);
-  if (!Array.isArray(t.how)) problems.push(`${at}: how must be a list`);
-  for (const r of t.how ?? []) {
-    if (!r.text) problems.push(`${at}: every resource needs text`);
-    if (r.url && !r.url.startsWith("https://")) problems.push(`${at}: resource url must be https`);
+  if ("how" in t) problems.push(`${at}: resources belong in src/resources/${t.id}.json`);
+}
+
+// Every topic has exactly one resource file, src/resources/<id>.json. The page links GitHub's
+// editor straight to it, so a missing file is a broken link.
+const KINDS = ["course", "article", "video", "book", "tool", "talk", "podcast", "example"];
+const CONTRIBUTING = "https://github.com/varianter/agentic-ladder/blob/main/CONTRIBUTING.md";
+const resourceDir = join(root, "src/resources");
+const files = new Set(readdirSync(resourceDir).filter((f) => f.endsWith(".json")));
+let missing = 0;
+for (const t of model.TOPICS) {
+  const file = `${t.id}.json`;
+  const at = `src/resources/${file}`;
+  if (!files.delete(file)) {
+    problems.push(`${at}: missing, every topic needs a resource file`);
+    continue;
+  }
+  let data;
+  try {
+    data = JSON.parse(readFileSync(join(resourceDir, file), "utf8"));
+  } catch (e) {
+    problems.push(`${at}: not valid JSON (${e.message})`);
+    continue;
+  }
+  const about = `Learning resources for the topic "${t.what}" (${t.id}). Rules: ${CONTRIBUTING}`;
+  if (data.about !== about) problems.push(`${at}: about must be ${JSON.stringify(about)}`);
+  if (!Array.isArray(data.resources)) {
+    problems.push(`${at}: resources must be a list`);
+    continue;
+  }
+  if (!data.resources.length) missing++;
+  for (const [i, r] of data.resources.entries()) {
+    const rat = `${at} resource ${i + 1}`;
+    for (const k of Object.keys(r))
+      if (!["text", "url", "kind", "lang", "disc"].includes(k))
+        problems.push(`${rat}: unknown field ${k}`);
+    if (typeof r.text !== "string" || !r.text) problems.push(`${rat}: needs text`);
+    if (r.url !== undefined && !/^https:\/\/\S+$/.test(r.url))
+      problems.push(`${rat}: url must be https`);
+    if (r.kind !== undefined && !KINDS.includes(r.kind))
+      problems.push(`${rat}: kind must be one of ${KINDS.join(", ")}`);
+    if (r.lang !== undefined && !/^[a-z]{2}$/.test(r.lang))
+      problems.push(`${rat}: lang must be a two-letter code like en, no or sv`);
+    if (r.disc !== undefined) {
+      const allowed = t.disc.includes("all") ? discs.filter((d) => d !== "general") : t.disc;
+      if (!allowed.includes(r.disc))
+        problems.push(`${rat}: disc must be one of the topic's disciplines: ${allowed.join(", ")}`);
+    }
   }
 }
+for (const f of files) problems.push(`src/resources/${f}: no topic has the id ${f.slice(0, -5)}`);
 
 // Every discipline should see something at every level and scope.
 for (const d of discs)
@@ -64,7 +110,6 @@ for (const d of discs)
 
 if (problems.length) fail();
 
-const missing = model.TOPICS.filter((t) => !t.how.length).length;
 console.log(`Model OK (${model.TOPICS.length} topics, ${missing} without a resource).`);
 
 function fail() {

@@ -1,0 +1,9 @@
+{
+  "about": "Learning resources for the topic \"A team contract for AI, and follow-up on how each person works\" (team-practices). Rules: https://github.com/varianter/agentic-ladder/blob/main/CONTRIBUTING.md",
+  "resources": [
+    {
+      "text": "pstack, a set of skills for a full development flow",
+      "url": "https://github.com/cursor/plugins/tree/main/pstack"
+    }
+  ]
+}

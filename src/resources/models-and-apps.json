@@ -1,0 +1,16 @@
+{
+  "about": "Learning resources for the topic \"Models and the app around them\" (models-and-apps). Rules: https://github.com/varianter/agentic-ladder/blob/main/CONTRIBUTING.md",
+  "resources": [
+    {
+      "text": "LMArena, to compare models",
+      "url": "https://lmarena.ai"
+    },
+    {
+      "text": "Andrej Karpathy's videos",
+      "url": "https://www.youtube.com/@AndrejKarpathy"
+    },
+    {
+      "text": "Your vendor's model documentation"
+    }
+  ]
+}

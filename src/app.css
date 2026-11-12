@@ -169,6 +169,26 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  /* The link to propose a resource, led by a plus. It stands alone, so it gets a full touch
+     target on phones. */
+  .suggest {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+  }
+
+  .suggest-icon {
+    flex: none;
+    inline-size: 1em;
+    block-size: 1em;
+  }
+
+  @media (width < 48rem) {
+    .suggest {
+      min-block-size: 44px;
+    }
+  }
+
   details > summary {
     min-block-size: 44px;
     cursor: pointer;

@@ -1,0 +1,13 @@
+{
+  "about": "Learning resources for the topic \"Use ready-made skills, starting with grilling\" (grilling). Rules: https://github.com/varianter/agentic-ladder/blob/main/CONTRIBUTING.md",
+  "resources": [
+    {
+      "text": "Matt Pocock's skills, including grill-me",
+      "url": "https://github.com/mattpocock/skills"
+    },
+    {
+      "text": "AI Hero",
+      "url": "https://www.aihero.dev"
+    }
+  ]
+}

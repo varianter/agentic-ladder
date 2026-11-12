@@ -1,0 +1,9 @@
+{
+  "about": "Learning resources for the topic \"Give the agent a clear goal, by one of two routes\" (clear-goal). Rules: https://github.com/varianter/agentic-ladder/blob/main/CONTRIBUTING.md",
+  "resources": [
+    {
+      "text": "Matt Pocock's skills for writing issues",
+      "url": "https://github.com/mattpocock/skills"
+    }
+  ]
+}
