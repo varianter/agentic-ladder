@@ -28,10 +28,4 @@ Open the project in Claude Code, type `/add-interview` and paste or attach the i
 
 ## Data
 
-| Source | Interviews |
-| --- | --- |
-| `2026-11-10-no-group-insights.md` | 1 to 12 |
-| `2026-11-10-variant-insights.md` | Self-submitted map (S) |
-| `2026-11-11-interview-13.md` | 13 |
-
-Names, interviewers and private notes were removed in the export. Free text may still mention clients and companies, so keep the repository private.
+Based on interviews and mapping experienced people in the field. Names, interviewers and private notes were removed in the export.

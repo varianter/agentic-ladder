@@ -257,7 +257,7 @@ The model is weakest at both ends: nobody interviewed is a total beginner, and f
 | Your team, level 3 | 1 person | Teams that have changed their process because of agents |
 | The client, levels 2 and 3 | 4 people and 2 people | Leaders and client-side views: what clients allow, forbid and expect |
 | Why it matters, how you found out | Few answers. Many "what goes wrong" cells are our reading | Failure stories: what went wrong, and where the gap showed up |
-| Juniors | One senior's view of three juniors | Juniors themselves, on how they build judgment with agents |
+| Juniors | One senior's view of juniors | Juniors themselves, on how they build judgment with agents |
 | The self-submitted map | One, left unfinished | A survey wave to get breadth behind the 14 voices |
 
 ## Placed by judgment

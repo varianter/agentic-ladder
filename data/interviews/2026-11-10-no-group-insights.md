@@ -30,6 +30,8 @@ Each person’s answers are in the sheet’s order: what really good looks like 
 
 People are numbered by when their sheet was made, and these numbers hold for this file only. Names, interviewers and private notes are left out; free text may still mention people or companies.
 
+Edited for publication: client names, team sizes and remarks about identifiable people are removed or made general. Everything else is as exported.
+
 **Dimensions**
 
 - Individual: how you work on your own
@@ -62,7 +64,7 @@ People are numbered by when their sheet was made, and these numbers hold for thi
 
 - **Discipline:** UX, UI, Product designer
 - **Date:** 2026-11-04
-- **Client, domain, team:** DigDir, 8 i team. Jobber med fellesløsning i digdir for å lage ulike agenter fra felles infra.
+- **Client, domain, team:** Offentlig sektor. Jobber med en fellesløsning for å lage ulike agenter fra felles infra.
 
 #### What really good looks like, to you
 
@@ -70,8 +72,8 @@ People are numbered by when their sheet was made, and these numbers hold for thi
 2) Hvor fort kan jeg tenke igjennom ulike tilfeller av produktet. Hva hadde skjedd om vi hadde trykket der. Eller hvordan skalerer dette. Hvordan ser det ut om det hadde vært for et helt annet domene. Det å kunne utforske fremfor å bare tenke igjennom det. Hadde ikke gjort det tidligere.
 Får mer gjennomtenkt UX-flyter.
 Kan se litt lengre frem i tid på ting som berører funksjonalitet for det som jobbes med alt nå.
-Ved å kunne tenke lengre frem i tid, vet han mer hvordan det kan berøre designet nå.
-Greier i mye større grad å jobbe med skalerbarhet av konsepter for han kan være mer fremsynt og teste ut.
+Ved å kunne tenke lengre frem i tid, vet en mer hvordan det kan berøre designet nå.
+Greier i mye større grad å jobbe med skalerbarhet av konsepter fordi en kan være mer fremsynt og teste ut.
 
 #### Individual
 
@@ -81,7 +83,7 @@ Greier i mye større grad å jobbe med skalerbarhet av konsepter for han kan væ
 - **Getting good · What to learn:** - Hvordan ta design til kode. Det å jobbe med tolkningsprosessen i handover fra systemene.
   - Vite hva som er viktig å lage. Matche ting med produktstrategien.
   - Agent loop. LangSmith Fleet
-- **Next level · What to learn:** Bli vant til en hverdag som tar utgangspunkt i PR-er. Lese andres arbeid. Fikk nettopp 3 PR-er fra en random dude, men greier ikke å lese designet ut i fra kode. Så da må en reverse engineere ting via claude for å prøve å teste ut.
+- **Next level · What to learn:** Bli vant til en hverdag som tar utgangspunkt i PR-er. Lese andres arbeid. Fikk nettopp noen PR-er fra andre, men greier ikke å lese designet ut i fra kode. Så da må en reverse engineere ting via claude for å prøve å teste ut.
   - Bli god på prioritering. Dette er vanskelig. Det blir veldig mye "whould it be nice"-isms.
 
 #### Team
@@ -97,7 +99,7 @@ Greier i mye større grad å jobbe med skalerbarhet av konsepter for han kan væ
 #### Reflections
 
 - **What surprised you:** Vi blir bare produktfolk med spisskompetanse nå.
-- **What you suspect you’re still missing:** Hvordan håndtere klima bedre. Holder han litt tilbake.
+- **What you suspect you’re still missing:** Hvordan håndtere klima bedre. Holder litt tilbake.
 
 ### Interview 2
 
@@ -258,7 +260,7 @@ Pocock grill-me så blir du og AI enig om noe, og ser at koden etterhvert blir e
   - Unngå siloer, også for AI-er
 - **Getting good · How you found out:** Må ta seg tid til å gjøre gode vurderinger fortsatt.
   
-  Sitter på API med 3 juniorer, brukt grill-with-docs, men de har ikke brukt det. Da merker han at de bare dumper det rett i codex og pusher det ut. Selv om det ser greit ut akkurat nå, hva er big picture og hvordan ser det ut over tid. Hva er impact av koden utenfor akkurat neste merge.
+  Har brukt grill-with-docs selv, men ser at juniorer i teamet ikke bruker det. Da merkes det at de bare dumper det rett i codex og pusher det ut. Selv om det ser greit ut akkurat nå, hva er big picture og hvordan ser det ut over tid. Hva er impact av koden utenfor akkurat neste merge.
 - **Next level · What to learn:** - interessert i å utforske hvordan MCP-er fungerer.
   - Risiko bak bruk (sikkerhetsmekanismer)
 
@@ -440,11 +442,10 @@ Det å kunne automatisere mye oppgaver som tar tid men som ikke er viktig å gj�
 #### About
 
 - **Date:** 2026-11-09
-- **Client, domain, team:** SAAB
 
 #### What really good looks like, to you
 
-Første aha-opplevelse i SAAB-prosjektet der gjorde vi 30 intervjuer med bruk av Teams og så et prosjekt i Claude. Når har gjort intervjuene selv, så ble det veldig kraftfult å kunne spørre opp mot materialet om hvordan de snakket om det, hvordan ressonerte de rundt det.
+Første aha-opplevelse var i et innsiktsprosjekt der vi gjorde mange intervjuer, med transkribering og så et prosjekt i Claude. Når har gjort intervjuene selv, så ble det veldig kraftfult å kunne spørre opp mot materialet om hvordan de snakket om det, hvordan ressonerte de rundt det.
 Ikke bare på spesifikke ord, men på betydning. Vanligvis tenker en at intervju med 1 time, tar 4-5 timer med analyse. Nå er det omtrent 1:1. Fortsatt viktig å gjøre intervjuet selv, men analysearbeidet blir mye mer effektivt.
 
 #### Tools and techniques they use

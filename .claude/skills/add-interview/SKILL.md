@@ -9,9 +9,11 @@ The model rules live in `CLAUDE.md` (levels, scopes, disciplines, topic fields, 
 
 ## 1. Save the raw text
 
-Write it to `data/interviews/YYYY-MM-DD-interview-N.md` exactly as given, with the same header as `2026-11-11-interview-13.md`. Use the next free interview number. Do not translate or tidy it.
+Write it to `data/interviews/YYYY-MM-DD-interview-N.md` with the same header as `2026-11-11-interview-13.md`. Use the next free interview number. Do not translate or tidy it.
 
-Done when the file exists and its body matches the input.
+The repo is public, so clean it before saving, by the rule in `CLAUDE.md` under Interview data: no client names, team sizes, client-identifying project details, remarks about identifiable people or gendered pronouns for the interviewee. Keep the point of each answer. List every change for the user.
+
+Done when the file exists, its body matches the input apart from the listed cleaning, and the user has seen the list.
 
 ## 2. Map every answer
 

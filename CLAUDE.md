@@ -6,7 +6,7 @@ Variant's roadmap for getting good at agentic AI, per product development discip
 
 | Path | What it is |
 | --- | --- |
-| `data/interviews/` | Raw interview exports, one file per export or new interview. Never edit these, only add. |
+| `data/interviews/` | Interview exports, one file per export or new interview, cleaned for a public repo. Only add, and edit only to clean (see Interview data). |
 | `src/` | The site, deployed exactly as it is. No build step. |
 | `src/model.json` | The model: levels, scopes, disciplines, steps, tests and topics. The single source for the page, except learning resources. |
 | `src/resources/` | One file per topic, `<id>.json`, with its learning resources. Anyone can propose changes through GitHub. |
@@ -44,6 +44,7 @@ Package manager is pnpm (version pinned in `packageManager`, run through corepac
 - Interviews 8, 9, 10 and 12 have no discipline recorded. 8 and 12 are in sales and management, 9 and 10 in advisory. 5 has none either and is placed as a developer. 2 (developer, UX, UI) feeds only the developer track. Research analysis is shared between designer and advisory.
 - Most answers are in Norwegian. The model and page are in English.
 - Never invent sources, numbers or quotes. A row cites only interviews that said it.
+- The repo is public. Before an interview is committed, remove client and company names, team sizes, project details that point to a client, remarks about identifiable people (colleagues, client staff, juniors on a named team) and gendered pronouns for the interviewee. Replace with general wording that keeps the point, for example "offentlig sektor" or "andre i teamet". Tool and product names are fine.
 
 ## Writing style
 
