@@ -18,6 +18,7 @@ Variant's roadmap for getting good at agentic AI, per product development discip
 | `scripts/a11y.mjs` | Serves `src/` with sirv, then runs an axe-core WCAG 2.1 AA check at 1200px light and 390px dark, plus sideways-scroll, script error and Varde-loaded checks. |
 | `biome.json` | Biome lint and format config. Markdown is not formatted. |
 | `docs/roadmap.md` | Snapshot of the long-form roadmap doc. The editable doc lives in Claude Docs. |
+| `future-plans/` | Possible extensions, one file each. Ideas only, not commitments. |
 
 Package manager is pnpm (version pinned in `packageManager`, run through corepack). Commands: `pnpm dev` (serve `src/` with sirv on port 4173, reload to see edits), `pnpm check:model`, `pnpm check:types` (tsc), `pnpm a11y`, `pnpm lint` (Biome), `pnpm format` (Biome fixes and formatting), `pnpm check` (Biome, types, model check and a11y). Run `pnpm format` then `pnpm check` after every change to `src/` or `scripts/`.
 
