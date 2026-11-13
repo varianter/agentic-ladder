@@ -161,6 +161,14 @@ const plusIcon = html`<svg class="suggest-icon" viewBox="0 0 16 16" aria-hidden=
   <path d="M8 3v10M3 8h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
 </svg>`;
 
+/** Where Variant people can suggest resources and topics without GitHub. */
+const slackNote = html`<p class="no-print fs-xs ink-subtle">
+  You can also suggest resources and new topics in
+  <a class="v-link tap-target" href="https://variantas.slack.com/archives/C09QGMU8VJT"
+    >#ai-experiences on Slack</a
+  >.
+</p>`;
+
 /**
  * How to train on a topic: links where we have them, a yellow "missing" marker where not, and a
  * link to propose one on GitHub. A discipline view hides resources meant for other disciplines.
@@ -177,7 +185,8 @@ function resources(t, disc) {
     return html`<p>
       ${pill("No resources yet", "yellow")}
       <span class="no-print">${suggest("Be the first to add one")}</span>
-    </p>`;
+    </p>
+    ${slackNote}`;
   return html`<ul class="list stack-v gap-4xs" role="list">
       ${how.map(
         (r) =>
@@ -186,7 +195,8 @@ function resources(t, disc) {
           </li>`,
       )}
     </ul>
-    <p class="no-print fs-xs ink-subtle">${suggest("Suggest a resource")}</p>`;
+    <p class="no-print fs-xs ink-subtle">${suggest("Suggest a resource")}</p>
+    ${slackNote}`;
 }
 
 /**

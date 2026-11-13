@@ -187,6 +187,13 @@
     .suggest {
       min-block-size: 44px;
     }
+
+    /* A link inside small text still gets a full touch target on phones. */
+    .tap-target {
+      display: inline-flex;
+      align-items: center;
+      min-block-size: 44px;
+    }
   }
 
   details > summary {
