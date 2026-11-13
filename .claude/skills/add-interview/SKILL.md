@@ -1,6 +1,7 @@
 ---
 name: add-interview
 description: Add a new agentic mapping interview to the model, the ladder page and the roadmap. Use when the user pastes or attaches a new interview or survey export.
+disable-model-invocation: true
 ---
 
 # Add an interview

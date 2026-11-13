@@ -71,4 +71,4 @@ Package manager is pnpm (version pinned in `packageManager`, run through corepac
 - Roadmap doc (Claude Docs): https://claude.ai/artifact/GaFzf6b98sFvGV8rHK7NMm
 - The ladder page is a static site with no build step. GitHub Pages publishes `src/` on every push to `main` (Pages source must be set to "GitHub Actions"). Any other static host can serve `src/` as is. The old artifact version is at https://claude.ai/artifact/SCahu9fP3wSCSdBtwF76L4 and is no longer updated.
 
-To add a new interview, use the `add-interview` skill.
+To add a new interview, run `/add-interview`. It only runs when invoked by hand.
