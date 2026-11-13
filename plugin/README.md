@@ -5,7 +5,7 @@ A coach for Variant's Agentic Ladder. Ask it where you are, what to learn next, 
 What it does, as one journey that repeats until you lead:
 
 1. Maps where you are on the ladder with a few questions from its tests and topics.
-2. With your yes, reads your Flowcase CV through the Variant MCP. It checks the mapping against the CV and lists gaps: what you do that the CV does not show, and what to learn next. It never writes to Flowcase.
+2. With your yes, reads your Flowcase CV through the Variant MCP, or a CV you paste. It works both ways: it suggests your level from what the CV shows, and suggests how to improve the CV from the ladder, as before and after text for what you do that the CV does not show. You confirm everything, and it never writes to Flowcase.
 3. Makes a training plan: two or three topics, a concrete exercise for each, how you know it worked, and resources.
 4. Works through the exercises with you, in your own repo or files.
 5. Checks in next time: what you tried, what changed, and new ratings.
@@ -29,6 +29,8 @@ Claude.ai elsewhere: zip the `skills/agentic-ladder/` folder and upload it as a 
 ## Try it
 
 - "Where am I on the agentic ladder? I'm a developer."
+- "Read my CV and tell me where I am on the ladder."
+- "How can I improve my CV with the ladder?"
 - "Make me a training plan for the next month."
 - "Check in on my ladder plan."
 - "What should I advise my client about agents?"
