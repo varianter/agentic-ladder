@@ -22,7 +22,7 @@ Claude Code:
 /plugin install agentic-ladder@agentic-ladder
 ```
 
-Claude.ai at Variant: the plugin is already in Variant's organization. Turn it on in your settings. Connect the Variant MCP for the CV step.
+Claude.ai and Claude Code at Variant: the skill comes with the Variant plugin (`varianter/plugin`), which has the Variant MCP for the CV step. Turn the plugin on in your settings. You do not need the marketplace above as well. The copy there is synced from this folder by a daily workflow that opens a pull request, so edit the skill here.
 
 Claude.ai elsewhere: zip the `skills/agentic-ladder/` folder and upload it as a skill in your settings. Web fetch must be on.
 

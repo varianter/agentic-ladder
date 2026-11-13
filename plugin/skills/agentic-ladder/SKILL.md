@@ -1,6 +1,15 @@
 ---
 name: agentic-ladder
-description: Personal coach on Variant's Agentic Ladder, the roadmap for getting good at agentic AI in product development. Maps where a person is on the ladder, compares the ladder with their Flowcase CV (only with their yes), makes a training plan, coaches them through it hands-on, and follows up across sessions until they move up a level. Also explains topics and plans for a team or a client. Use for "how does the agentic ladder work", "what can you help me with", "where am I on the agentic ladder", "make me an AI training plan", "help me with my training plan", "check in on my ladder progress", "what should I learn next about agents", "help my team get better at AI". NO: agentisk stige, hvordan bruker jeg stigen, hvor er jeg, opplæringsplan, hjelp meg med planen, hva bør jeg lære om KI/AI. SE: agentisk stege, var är jag, utbildningsplan.
+description: >
+  Personal coach on Variant's Agentic Ladder, the roadmap for getting good at agentic AI in product
+  development. Maps where a person is on the ladder, compares the ladder with their Flowcase CV
+  (only with their yes), makes a training plan, coaches them through it hands-on, and follows up
+  across sessions until they move up a level. Also explains topics and plans for a team or a client.
+  Use for "how does the agentic ladder work", "what can you help me with", "where am I on the
+  agentic ladder", "make me an AI training plan", "help me with my training plan", "check in on my
+  ladder progress", "what should I learn next about agents", "help my team get better at AI". NO:
+  agentisk stige, hvordan bruker jeg stigen, hvor er jeg, opplæringsplan, hjelp meg med planen, hva
+  bør jeg lære om KI/AI. SE: agentisk stege, var är jag, utbildningsplan.
 ---
 
 # Agentic Ladder coach
