@@ -1,0 +1,29 @@
+# Variant Agentic Ladder
+
+> Variant's roadmap for getting good at agentic AI in product development, per discipline. Three levels (Beginner, Experienced, Leading), and at each level what to do for yourself, your team and the client. Built from interviews with Variant consultants.
+
+Use it to find someone's level, make a training plan, answer questions about a topic, or plan for a team or a client. Read the file for the person's discipline. If you do not know it, ask. Answer in the user's language. Topic ids stay in English.
+
+## Ladder
+
+- [General](https://agentic-ladder.raa.academy/ladder/general.md): only the topics shared by every discipline
+- [Developer](https://agentic-ladder.raa.academy/ladder/dev.md): shared topics plus developer topics
+- [Designer](https://agentic-ladder.raa.academy/ladder/des.md): shared topics plus designer topics
+- [Sales & management](https://agentic-ladder.raa.academy/ladder/sales.md): shared topics plus sales & management topics
+- [Advisory](https://agentic-ladder.raa.academy/ladder/adv.md): shared topics plus advisory topics
+- [Everything](https://agentic-ladder.raa.academy/ladder.md): all disciplines in one file
+
+## Data
+
+- [model.json](https://agentic-ladder.raa.academy/model.json): the model as JSON
+- [model.schema.json](https://agentic-ladder.raa.academy/model.schema.json): what every field in model.json means
+- [resources/<id>.json](https://github.com/varianter/agentic-ladder/tree/main/src/resources): learning resources per topic
+
+## Ratings
+
+The page imports and exports a person's answers. Format and hand-back link are under "Ratings" in every ladder file. Link back with `https://agentic-ladder.raa.academy/#ratings=<base64url JSON>`.
+
+## Optional
+
+- [Interactive page](https://agentic-ladder.raa.academy/)
+- [Source and contributing](https://github.com/varianter/agentic-ladder)

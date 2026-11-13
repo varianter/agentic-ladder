@@ -16,6 +16,7 @@ import {
   topicById,
   topicsOf,
 } from "./model.js";
+import { changes } from "./share.js";
 
 /** @typedef {import("./store.js").State} State */
 /** @typedef {import("./model.js").Disc} Disc */
@@ -30,6 +31,20 @@ import {
  * @property {(level: number, answer: "yes" | "no") => void} answer
  * @property {(id: string, rating: Rating) => void} rate
  * @property {(level: number) => void} showLevel
+ * @property {(text: string) => void} previewImport Reads pasted text and shows what it would change.
+ * @property {() => void} confirmImport
+ * @property {() => void} cancelImport
+ */
+
+/**
+ * The import box, kept in memory only. `open` shows the paste form, `preview` what an import
+ * would change, and `from` where the ratings came from.
+ * @typedef {object} ImportState
+ * @property {boolean} open
+ * @property {string} text
+ * @property {string} error
+ * @property {import("./share.js").Ratings | null} preview
+ * @property {"link" | "paste"} from
  */
 
 /** Palettes for each rating. */
@@ -493,4 +508,106 @@ function planItem(state, t) {
       </div>
     </color-mode>
   </li>`;
+}
+
+// ---- Import ------------------------------------------------------------------------------
+
+/** @param {number} n @param {string} one @param {string} many */
+const count = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+
+/**
+ * The paste form, or what an import would change with Import and Cancel. Nothing until the
+ * viewer opens it or arrives with a #ratings= link.
+ * @param {State} state
+ * @param {ImportState} imp
+ * @param {Actions} act
+ */
+export function importBox(state, imp, act) {
+  if (imp.preview) return importPreview(state, imp, act);
+  if (!imp.open) return nothing;
+  /** @param {SubmitEvent} e */
+  const submit = (e) => {
+    e.preventDefault();
+    const form = /** @type {HTMLFormElement} */ (e.currentTarget);
+    act.previewImport(
+      /** @type {HTMLTextAreaElement} */ (form.elements.namedItem("import-text")).value,
+    );
+  };
+  return html`<form class="stack-v gap-xs b-all bc-subtle br-l p-s" @submit=${submit}>
+    <label class="v-form-label fw-bold" for="import-text">Paste a ratings link or JSON</label>
+    <textarea
+      class="v-textarea w-full"
+      id="import-text"
+      name="import-text"
+      rows="4"
+      spellcheck="false"
+      .value=${imp.text}
+      aria-invalid=${imp.error ? "true" : nothing}
+      aria-describedby=${imp.error ? "import-error" : nothing}
+    ></textarea>
+    ${imp.error ? html`<p class="fs-s fw-bold" id="import-error">${imp.error}</p>` : nothing}
+    <div class="stack-h gap-s">
+      <color-mode palette="blue">
+        <button class="v-button" data-variant="filled" type="submit">Show what changes</button>
+      </color-mode>
+      <color-mode palette="grey">
+        <button class="v-button" data-variant="outlined" type="button" @click=${act.cancelImport}>
+          Cancel
+        </button>
+      </color-mode>
+    </div>
+  </form>`;
+}
+
+/**
+ * @param {State} state
+ * @param {ImportState} imp
+ * @param {Actions} act
+ */
+function importPreview(state, imp, act) {
+  const blob = /** @type {import("./share.js").Ratings} */ (imp.preview);
+  const c = changes(state, blob);
+  const rated = c.rateNew + c.rateChanged;
+  const answered = c.quizNew + c.quizChanged;
+  const same = !c.disc && !rated && !answered;
+  return html`<color-mode palette="blue" class="d-block surface-tinted br-l">
+    <div class="stack-v gap-xs p-s">
+      <h3 class="fs-l fw-bold" id="import-title" tabindex="-1">Import these ratings?</h3>
+      <p class="fs-s ink-subtle">
+        ${imp.from === "link" ? "From the link you opened." : "From what you pasted."} Nothing is
+        saved until you choose Import.
+      </p>
+      ${
+        same
+          ? html`<p>They match your answers. Nothing will change.</p>`
+          : html`<ul class="list stack-v gap-4xs" role="list">
+              <li>
+                Discipline:
+                ${c.disc ? `${discName(c.disc)} (now ${discName(state.disc)})` : `${discName(state.disc)}, no change`}
+              </li>
+              <li>
+                Topic ratings: ${count(c.rateNew, "new", "new")},
+                ${count(c.rateChanged, "changed", "changed")}
+              </li>
+              <li>
+                Test answers: ${count(c.quizNew, "new", "new")},
+                ${count(c.quizChanged, "changed", "changed")}
+              </li>
+            </ul>
+            <p class="fs-s ink-subtle">
+              Imported answers replace the ones they cover. Your other answers stay.
+            </p>`
+      }
+      <div class="stack-h gap-s">
+        <button class="v-button" data-variant="filled" type="button" @click=${act.confirmImport}>
+          Import
+        </button>
+        <color-mode palette="grey">
+          <button class="v-button" data-variant="outlined" type="button" @click=${act.cancelImport}>
+            Cancel
+          </button>
+        </color-mode>
+      </div>
+    </div>
+  </color-mode>`;
 }

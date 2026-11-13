@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "agentic-ladder",
+  "description": "Variant's Agentic Ladder as a coach: find your level, get a training plan, plan for your team or client.",
+  "owner": {
+    "name": "Variant",
+    "url": "https://variant.no"
+  },
+  "plugins": [
+    {
+      "name": "agentic-ladder",
+      "displayName": "Variant Agentic Ladder",
+      "source": "./plugin",
+      "description": "Find your level on Variant's Agentic Ladder, get a training plan, and plan for your team or client.",
+      "homepage": "https://agentic-ladder.raa.academy/",
+      "repository": "https://github.com/varianter/agentic-ladder"
+    }
+  ]
+}

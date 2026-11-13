@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "agentic-ladder",
+  "displayName": "Variant Agentic Ladder",
+  "version": "0.1.0",
+  "description": "Find your level on Variant's Agentic Ladder, get a training plan, and plan for your team or client.",
+  "author": {
+    "name": "Variant",
+    "url": "https://variant.no"
+  },
+  "homepage": "https://agentic-ladder.raa.academy/",
+  "repository": "https://github.com/varianter/agentic-ladder"
+}

@@ -13,6 +13,8 @@
       type="image/svg+xml"
       href="https://varde.variant.dev/static/logos/variant-favicon.svg"
     >
+    <link rel="alternate" type="text/markdown" href="ladder.md" title="The ladder as Markdown">
+    <link rel="alternate" type="text/plain" href="llms.txt" title="Guide for LLMs">
     <link rel="preconnect" href="https://varde.variant.dev" crossorigin>
     <link rel="preload" as="style" href="https://varde.variant.dev/v/2.0.1/styles.css">
     <link rel="stylesheet" href="app.css">
@@ -184,6 +186,41 @@
           <p class="fs-s ink-subtle no-print" id="save-hint">
             Save as PDF opens the print dialog. Choose "Save as PDF" as the printer.
           </p>
+          <div class="stack-v gap-xs no-print">
+            <h3 class="fs-l fw-bold">Work on it with an AI</h3>
+            <p class="lede fs-s ink-subtle" id="ai-hint">
+              Copy for AI copies a short prompt, the ladder for your discipline and your answers.
+              Paste it into an AI chat to get help with your level and plan. When the AI gives you a
+              ratings link or JSON back, open the link or paste it under Import ratings.
+            </p>
+            <div class="stack-h gap-s">
+              <color-mode palette="blue">
+                <button
+                  class="v-button"
+                  data-variant="outlined"
+                  id="copy-ai"
+                  type="button"
+                  aria-describedby="ai-hint"
+                >
+                  Copy for AI
+                </button>
+              </color-mode>
+              <color-mode palette="grey">
+                <button
+                  class="v-button"
+                  data-variant="outlined"
+                  id="import-open"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="import"
+                >
+                  Import ratings
+                </button>
+              </color-mode>
+              <span class="fs-s ink-subtle" id="sharemsg"></span>
+            </div>
+            <div id="import"></div>
+          </div>
         </section>
 
         <details class="b-all bc-subtle br-xl no-print">

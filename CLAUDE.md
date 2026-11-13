@@ -13,7 +13,11 @@ Variant's roadmap for getting good at agentic AI, per product development discip
 | `src/index.html` | The page: full HTML document and static text. |
 | `src/app.css` | Imports Varde into a cascade layer and adds the little layout Varde has no utility for. |
 | `src/js/` | Native ES modules, no bundler. `main.js` (entry, actions and rendering), `views.js` (lit-html templates per section), `model.js` (fetches `../model.json` and the resource files, model types), `store.js` (localStorage, state type), `theme.js`. |
-| `scripts/check-model.mjs` | Checks the shape of `src/model.json` and `src/resources/`. |
+| `src/model.schema.json` | JSON Schema for `src/model.json` and the resource files, with a description on every field. For tools and LLMs; the model check validates against it. |
+| `src/llms.txt`, `src/ladder.md`, `src/ladder/<disc>.md` | The ladder as Markdown for LLMs, all disciplines and one per discipline. Made by `scripts/build-llm.mjs` and committed. Never edit by hand. |
+| `scripts/check-model.mjs` | Checks `src/model.json` and `src/resources/` against the schema, plus links between fields. |
+| `scripts/build-llm.mjs` | Writes the LLM files from the model. `--check` fails if the committed ones are stale. |
+| `plugin/`, `.claude-plugin/marketplace.json` | The `agentic-ladder` Claude plugin: one coach skill that reads the live LLM files. Installed with `/plugin marketplace add varianter/agentic-ladder`. |
 | `tsconfig.json` | Type checks `src/js/` from JSDoc comments with `tsc`. Nothing is emitted. |
 | `.github/workflows/pages.yml` | Runs `pnpm check` on every push and pull request, and publishes `src/` to GitHub Pages from `main`. |
 | `scripts/a11y.mjs` | Serves `src/` with sirv, then runs an axe-core WCAG 2.1 AA check at 1200px light and 390px dark, plus sideways-scroll, script error and Varde-loaded checks. |
@@ -22,7 +26,7 @@ Variant's roadmap for getting good at agentic AI, per product development discip
 | `CONTRIBUTING.md`, `.github/CODEOWNERS` | Rules for proposing a resource, and who reviews them (`@mikaelbr` for `src/resources/`). |
 | `future-plans/` | Possible extensions, one file each. Ideas only, not commitments. |
 
-Package manager is pnpm (version pinned in `packageManager`, run through corepack). Commands: `pnpm dev` (serve `src/` with sirv on port 4173, reload to see edits), `pnpm check:model`, `pnpm check:types` (tsc), `pnpm a11y`, `pnpm lint` (Biome), `pnpm format` (Biome fixes and formatting), `pnpm check` (Biome, types, model check and a11y). Run `pnpm format` then `pnpm check` after every change to `src/` or `scripts/`.
+Package manager is pnpm (version pinned in `packageManager`, run through corepack). Commands: `pnpm dev` (serve `src/` with sirv on port 4173, reload to see edits), `pnpm build:llm` (rewrite the LLM files), `pnpm check:model` (model check and stale LLM files), `pnpm check:types` (tsc), `pnpm a11y`, `pnpm lint` (Biome), `pnpm format` (Biome fixes and formatting), `pnpm check` (Biome, types, model check, stale LLM files and a11y). After every change to `src/` or `scripts/`, run `pnpm build:llm` if the model or resources changed, then `pnpm format` and `pnpm check`.
 
 ## The model
 
@@ -35,7 +39,7 @@ Package manager is pnpm (version pinned in `packageManager`, run through corepac
 - A resource is `{ text, url?, kind?, lang?, disc? }`. `kind` is one of `course`, `article`, `video`, `book`, `tool`, `talk`, `podcast`, `example`. `lang` is a two-letter code, English when left out. `disc` limits it to one of the topic's disciplines: discipline views hide resources for other disciplines, General shows all with a "<Discipline> track" label. A topic with no resources shows "No resources yet" and "Be the first to add one".
 - Resources are shared by every discipline a topic covers. The roadmap doc does not list them; the page and `src/resources/` are the source.
 - `src` is the interview numbers as a string, with `S` for the self-submitted map: `"4, 6, 13"`. It is kept for review and never shown on the page. The page shows no interview numbers or counts.
-- Ratings are saved under the topic `id` in each viewer's browser. Never change or reuse an id. Order in the list does not matter.
+- Ratings are saved under the topic `id` in each viewer's browser, and travel by id in `#ratings=` links and in the plugin's saved memory. Never change or reuse an id. Order in the list does not matter.
 - Disagreements between interviews are settled in the model: each topic gives one answer. Ask the user before settling a new one.
 
 ## Interview data
@@ -69,6 +73,6 @@ Package manager is pnpm (version pinned in `packageManager`, run through corepac
 ## Published
 
 - Roadmap doc (Claude Docs): https://claude.ai/artifact/GaFzf6b98sFvGV8rHK7NMm
-- The ladder page is a static site with no build step. GitHub Pages publishes `src/` on every push to `main` (Pages source must be set to "GitHub Actions"). Any other static host can serve `src/` as is. The old artifact version is at https://claude.ai/artifact/SCahu9fP3wSCSdBtwF76L4 and is no longer updated.
+- The ladder page is at https://agentic-ladder.raa.academy/ (custom domain on GitHub Pages, so the host can change). The plugin and `llms.txt` link to it. It is a static site with no build step. GitHub Pages publishes `src/` on every push to `main` (Pages source must be set to "GitHub Actions"). Any other static host can serve `src/` as is. The old artifact version is at https://claude.ai/artifact/SCahu9fP3wSCSdBtwF76L4 and is no longer updated.
 
 To add a new interview, run `/add-interview`. It only runs when invoked by hand.

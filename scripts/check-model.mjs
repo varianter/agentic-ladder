@@ -3,11 +3,23 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import Ajv from "ajv/dist/2020.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const model = JSON.parse(readFileSync(join(root, "src/model.json"), "utf8"));
 
+// src/model.schema.json describes the shape for people and LLMs. The checks below it cover what
+// a schema cannot: links between fields, one step per level, and a file per topic.
+const ajv = new Ajv({ allErrors: true });
+ajv.addSchema(JSON.parse(readFileSync(join(root, "src/model.schema.json"), "utf8")), "model");
+const validateModel = ajv.getSchema("model");
+const validateResources = ajv.compile({ $ref: "model#/$defs/resourceFile" });
+/** @param {import("ajv").ErrorObject[] | null | undefined} errors @param {string} at */
+const schemaProblems = (errors, at) =>
+  (errors ?? []).map((e) => `${at}${e.instancePath || "/"} ${e.message}`);
+
 const problems = [];
+if (!validateModel?.(model)) problems.push(...schemaProblems(validateModel?.errors, "model.json"));
 for (const key of ["LEVELS", "SCOPES", "DISC", "STEPS", "PATH", "TOPICS"]) {
   if (!model[key]) problems.push(`missing ${key}`);
 }
@@ -70,6 +82,7 @@ for (const t of model.TOPICS) {
     problems.push(`${at}: not valid JSON (${e.message})`);
     continue;
   }
+  if (!validateResources(data)) problems.push(...schemaProblems(validateResources.errors, at));
   const about = `Learning resources for the topic "${t.what}" (${t.id}). Rules: ${CONTRIBUTING}`;
   if (data.about !== about) problems.push(`${at}: about must be ${JSON.stringify(about)}`);
   if (!Array.isArray(data.resources)) {

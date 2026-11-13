@@ -10,15 +10,17 @@
   },
   "scripts": {
     "dev": "sirv src --dev --host 127.0.0.1 --port 4173",
-    "check:model": "node scripts/check-model.mjs",
+    "build:llm": "node scripts/build-llm.mjs",
+    "check:model": "node scripts/check-model.mjs && node scripts/build-llm.mjs --check",
     "check:types": "tsc -p .",
     "a11y": "node scripts/a11y.mjs",
     "lint": "biome check .",
     "format": "biome check --write .",
-    "check": "biome ci . && tsc -p . && node scripts/check-model.mjs && node scripts/a11y.mjs"
+    "check": "biome ci . && tsc -p . && node scripts/check-model.mjs && node scripts/build-llm.mjs --check && node scripts/a11y.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.6",
+    "ajv": "8.17.1",
     "axe-core": "4.10.2",
     "lit-html": "3.3.3",
     "puppeteer-core": "23.10.4",

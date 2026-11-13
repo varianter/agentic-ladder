@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-ladder.raa.academy/model.schema.json",
+  "title": "Variant Agentic Ladder model",
+  "description": "The model behind the Variant Agentic Ladder: three levels, three scopes per level, disciplines, steps, tests and topics. Learning resources live in resources/<topic id>.json, described by $defs.resourceFile. For reading rather than parsing, ladder.md and ladder/<discipline>.md hold the same content as Markdown.",
+  "type": "object",
+  "required": ["LEVELS", "SCOPES", "DISC", "STEPS", "PATH", "TOPICS"],
+  "additionalProperties": false,
+  "properties": {
+    "LEVELS": {
+      "description": "The three levels, in order. A person works on the first level whose test they do not pass yet.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["k", "name", "lvl", "idea"],
+        "additionalProperties": false,
+        "properties": {
+          "k": { "description": "Level number, 1 to 3.", "type": "integer", "minimum": 1 },
+          "name": { "description": "Short name, like \"Beginner\".", "type": "string" },
+          "lvl": { "description": "Longer label shown on the page.", "type": "string" },
+          "idea": { "description": "What the level is about, in one sentence.", "type": "string" }
+        }
+      }
+    },
+    "SCOPES": {
+      "description": "Who the work is for. Every level has topics in every scope.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["k", "name", "lede"],
+        "additionalProperties": false,
+        "properties": {
+          "k": {
+            "description": "\"self\" is yourself, \"team\" is initiative so the team uses AI well and keeps quality, \"org\" is what you advise the client. Organization means the client, not Variant.",
+            "enum": ["self", "team", "org"]
+          },
+          "name": { "type": "string" },
+          "lede": { "description": "One sentence on what the scope covers.", "type": "string" }
+        }
+      }
+    },
+    "DISC": {
+      "description": "Disciplines. \"general\" shows only the topics every discipline shares.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["k", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "k": {
+            "description": "Discipline key, used in PATH, TOPICS[].disc and ratings.",
+            "type": "string",
+            "pattern": "^[a-z]+$"
+          },
+          "name": { "type": "string" }
+        }
+      }
+    },
+    "STEPS": {
+      "description": "One step per level for the team and the client, shared by all disciplines. Index i is level i + 1.",
+      "type": "object",
+      "required": ["team", "org"],
+      "additionalProperties": false,
+      "properties": {
+        "team": { "$ref": "#/$defs/perLevel" },
+        "org": { "$ref": "#/$defs/perLevel" }
+      }
+    },
+    "PATH": {
+      "description": "Per discipline key: the step for yourself and the \"You are there when\" test at each level. Index i is level i + 1.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["self", "tests"],
+        "additionalProperties": false,
+        "properties": {
+          "self": { "$ref": "#/$defs/perLevel" },
+          "tests": {
+            "$ref": "#/$defs/perLevel",
+            "description": "You pass level i + 1 when tests[i] is true for you."
+          }
+        }
+      }
+    },
+    "TOPICS": {
+      "description": "What to train on. A flat list; order does not matter.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/topic" }
+    }
+  },
+  "$defs": {
+    "perLevel": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "topic": {
+      "type": "object",
+      "required": ["id", "level", "scope", "disc", "core", "what", "why", "ask", "src"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Stable slug. Viewers' ratings are saved under it, so it never changes and is never reused. Resources are in resources/<id>.json.",
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "level": { "description": "Level number, see LEVELS[].k.", "type": "integer" },
+        "scope": { "description": "See SCOPES[].k.", "enum": ["self", "team", "org"] },
+        "disc": {
+          "description": "Discipline keys that see this topic, or [\"all\"] for every discipline.",
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "core": {
+          "description": "Core topics show first. The rest fold under \"more at this level\".",
+          "type": "boolean"
+        },
+        "what": { "description": "The topic's title.", "type": "string", "minLength": 1 },
+        "detail": { "description": "What it means in practice.", "type": "string" },
+        "why": { "description": "What goes wrong without it.", "type": "string", "minLength": 1 },
+        "ask": {
+          "description": "A question to ask yourself to see if you do it.",
+          "type": "string",
+          "minLength": 1
+        },
+        "src": {
+          "description": "Interview numbers behind the topic, kept for review. S is the self-submitted map. Not shown on the page and not a count to report.",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "resourceFile": {
+      "description": "resources/<topic id>.json: the learning resources for one topic. Shared by every discipline the topic covers.",
+      "type": "object",
+      "required": ["about", "resources"],
+      "additionalProperties": false,
+      "properties": {
+        "about": {
+          "description": "Names the topic and links the contribution rules.",
+          "type": "string"
+        },
+        "resources": { "type": "array", "items": { "$ref": "#/$defs/resource" } }
+      }
+    },
+    "resource": {
+      "type": "object",
+      "required": ["text"],
+      "additionalProperties": false,
+      "properties": {
+        "text": { "description": "What it is.", "type": "string", "minLength": 1 },
+        "url": { "type": "string", "pattern": "^https://\\S+$" },
+        "kind": {
+          "enum": ["course", "article", "video", "book", "tool", "talk", "podcast", "example"]
+        },
+        "lang": {
+          "description": "Two-letter language code. English when left out.",
+          "type": "string",
+          "pattern": "^[a-z]{2}$"
+        },
+        "disc": {
+          "description": "Limits the resource to one of the topic's disciplines.",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

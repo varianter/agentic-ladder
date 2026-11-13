@@ -1,6 +1,7 @@
 // Entry point: loads state, wires the actions to it and renders the page with lit-html.
 import { render } from "lit-html";
 import { discName, isDisc, levelByK } from "./model.js";
+import { decode, ladderText, merge, promptText } from "./share.js";
 import { loadState, saveState } from "./store.js";
 import { initTheme } from "./theme.js";
 import * as view from "./views.js";
@@ -8,6 +9,8 @@ import * as view from "./views.js";
 /** @param {string} id */
 const $ = (id) => /** @type {HTMLElement} */ (document.getElementById(id));
 const state = loadState(isDisc);
+/** @type {view.ImportState} */
+const imp = { open: false, text: "", error: "", preview: null, from: "paste" };
 
 /** @type {view.Actions} */
 const act = {
@@ -39,7 +42,55 @@ const act = {
       () => `Showing level ${level}, ${levelByK(level).name}.`,
       { animate: true },
     ),
+  previewImport: (text) => {
+    imp.text = text;
+    imp.preview = decode(text);
+    imp.from = "paste";
+    imp.error = imp.preview
+      ? ""
+      : "No ratings found. Paste a ratings link or the JSON from the AI.";
+    draw();
+    if (imp.preview) focusLater("import-title");
+    else {
+      focusLater("import-text");
+      announce(imp.error);
+    }
+  },
+  confirmImport: () => {
+    const blob = imp.preview;
+    if (!blob) return;
+    const n = Object.keys(blob.rate).length;
+    closeImport();
+    update(
+      () => merge(state, blob),
+      `Imported. ${discName(state.disc)}. ${view.verdictText(state)}`,
+    );
+    $("sharemsg").textContent = `Imported ${n} ${n === 1 ? "rating" : "ratings"}.`;
+    $("import-open").focus();
+  },
+  cancelImport: () => {
+    closeImport();
+    draw();
+    $("sharemsg").textContent = "";
+    announce("Import cancelled.");
+    $("import-open").focus();
+  },
 };
+
+/** Closes the import box and drops a #ratings= link from the address. */
+function closeImport() {
+  Object.assign(imp, { open: false, text: "", error: "", preview: null });
+  if (location.hash.startsWith("#ratings="))
+    history.replaceState(null, "", location.pathname + location.search);
+}
+
+/**
+ * Moves focus after lit-html has drawn the element.
+ * @param {string} id
+ */
+function focusLater(id) {
+  requestAnimationFrame(() => document.getElementById(id)?.focus());
+}
 
 function draw() {
   render(view.disciplines(state, act), $("disc"));
@@ -50,6 +101,9 @@ function draw() {
   render(view.summary(state), $("summary"));
   render(view.plan(state), $("plan"));
   render(view.planMeta(state), $("plan-meta"));
+  render(view.importBox(state, imp, act), $("import"));
+  $("import-open").setAttribute("aria-expanded", String(imp.open || !!imp.preview));
+  ladderText(state.disc);
 }
 
 /**
@@ -133,5 +187,44 @@ addEventListener("afterprint", () => {
   else delete document.documentElement.dataset.colorScheme;
 });
 
+// Copy for AI: a starter prompt, the ladder for the discipline and the viewer's answers. draw()
+// fetches the ladder ahead, so the copy runs while the click still counts as the viewer's.
+$("copy-ai").addEventListener("click", async () => {
+  const msg = $("sharemsg");
+  try {
+    await navigator.clipboard.writeText(promptText(state, await ladderText(state.disc)));
+    msg.textContent = "Copied. Paste it into an AI chat.";
+  } catch {
+    msg.textContent = "Could not copy. Your browser blocked the clipboard.";
+  }
+  announce(msg.textContent);
+});
+
+$("import-open").addEventListener("click", () => {
+  if (imp.open || imp.preview) {
+    act.cancelImport();
+    return;
+  }
+  imp.open = true;
+  $("sharemsg").textContent = "";
+  draw();
+  focusLater("import-text");
+});
+
+/** Shows what a #ratings= link in the address would change. */
+function readHash() {
+  if (!location.hash.startsWith("#ratings=")) return;
+  imp.text = location.href;
+  imp.preview = decode(location.hash);
+  imp.from = "link";
+  imp.open = !imp.preview;
+  imp.error = imp.preview ? "" : "This link has no ratings the page can read.";
+  $("sharemsg").textContent = "";
+  draw();
+  focusLater(imp.preview ? "import-title" : "import-text");
+}
+addEventListener("hashchange", readHash);
+
 initTheme(/** @type {HTMLSelectElement} */ ($("theme")));
 draw();
+readHash();
